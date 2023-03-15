@@ -36,6 +36,47 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     </style>
 </head>
 <body>
+<?php 
+        include 'config/config.php';
+        $error = false;
+        if (isset($_GET['action']) && $_GET['action'] == 'reg') {
+            if (isset($_POST['TENDANGNHAP']) && !empty($_POST['TENDANGNHAP']) && isset($_POST['MATKHAU']) && !empty($_POST['MATKHAU'])) {
+                $hoten = $_POST['HOTEN'];
+                $gioitinh = $_POST['GIOITINH'];
+                $sdt = $_POST['SDT'];
+                
+                    $result = mysqli_query($conn, "INSERT INTO `chukhutro` (`HOTEN`,`GIOITINH`,`TENDANGNHAP`,`MATKHAU`,`SDT`) VALUES ('".$_POST['HOTEN']."', '".$_POST['GIOITINH']."', '".$_POST['TENDANGNHAP']."', MD5('".$_POST['MATKHAU']."'), '".$_POST['SDT']."');");
+                    if (!$result) {
+                        if (strpos(mysqli_error($conn), "Duplicate entry") !== FALSE) {
+                            $error = "Tài khoản đã tồn tại. Vui lòng chọn tên tài khoản khác";
+                        }
+                    }
+                    mysqli_close($conn);
+                
+                if ($error !== false) {
+                    ?>
+                    <div id="error-notify" class="box-content-regis">
+                        <h1>Thông báo</h1>
+                        <h4><?= $error ?></h4>
+                        <a href="./register.php">Quay lại</a>
+                    </div>
+                <?php } else { 
+                  // header('Location: ./login.php');?>
+                  <div id="edit-notify" class="box-content-regis">
+                        <h1><?= ($error !== false) ? $error : "Đăng ký tài khoản thành công" ?></h1>
+                        <a href="./login.php">Bạn có thể đăng nhập ngay bây giờ</a>
+                    </div>
+                <?php } ?>
+                <?php } else { ?>
+                    <div id="edit-notify" class="box-content-regis">
+                        <h1>Vui lòng nhập đầy đủ thông tin</h1>
+                        <a class="back" href="./register.php">Quay lại</a>
+                    </div>
+                <?php
+
+            }
+
+        } ?>
 <section class="vh-100 bg-image"
   style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -45,29 +86,33 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-
-              <form>
+              
+              <form action="./register.php?action=reg" method="Post" autocomplete="off">
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
+                  <label class="form-label" for="form3Example1cg">Your Account Name</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                  <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU"/>
+                  <label class="form-label" for="form3Example3cg">Password</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
+                  <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="HOTEN" />
+                  <label class="form-label" for="form3Example4cg">Your name</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="GIOITINH" />
+                  <label class="form-label" for="form3Example4cdg">Your gender</label>
                 </div>
 
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="SDT" />
+                  <label class="form-label" for="form3Example4cg">Your phone</label>
+                </div>
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
@@ -77,8 +122,9 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                  <button type="submit"
+                    input class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Đăng ký">Register</button>
+                    <!-- <input class="btn" type="submit" value="Đăng ký"> -->
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.php"
