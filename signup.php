@@ -47,7 +47,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 
                     $result = mysqli_query($conn, "INSERT INTO `chukhutro` (`HOTEN`,`GIOITINH`,`TENDANGNHAP`,`MATKHAU`,`SDT`) VALUES ('".$_POST['HOTEN']."', '".$_POST['GIOITINH']."', '".$_POST['TENDANGNHAP']."', MD5('".$_POST['MATKHAU']."'), '".$_POST['SDT']."');");
                     if (!$result) {
-                        if (strpos(mysqli_error($conn), "Duplicate entry") !== FALSE) {
+                        if (strpos(mysqli_error($conn), "Duplicate entry") == FALSE) {
                             $error = "Tài khoản đã tồn tại. Vui lòng chọn tên tài khoản khác";
                         }
                     }
@@ -58,19 +58,16 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                     <div id="error-notify" class="box-content-regis">
                         <h1>Thông báo</h1>
                         <h4><?= $error ?></h4>
-                        <a href="./register.php">Quay lại</a>
+                        <a href="./signup.php">Quay lại</a>
                     </div>
                 <?php } else { 
-                  // header('Location: ./login.php');?>
-                  <div id="edit-notify" class="box-content-regis">
-                        <h1><?= ($error !== false) ? $error : "Đăng ký tài khoản thành công" ?></h1>
-                        <a href="./login.php">Bạn có thể đăng nhập ngay bây giờ</a>
-                    </div>
+                  header('Location: ./login.php');?>
+                  
                 <?php } ?>
                 <?php } else { ?>
                     <div id="edit-notify" class="box-content-regis">
                         <h1>Vui lòng nhập đầy đủ thông tin</h1>
-                        <a class="back" href="./register.php">Quay lại</a>
+                        <a class="back" href="./signup.php">Quay lại</a>
                     </div>
                 <?php
 
@@ -87,7 +84,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
               
-              <form action="./register.php?action=reg" method="Post" autocomplete="off">
+              <form action="./signup.php?action=reg" method="Post" autocomplete="off">
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
@@ -95,7 +92,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU"/>
+                  <input type="password" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU"/>
                   <label class="form-label" for="form3Example3cg">Password</label>
                 </div>
 
@@ -105,7 +102,11 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example4cdg" class="form-control form-control-lg" name="GIOITINH" />
+                <select name="GIOITINH" class="form-control form-control-lg">
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                        <option>Khác</option>
+                </select>
                   <label class="form-label" for="form3Example4cdg">Your gender</label>
                 </div>
 
