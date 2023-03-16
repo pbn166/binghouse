@@ -1,5 +1,24 @@
 <?php
-  session_start();
+    include './config/config.php';
+  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+      $tendangnhap = $_POST['TENDANGNHAP'];
+      $matkhau =  md5($_POST['MATKHAU']);
+      $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
+      $result = $conn->query($sql);
+      if($result->num_rows >0){
+        $row = $result ->fetch_array();
+        $cookkie_name = "chutro";
+        $cookkie_value = $row['TENDANGNHAP'];
+        setcookie($cookkie_name, $cookkie_value, time() + (86400/24), "/");
+        setcookie("HOTEN", $row['HOTEN'], time() + (86400*24), "/");
+        header('location: index.php');
+      }
+        else{
+        echo '<script>alert("Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng");</script>';
+        header('Refesh: 5url=login.php');
+      }
+      $conn -> close();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,27 +56,6 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     </style>
 </head>
 <body>
-<?php
-  include './config/config.php';
-  if(isset($_GET['action']) && $_GET['action'] == 'login'){
-      $tendangnhap = $_POST['TENDANGNHAP'];
-      $matkhau =  md5($_POST['MATKHAU']);
-      $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
-      $query = mysqli_query($conn, $sql);
-      $count = mysqli_num_rows($query);
-      if($count > 0){
-        $row_data = mysqli_fetch_array($query);
-        header('location: index.php');
-      }
-      else{
-        echo '<script>alert("Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng");</script>';
-        header('Refesh: 5url=login.php');
-      }
-  }
-
-?>
-
-
 <section class="vh-100 bg-image"
   style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
