@@ -1,5 +1,6 @@
-
-
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +37,27 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     </style>
 </head>
 <body>
+<?php
+  include './config/config.php';
+  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+      $tendangnhap = $_POST['TENDANGNHAP'];
+      $matkhau =  md5($_POST['MATKHAU']);
+      $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
+      $query = mysqli_query($conn, $sql);
+      $count = mysqli_num_rows($query);
+      if($count > 0){
+        $row_data = mysqli_fetch_array($query);
+        header('location: index.php');
+      }
+      else{
+        echo '<script>alert("Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng");</script>';
+        header('Refesh: 5url=login.php');
+      }
+  }
+
+?>
+
+
 <section class="vh-100 bg-image"
   style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -46,22 +68,22 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-              <form>
+              <form action="login.php?action=login" method="Post" autocomplete = "off">
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
                   <label class="form-label" for="form3Example1cg">User Name</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <input type="password" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU" />
                   <label class="form-label" for="form3Example3cg">Password</label>
                 </div>
 
             
 
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="submit"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
                 </div>
 
