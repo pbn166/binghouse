@@ -1,5 +1,24 @@
 <?php
-  session_start();
+    include './config/config.php';
+  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+      $tendangnhap = $_POST['TENDANGNHAP'];
+      $matkhau =  md5($_POST['MATKHAU']);
+      $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
+      $result = $conn->query($sql);
+      if($result->num_rows >0){
+        $row = $result ->fetch_array();
+        $cookkie_name = "chutro";
+        $cookkie_value = $row['TENDANGNHAP'];
+        setcookie($cookkie_name, $cookkie_value, time() + (86400/24), "/");
+        setcookie("HOTEN", $row['HOTEN'], time() + (86400*24), "/");
+        header('location: index.php');
+      }
+        else{
+        echo '<script>alert("Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng");</script>';
+        header('Refesh: 5url=login.php');
+      }
+      $conn -> close();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Đăng nhập</title>
     <meta charset="uft-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!-- <link type="text/css" rel="stylesheet" href="./main.css" /> -->
@@ -45,19 +64,9 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
       $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
       $query = mysqli_query($conn, $sql);
       $count = mysqli_num_rows($query);
-      
       if($count > 0){
-        $row_data = mysqli_fetch_assoc($query);
-        //foreach ($row_data as $key => $value){
-        //  echo $row_data['HOTEN'];
-        //}
-        echo $row_data['HOTEN'];
-        //exit();
-        
-        //exit();
-        //$_SESSION['TENDANGNHAP']=$tendangnhap;
+        $row_data = mysqli_fetch_array($query);
         $_SESSION['HOTEN']=$row_data['HOTEN'];
-
         header('location: index.php');
       }
       else{
@@ -77,29 +86,29 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Login</h2>
+              <h2 class="text-uppercase text-center mb-5">Đăng nhập tài khoản</h2>
 
               <form action="login.php?action=login" method="Post" autocomplete = "off">
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
-                  <label class="form-label" for="form3Example1cg">User Name</label>
+                  <label class="form-label" for="form3Example1cg">Tên đăng nhập</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU" />
-                  <label class="form-label" for="form3Example3cg">Password</label>
+                  <label class="form-label" for="form3Example3cg">Mật khẩu</label>
                 </div>
 
             
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng nhập</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="signup.php"
-                    class="fw-bold text-body"><u>Register here</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Bạn chưa có tài khoản? <a href="signup.php"
+                    class="fw-bold text-body"><u>Đăng ký tại đây</u></a></p>
 
               </form>
 
