@@ -5,6 +5,7 @@
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
+  session_start();
  
   
   
@@ -85,8 +86,19 @@
                   <a class="dropdown-item" href="#">Trợ giúp</a>
                 </div>
               </li>
-               
-                  <a href="signup.php" class="btn btn-primary pl-0 pl-md-2 ml-0 ml-md-4 btn-lg active" role="button" aria-pressed="true">Sign Up</a>
+              <?php
+                          // session_destroy();
+                          if (!isset($_SESSION['HOTEN'])) {
+                            ?> <a href="login.php" class="btn btn-primary pl-0 pl-md-2 ml-0 ml-md-4 btn-lg active" role="button" aria-pressed="true">Login</a><?php
+                          } else {?>
+                            <div class="dropdown">
+                                <div  onclick="hamDropdown()" class="nut_dropdown"><?php echo $_SESSION['HOTEN'];?></div>
+                                
+                            </div>
+                        <?php
+                        }
+                      ?>    
+                <!--<a href="login.php" class="btn btn-primary pl-0 pl-md-2 ml-0 ml-md-4 btn-lg active" role="button" aria-pressed="true">Login</a>-->
                
             </ul>
           </div>
@@ -301,7 +313,11 @@
 
 
 </div>
-
+<script>
+    function hamDropdown() {
+                document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+            }
+   </script>
 </body>
 
 </html>

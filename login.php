@@ -45,8 +45,19 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
       $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
       $query = mysqli_query($conn, $sql);
       $count = mysqli_num_rows($query);
+      
       if($count > 0){
-        $row_data = mysqli_fetch_array($query);
+        $row_data = mysqli_fetch_assoc($query);
+        //foreach ($row_data as $key => $value){
+        //  echo $row_data['HOTEN'];
+        //}
+        echo $row_data['HOTEN'];
+        //exit();
+        
+        //exit();
+        //$_SESSION['TENDANGNHAP']=$tendangnhap;
+        $_SESSION['HOTEN']=$row_data['HOTEN'];
+
         header('location: index.php');
       }
       else{
