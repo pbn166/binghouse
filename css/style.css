@@ -635,7 +635,7 @@ body.dark .logo img {
 } */
 
 .ssn_pw_filter {
-    background-image: url(../image/bg-home-v1.jpg);
+    /* background-image: url(../image/bg-home-v1.jpg); */
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -849,4 +849,364 @@ select {
     display: flex;
     justify-content: center;
     width: 45px;
+}
+
+
+/* Tin đăng mới  */
+
+.ssn_buy_sell {
+    background: #f4f4f4;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    position: relative
+}
+
+.ssn_buy_sell .home_fixed {
+    left: 0;
+    position: absolute;
+    top: 16px;
+    width: 160px
+}
+
+.ssn_buy_sell .home_fixed.home_r {
+    left: auto;
+    right: 0
+}
+
+.ssn_buy_sell.fix_pos .home_fixed {
+    position: fixed
+}
+
+.home_buy_sell {
+    display: flex;
+    justify-content: stretch
+}
+
+.home_buy_sell .listing {
+    flex: 1;
+    padding-right: 8px
+}
+
+.home_buy_sell .listing:last-child {
+    padding-left: 8px;
+    padding-right: 0
+}
+
+.home_buy_sell .listing>.label {
+    border-bottom: 2px solid #005b9c;
+    color: #000;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 14px
+}
+
+.home_buy_sell .home_listing {
+    display: block;
+    height: calc(100% - 36px);
+    padding: 8px 0;
+    width: 100%
+}
+
+.home_buy_sell .home_listing>div.item_suggest {
+    position: relative
+}
+
+.home_buy_sell .home_listing>div.item_suggest .vip_suggest {
+    opacity: .3
+}
+
+.home_buy_sell .home_listing>div.item_suggest .olay_suggest {
+    align-items: center;
+    background-color: rgba(0, 0, 0, .741);
+    border: 0;
+    display: flex;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1
+}
+
+.home_buy_sell .home_listing>div.item_suggest .olay_suggest .options_s {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    width: 100%
+}
+
+.home_buy_sell .home_listing>div.item_suggest .olay_suggest .options_s p {
+    color: #efefef;
+    font-size: 13px;
+    line-height: 2.5
+}
+
+.home_buy_sell .home_listing>div.item_suggest .olay_suggest .options_s .btn-s {
+    background-color: #ff6535;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    padding: 6px
+}
+
+.home_buy_sell .home_listing>div.item {
+    align-items: stretch;
+    background: #fff;
+    display: flex;
+    height: 155px;
+    margin-bottom: 10px
+}
+
+.home_buy_sell .home_listing>div.item .img_r {
+    display: flex;
+    flex: none;
+    height: auto;
+    padding-bottom: 0;
+    width: 160px
+}
+
+.home_buy_sell .home_listing>div.item .img_r img {
+    color: transparent;
+    transform: scaleX(-1)
+}
+
+.home_buy_sell .home_listing>div.item .img_r img:after {
+    background: url(/assets/v1/images/noimage.png) 50%;
+    color: transparent;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2
+}
+
+.home_buy_sell .home_listing>div.item .img_r .video {
+    left: 66px;
+    position: absolute;
+    top: 58px
+}
+
+.home_buy_sell .home_listing>div.item .img_r .video img.has-video {
+    height: 30px;
+    transform: unset!important;
+    width: 30px
+}
+
+.home_buy_sell .home_listing>div.item .img_r .vip {
+    background: #ff6535;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    left: -6px;
+    padding: 2px 8px;
+    position: absolute;
+    top: 3px;
+    z-index: 10
+}
+
+.home_buy_sell .home_listing>div.item .img_r .vip:before {
+    border-color: #eb5f33 #eb5f33 transparent transparent;
+    border-style: solid;
+    border-width: 3px;
+    bottom: -6px;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    width: 0
+}
+
+.home_buy_sell .home_listing>div.item .img_r .new {
+    background: #2f93da;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    left: -6px;
+    padding: 2px 8px;
+    position: absolute;
+    top: 3px;
+    z-index: 10
+}
+
+.home_buy_sell .home_listing>div.item .img_r .new:before {
+    border-color: #2f93da #2f93da transparent transparent;
+    border-style: solid;
+    border-width: 3px;
+    bottom: -6px;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    width: 0
+}
+
+.home_buy_sell .home_listing>div.item .info {
+    flex: 1;
+    font-size: 12px;
+    padding: 4px 10px
+}
+
+.home_buy_sell .home_listing>div.item .info .title {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #005b9c;
+    display: block;
+    display: -webkit-box;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    max-height: 36px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.home_buy_sell .home_listing>div.item .info .title i {
+    font-size: 14px;
+    margin-right: 4px
+}
+
+.home_buy_sell .home_listing>div.item .info .title.name-vip {
+    color: #b32626
+}
+
+.home_buy_sell .home_listing>div.item .info .title.name-vip i.mcon-star_full {
+    color: #f1c40f!important
+}
+
+.home_buy_sell .home_listing>div.item .info .if {
+    display: block;
+    margin-bottom: 3px;
+    max-height: 28px;
+    overflow: hidden;
+    width: 310px
+}
+
+.home_buy_sell .home_listing>div.item .info .if i {
+    margin-right: 6px
+}
+
+.home_buy_sell .home_listing>div.item .info .if .label {
+    float: left;
+    padding-right: 5px;
+    width: 76px
+}
+
+.home_buy_sell .home_listing>div.item .info .if .label:after {
+    content: ":";
+    float: right
+}
+
+.home_buy_sell .home_listing>div.item .info .if .price {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #dd1717;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.home_buy_sell .home_listing>div.item .info .if .acreage {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #005e00;
+    display: -webkit-box;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.home_buy_sell .home_listing>div.item .info .if .acreage sup {
+    font-size: 9px
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home {
+    margin-top: 4px
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name {
+    display: flex
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .user_avatar {
+    background: #005b9c;
+    border: 1px solid #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    margin-right: 6px;
+    overflow: hidden;
+    text-align: center;
+    width: 35px
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .user_avatar span {
+    color: #fff;
+    font-size: 16px;
+    margin: auto;
+    text-transform: uppercase;
+    width: 50%
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .user_avatar img {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .avatar_name {
+    display: inline-block;
+    width: calc(100% - 42px)
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .avatar_name span {
+    -webkit-line-clamp: 1;
+    color: #00579e;
+    display: -webkit-box;
+    line-height: 1.5;
+    margin-left: 6px;
+    overflow: hidden;
+    text-transform: capitalize
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .avatar_name span.phone_name {
+    font-weight: 600
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .avatar_name span.phone_number {
+    color: #359035;
+    cursor: pointer;
+    max-width: 250px
+}
+
+.home_buy_sell .home_listing>div.item .info .info_user_home .user_name .avatar_name span.phone_number i {
+    margin-right: 6px
+}
+
+.home_buy_sell .home_listing>div.no_scale img {
+    transform: unset!important
+}
+
+.home_ad {
+    display: block;
+    margin-bottom: 16px
+}
+
+@media (max-width: 1000px) {
+    .home_buy_sell {
+        grid-row-gap: 16px;
+        grid-template-columns: 1fr;
+        padding: 16px
+    }
 }
