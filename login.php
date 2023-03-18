@@ -1,6 +1,7 @@
 <?php
     include './config/config.php';
-  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+    session_start()
+  /*if(isset($_GET['action']) && $_GET['action'] == 'login'){
       $tendangnhap = $_POST['TENDANGNHAP'];
       $matkhau =  md5($_POST['MATKHAU']);
       $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
@@ -18,7 +19,7 @@
         header('Refesh: 5url=login.php');
       }
       $conn -> close();
-  }
+  }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,8 +65,10 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
       $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
       $query = mysqli_query($conn, $sql);
       $count = mysqli_num_rows($query);
+      //echo $count;
+      //exit();
       if($count > 0){
-        $row_data = mysqli_fetch_array($query);
+        $row_data = mysqli_fetch_assoc($query);
         $_SESSION['HOTEN']=$row_data['HOTEN'];
         header('location: index.php');
       }
