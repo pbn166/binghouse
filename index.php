@@ -75,7 +75,8 @@
                 <a class="nav-link" href="#">Thông báo</a>
               </li>
               <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
-                <a class="nav-link" href="#">Tài khoản</a>
+                <a class="nav-link" href="#" data-toggle="dropdown">Tài khoản</a>
+                <!-- <div class="nav-link"  data-toggle="dropdown"></div> -->
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
