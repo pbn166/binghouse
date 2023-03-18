@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2023 at 05:09 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Mar 18, 2023 at 09:55 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `baiviet` (
   `ID_KHUTRO` int(11) NOT NULL,
   `TIEUDE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `GIOITHIEUBAIVIET` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,11 +42,11 @@ CREATE TABLE `baiviet` (
 
 CREATE TABLE `chukhutro` (
   `ID_CKT` int(11) NOT NULL,
-  `HOTEN` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `GIOITINH` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `SDT` char(10) COLLATE utf8_unicode_ci NOT NULL,
-  `TENDANGNHAP` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `MATKHAU` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `HOTEN` varchar(30) NOT NULL,
+  `GIOITINH` varchar(5) NOT NULL,
+  `SDT` char(10) NOT NULL,
+  `TENDANGNHAP` varchar(30) NOT NULL,
+  `MATKHAU` varchar(255) NOT NULL,
   `NGAYLAP` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -93,7 +93,7 @@ CREATE TABLE `giathuephong` (
 CREATE TABLE `hinh` (
   `ID_HINH` int(11) NOT NULL,
   `STT` int(11) NOT NULL,
-  `HINH` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `HINH` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -105,7 +105,7 @@ CREATE TABLE `hinh` (
 CREATE TABLE `huyen` (
   `ID_HUYEN` int(11) NOT NULL,
   `ID_TINH` int(11) NOT NULL,
-  `TENHUYEN` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENHUYEN` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -206,10 +206,10 @@ CREATE TABLE `khutro` (
   `ID_KHUTRO` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
   `ID_CKT` int(11) NOT NULL,
-  `TENKHUTRO` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `SONHA` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `LAT_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LONG_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENKHUTRO` varchar(30) NOT NULL,
+  `SONHA` varchar(100) NOT NULL,
+  `LAT_TRO` varchar(50) NOT NULL,
+  `LONG_TRO` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -231,7 +231,7 @@ INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT
 
 CREATE TABLE `loaiphong` (
   `ID_LP` int(11) NOT NULL,
-  `TENLOAIPHONG` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TENLOAIPHONG` varchar(30) NOT NULL,
   `SONGUOIOTOIDA` int(11) NOT NULL,
   `DIENTICH` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -254,12 +254,32 @@ INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
+(11, 10.0224, 105.77, '2023-03-18 19:30:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `phong`
 --
 
 CREATE TABLE `phong` (
   `STT` int(11) NOT NULL,
-  `TENPHONG` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `TENPHONG` varchar(20) NOT NULL,
   `ID_TT` int(11) DEFAULT NULL,
   `ID_KHUTRO` int(11) DEFAULT NULL,
   `ID_LP` int(11) DEFAULT NULL
@@ -273,7 +293,7 @@ CREATE TABLE `phong` (
 
 CREATE TABLE `tinh` (
   `ID_TINH` int(11) NOT NULL,
-  `TENTINH` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENTINH` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -291,7 +311,7 @@ INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
 
 CREATE TABLE `trangthai` (
   `ID_TT` int(11) NOT NULL,
-  `TENTT` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `TENTT` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -312,10 +332,10 @@ INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
 CREATE TABLE `truong` (
   `T_MA` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
-  `T_TENTRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `T_ICON` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LAT_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LONG_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `T_TENTRUONG` varchar(50) NOT NULL,
+  `T_ICON` varchar(50) NOT NULL,
+  `LAT_TRUONG` varchar(50) NOT NULL,
+  `LONG_TRUONG` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -323,17 +343,17 @@ CREATE TABLE `truong` (
 --
 
 INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `LONG_TRUONG`) VALUES
-(1, 4, 'Đại học Cần Thơ', '', '10.030166119768271', '105.7705294670423'),
-(2, 2, 'Đại Học Greenwich (Việt Nam) - Cơ sở Cần Thơ', '', '10.029116555621965', '105.77760138238341'),
-(3, 8, 'Cao đẳng Anh Quốc BTEC FPT', '', '10.048112799710019', '105.77710175539532'),
-(4, 3, 'Trường Cao đẳng Y tế Cần Thơ', '', '10.044342016371923', '105.7653862553953'),
-(5, 3, 'Trường Cao đẳng Kinh tế - Kỹ thuật Cần Thơ', '', '10.052652426428926', '105.77227277073644'),
-(6, 13, 'Trường CĐ Nghề Việt Mỹ, Phân hiệu CT', '', '10.020163586353139', '105.7896012929583'),
-(7, 19, 'Trường CĐ Nghề Cần Thơ', '', '10.062974085287465', '105.76237006441764'),
-(8, 10, 'Trường Cao đẳng FPT Polytechnic Cần Thơ', '', '10.027096086939006', '105.75728974005409'),
-(9, 1, 'Trường Cao đẳng Cần Thơ', '', '10.014335004223907', '105.76479085965416'),
-(10, 10, 'Đại Học Y Dược Cần Thơ', '', '10.033682322990293', '105.75463464005409'),
-(11, 9, 'Trường Đại học Nam Cần Thơ', '', '10.008231763410771', '105.72287451306573');
+(1, 4, 'Đại học Cần Thơ', 'icon_DHCT.png', '10.029942937096429', '105.77060926275031'),
+(2, 2, 'Đại Học Greenwich (Việt Nam) - Cơ sở Cần Thơ', 'logo_ Greenwich.jpg', '10.029116555621965', '105.77760138238341'),
+(3, 8, 'Cao đẳng Anh Quốc BTEC FPT', 'logo_BTEC.jpg', '10.048112799710019', '105.77710175539532'),
+(4, 3, 'Trường Cao đẳng Y tế Cần Thơ', 'logo_CDYT.jpg', '10.044342016371923', '105.7653862553953'),
+(5, 3, 'Trường Cao đẳng Kinh tế - Kỹ thuật Cần Thơ', 'logo_CDKTKThuat.jpg', '10.052652426428926', '105.77227277073644'),
+(6, 13, 'Trường CĐ Nghề Việt Mỹ, Phân hiệu CT', 'logo_VietMy.png', '10.020163586353139', '105.7896012929583'),
+(7, 19, 'Trường CĐ Nghề Cần Thơ', 'logo_CDNghe.jpg', '10.062974085287465', '105.76237006441764'),
+(8, 10, 'Trường Cao đẳng FPT Polytechnic Cần Thơ', 'logo_FPTPolytechnic.png', '10.027096086939006', '105.75728974005409'),
+(9, 1, 'Trường Cao đẳng Cần Thơ', 'logo_CDCT.png', '10.014335004223907', '105.76479085965416'),
+(10, 10, 'Đại Học Y Dược Cần Thơ', 'logo_DHYD.png', '10.033682322990293', '105.75463464005409'),
+(11, 9, 'Trường Đại học Nam Cần Thơ', 'logo_NCT.png', '10.008231763410771', '105.72287451306573');
 
 -- --------------------------------------------------------
 
@@ -344,7 +364,7 @@ INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `L
 CREATE TABLE `xa` (
   `ID_XA` int(11) NOT NULL,
   `ID_HUYEN` int(11) NOT NULL,
-  `TENXA` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENXA` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -496,6 +516,12 @@ ALTER TABLE `loaiphong`
   ADD PRIMARY KEY (`ID_LP`);
 
 --
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `phong`
 --
 ALTER TABLE `phong`
@@ -569,6 +595,12 @@ ALTER TABLE `khutro`
 --
 ALTER TABLE `loaiphong`
   MODIFY `ID_LP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tinh`
