@@ -21,7 +21,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
         <script src="js/js.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="image/home-v1.png"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+         <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
         <meta name="theme-color" content="#FFBA00"/>
         <meta name="full-screen" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="#FFBA00"/>
@@ -62,20 +62,20 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto py-4 py-md-0">
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+              <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4 active">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                 
               </li>
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+              <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
                 <a class="nav-link" href="#">Tìm thuê</a>
               </li>
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+              <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
                 <a class="nav-link" href="#">Quản lý tin</a>
               </li>
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+              <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
                 <a class="nav-link" href="#">Thông báo</a>
               </li>
-              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+              <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
                 <a class="nav-link" href="#">Tài khoản</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
@@ -85,6 +85,9 @@
                   <a class="dropdown-item" href="#">Trợ giúp</a>
                 </div>
               </li>
+               
+                  <a href="signup.php" class="btn btn-primary pl-0 pl-md-2 ml-0 ml-md-4 btn-lg active" role="button" aria-pressed="true">Sign Up</a>
+               
             </ul>
           </div>
 
@@ -99,7 +102,7 @@
 
 <!-- Link to page
 ================================================== -->
-<div class="ssn_pw_filter">
+<div class="ssn_pw_filter" >
   
     <div class="box-cla-filter-pc-v2">
  <form class="f-body cla-filter" action="/search" method="get">
@@ -109,6 +112,8 @@
  <select name="iCat" class="f-form-input">
  <option value="0">Chọn loại nhà trọ</option>
   <optgroup label="Nhà đất bán">
+  <option value="324">Bán căn hộ chung cư</option>
+    
   <option value="324">Bán căn hộ chung cư</option>
   <option value="41">Bán nhà riêng</option>
   <option value="325">Bán nhà biệt thự, liền kề</option>
