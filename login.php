@@ -1,6 +1,7 @@
 <?php
     include './config/config.php';
-  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+    session_start()
+  /*if(isset($_GET['action']) && $_GET['action'] == 'login'){
       $tendangnhap = $_POST['TENDANGNHAP'];
       $matkhau =  md5($_POST['MATKHAU']);
       $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
@@ -18,7 +19,7 @@
         header('Refesh: 5url=login.php');
       }
       $conn -> close();
-  }
+  }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +57,30 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     </style>
 </head>
 <body>
+<?php
+  include './config/config.php';
+  if(isset($_GET['action']) && $_GET['action'] == 'login'){
+      $tendangnhap = $_POST['TENDANGNHAP'];
+      $matkhau =  md5($_POST['MATKHAU']);
+      $sql = "SELECT * FROM CHUKHUTRO WHERE TENDANGNHAP = '".$tendangnhap."' and MATKHAU = '".$matkhau."' LIMIT 1";
+      $query = mysqli_query($conn, $sql);
+      $count = mysqli_num_rows($query);
+      //echo $count;
+      //exit();
+      if($count > 0){
+        $row_data = mysqli_fetch_assoc($query);
+        $_SESSION['HOTEN']=$row_data['HOTEN'];
+        header('location: index.php');
+      }
+      else{
+        echo '<script>alert("Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng");</script>';
+        header('Refesh: 5url=login.php');
+      }
+  }
+
+?>
+
+
 <section class="vh-100 bg-image"
   style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
