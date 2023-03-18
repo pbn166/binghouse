@@ -214,7 +214,6 @@ h1 {
     font-weight: 700;
     color: #212112;
     text-align: center;
-    margin-top: 50px;
 }
 
 p {
@@ -226,9 +225,7 @@ p {
     transition: all 300ms linear;
     transition-delay: 1700ms;
 }
-.center{
-    text-align: center;
-}
+
 body.hero-anime p {
     opacity: 0;
     transform: translateY(40px);
@@ -441,6 +438,7 @@ body.hero-anime #switch {
 .nav-item.show .dropdown-menu {
     opacity: 1;
     visibility: visible;
+    width: max-content;
     max-height: 999px;
     transform: translate3d(0, 0px, 0);
 }
