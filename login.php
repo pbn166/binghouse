@@ -64,29 +64,29 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Login</h2>
+              <h2 class="text-uppercase text-center mb-5">Đăng nhập tài khoản</h2>
 
               <form action="login.php?action=login" method="Post" autocomplete = "off">
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
-                  <label class="form-label" for="form3Example1cg">User Name</label>
+                  <label class="form-label" for="form3Example1cg">Tên đăng nhập</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU" />
-                  <label class="form-label" for="form3Example3cg">Password</label>
+                  <label class="form-label" for="form3Example3cg">Mật khẩu</label>
                 </div>
 
             
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng nhập</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="signup.php"
-                    class="fw-bold text-body"><u>Register here</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Bạn chưa có tài khoản? <a href="signup.php"
+                    class="fw-bold text-body"><u>Đăng ký tại đây</u></a></p>
 
               </form>
 
