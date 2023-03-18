@@ -84,23 +84,35 @@
                 <?php
                           // session_destroy();
                           if (!isset($_SESSION['HOTEN'])) {
-                            ?> <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span><?php
-                          } else {?>
-                            <div class="aw__m12exo7" onclick="hamDropdown()"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span>
-                            
-                        <?php
-                        }
-                      ?>    
-
-                <!--<div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>-->
-              </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
+                            ?> <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập | Đăng ký</span></a>
+                            <div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="#">Cài đặt</a>
                   <a class="dropdown-item" href="#">Trợ giúp</a>
+                  
                 </div>
+                </div><?php
+                          } else {?>
+                            <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span></a>
+                            <div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
+              <div class="aw__c1n389kw"></div></div>
+                  <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
+                  <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
+                  <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
+                  <a class="dropdown-item" href="#">Cài đặt</a>
+                  <a class="dropdown-item" href="#">Trợ giúp</a>
+                  <a class="dropdown-item" href="logout.php">Đăng xuất</a>
+                </div>
+                            
+                        <?php
+                        }
+                      ?>    
+
+                <!--<div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>-->
+               
                 <!-- <div class="aw__n1sdf58a"><div class="aw__n3kpewh">
                   <div class="aw__m8lm3n0">
                     <a class="aw__n12hsycj" id="btnundefinedundefined">
