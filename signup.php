@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Đăng ký tài khoản</title>
     <meta charset="uft-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!-- <link type="text/css" rel="stylesheet" href="./main.css" /> -->
@@ -82,23 +82,23 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5">Tạo tài khoản</h2>
               
               <form action="./signup.php?action=reg" method="Post" autocomplete="off">
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="TENDANGNHAP" />
-                  <label class="form-label" for="form3Example1cg">Your Account Name</label>
+                  <label class="form-label" for="form3Example1cg">Tên đăng nhập</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example3cg" class="form-control form-control-lg" name="MATKHAU"/>
-                  <label class="form-label" for="form3Example3cg">Password</label>
+                  <label class="form-label" for="form3Example3cg">Mật khẩu</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="HOTEN" />
-                  <label class="form-label" for="form3Example4cg">Your name</label>
+                  <label class="form-label" for="form3Example4cg">Họ tên</label>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -107,29 +107,29 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                         <option>Nữ</option>
                         <option>Khác</option>
                 </select>
-                  <label class="form-label" for="form3Example4cdg">Your gender</label>
+                  <label class="form-label" for="form3Example4cdg">Giới tính</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="SDT" />
-                  <label class="form-label" for="form3Example4cg">Your phone</label>
+                  <label class="form-label" for="form3Example4cg">Số điện thoại</label>
                 </div>
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body">
-                        <u>Terms of service</u></a>
+                    Tôi đồng ý với tất cả <a href="#!" class="text-body">
+                        <u>Điều khoản dịch vụ</u></a>
                   </label>
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    input class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Đăng ký">Register</button>
+                    input class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Đăng ký">Đăng ký</button>
                     <!-- <input class="btn" type="submit" value="Đăng ký"> -->
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.php"
-                    class="fw-bold text-body"><u>Login here</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Bạn đã có tài khoản? <a href="login.php"
+                    class="fw-bold text-body"><u>Đăng nhập tại đây</u></a></p>
 
               </form>
 
