@@ -122,7 +122,7 @@
     <a href="nguoithue.php">
       <div class="khachthue">
         <div class="icon-chu">
-        <img src="https://trogiup.chotot.com/wp-content/themes/chototnew/assets/img/nguoi mua.svg" alt="">
+        <img src="" alt="">
         </div>
         <div class="text-chu">
           <h2>Tôi là người thuê</h2>
