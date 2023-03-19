@@ -190,7 +190,7 @@
   
     var logo = L.icon({
                 iconUrl: 'icon/<?php echo $value['T_ICON'] ;?>',
-                iconSize: [40,40],
+                iconSize: [45,45],
                 iconAnchor: [22, 94], // vị trí giữa của hình ảnh
   popupAnchor: [-3, -76]
             })
