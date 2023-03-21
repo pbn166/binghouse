@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 05:24 PM
+-- Generation Time: Mar 21, 2023 at 02:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlynhatro`
+-- Database: `qlynhatro2`
 --
 
 -- --------------------------------------------------------
@@ -95,13 +95,18 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (1, 4, 1000000),
 (1, 5, 1000000),
 (1, 6, 1000000),
+(1, 7, 1200000),
 (1, 8, 800000),
+(1, 9, 1500000),
 (2, 1, 800000),
+(2, 2, 800000),
 (2, 3, 1000000),
+(2, 4, 1000000),
 (2, 5, 1000000),
 (2, 6, 1000000),
 (2, 7, 1200000),
-(2, 9, 1500000),
+(2, 8, 1500000),
+(2, 9, 2500000),
 (3, 1, 1000000),
 (3, 2, 1000000),
 (3, 3, 1600000),
@@ -119,6 +124,7 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (4, 6, 1600000),
 (4, 7, 2500000),
 (4, 8, 1000000),
+(4, 9, 3000000),
 (5, 1, 1200000),
 (5, 2, 1200000),
 (5, 3, 1600000),
@@ -126,7 +132,8 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (5, 5, 1600000),
 (5, 6, 1600000),
 (5, 7, 3500000),
-(5, 8, 1200000);
+(5, 8, 1200000),
+(5, 9, 4000000);
 
 -- --------------------------------------------------------
 
@@ -146,13 +153,52 @@ CREATE TABLE `hinh` (
 
 INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (14, 1, 'phong-tro-khong-gac-1.jpg'),
-(15, 2, 'phong-tro-co-gac-1.jpg'),
-(16, 3, 'phong-tro-co-gac-2.jpg'),
-(17, 4, 'phong-tro-co-gac-3.jpg'),
-(18, 11, 'phong-tro-khong-gac-2.jpg'),
-(19, 12, 'phong-tro-khong-gac-3.jpg'),
-(20, 13, 'phong-tro-co-noi-that-1.jpg'),
-(21, 9, 'phong-tro-co-gac-4.jpg');
+(15, 2, 'phong-tro-khong-gac-2.jpg'),
+(16, 8, 'phong-tro-co-gac-1.jpg'),
+(17, 4, 'phong-tro-co-gac-2.jpg'),
+(18, 5, 'phong-tro-co-gac-3.jpg'),
+(19, 6, 'phong-tro-co-gac-4.jpg'),
+(20, 9, 'phong-tro-co-may-lanh-1.jpg'),
+(21, 3, 'phong-tro-khong-gac-3.jpg'),
+(22, 10, 'phong-tro-co-noi-that-1.jpg'),
+(31, 11, 'phong-tro-khong-gac-4.jpg'),
+(32, 12, 'phong-tro-khong-gac-5.jpg'),
+(33, 14, 'phong-tro-co-gac-5.jpg'),
+(34, 15, 'phong-tro-co-gac-6.jpg'),
+(35, 16, 'phong-tro-co-gac-7.jpg'),
+(36, 17, 'phong-tro-co-gac-8.jpg'),
+(37, 19, 'phong-tro-co-may-lanh-2.jpg'),
+(38, 13, 'phong-tro-khong-gac-6.jpg'),
+(39, 10, 'phong-tro-co-noi-that-2.jpg'),
+(40, 20, 'phong-tro-khong-gac-7.jpg'),
+(41, 18, 'phong-tro-co-noi-that-3.jpg'),
+(42, 21, 'phong-tro-khong-gac-1.jpg'),
+(43, 22, 'phong-tro-co-gac-1.jpg'),
+(44, 23, 'phong-tro-co-gac-2.jpg'),
+(45, 24, 'phong-tro-co-gac-3.jpg'),
+(46, 25, 'phong-tro-co-gac-3.jpg'),
+(47, 26, 'phong-tro-khong-gac-2.jpg'),
+(48, 29, 'phong-tro-khong-gac-3.jpg'),
+(49, 27, 'phong-tro-co-noi-that-1.jpg'),
+(50, 28, 'phong-tro-co-may-lanh-4.jpg'),
+(51, 29, 'phong-tro-khong-gac-3.jpg'),
+(52, 32, 'phong-tro-co-gac-4.jpg'),
+(53, 33, 'phong-tro-co-gac-5.jpg'),
+(54, 34, 'phong-tro-co-gac-6.jpg'),
+(55, 35, 'phong-tro-co-gac-8.jpg'),
+(56, 30, 'phong-tro-khong-gac-4.jpg'),
+(57, 31, 'phong-tro-khong-gac-5.jpg'),
+(58, 36, 'phong-tro-co-noi-that-5.jpg'),
+(59, 37, 'phong-tro-co-may-lanh-6.jpg'),
+(60, 38, 'phong-tro-khong-gac-5.jpg'),
+(61, 41, 'phong-tro-co-gac-8.jpg'),
+(62, 42, 'phong-tro-co-gac-9.jpg'),
+(63, 43, 'phong-tro-co-gac-10.jpg'),
+(64, 44, 'phong-tro-co-gac-1.jpg'),
+(65, 39, 'phong-tro-khong-gac-6.jpg'),
+(66, 40, 'phong-tro-khong-gac-7.jpg'),
+(67, 45, 'phong-tro-co-noi-that-8.jpg'),
+(68, 46, 'phong-tro-co-may-lanh-9.jpg');
 
 -- --------------------------------------------------------
 
@@ -327,7 +373,9 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
-(11, 10.0224, 105.77, '2023-03-18 19:30:10');
+(11, 10.0224, 105.77, '2023-03-18 19:30:10'),
+(12, 10.0429, 105.776, '2023-03-19 13:27:21'),
+(13, 10.0429, 105.776, '2023-03-19 13:27:45');
 
 -- --------------------------------------------------------
 
@@ -348,19 +396,52 @@ CREATE TABLE `phong` (
 --
 
 INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
-(1, 'P01_BB', 3, 1, 1),
-(2, 'P02_BB', 2, 1, 3),
-(3, 'P03_BB', 3, 1, 4),
-(4, 'P04_BB', 3, 1, 5),
-(5, 'BB6', 3, 1, 3),
-(6, 'BB7', 3, 1, 4),
-(7, 'BB8', 3, 1, 5),
-(8, 'BB9', 3, 1, 5),
-(9, 'BB11', 3, 1, 7),
-(10, 'BB12', 3, 1, 8),
-(11, 'NX1', 3, 3, 1),
-(12, 'NX2', 3, 3, 2),
-(13, 'NX3', 3, 3, 8);
+(1, 'A1', 3, 1, 1),
+(2, 'A2', 2, 1, 2),
+(3, 'A3', 3, 1, 8),
+(4, 'B1', 3, 1, 3),
+(5, 'B2', 3, 1, 4),
+(6, 'B3', 3, 1, 5),
+(7, 'B4', 3, 1, 6),
+(8, 'B5', 3, 1, 5),
+(9, 'C1', 3, 1, 7),
+(10, 'C2', 3, 1, 9),
+(11, 'A1', 3, 2, 1),
+(12, 'A2', 2, 2, 2),
+(13, 'A3', 3, 2, 8),
+(14, 'B1', 3, 2, 3),
+(15, 'B2', 3, 2, 4),
+(16, 'B3', 3, 2, 5),
+(17, 'B4', 3, 2, 6),
+(18, 'B5', 3, 2, 9),
+(19, 'C1', 3, 2, 7),
+(20, 'A1', 3, 3, 1),
+(21, 'A2', 2, 3, 2),
+(22, 'A3', 3, 3, 8),
+(23, 'B1', 3, 3, 3),
+(24, 'B2', 3, 3, 4),
+(25, 'B3', 3, 3, 5),
+(26, 'B4', 3, 3, 6),
+(27, 'B5', 3, 3, 9),
+(28, 'C1', 3, 3, 7),
+(29, 'A1', 3, 4, 1),
+(30, 'A2', 2, 4, 2),
+(31, 'A3', 3, 4, 8),
+(32, 'B1', 3, 4, 3),
+(33, 'B2', 3, 4, 4),
+(34, 'B3', 3, 4, 5),
+(35, 'B4', 3, 4, 6),
+(36, 'B5', 3, 4, 9),
+(37, 'C1', 3, 4, 7),
+(38, 'A1', 3, 5, 1),
+(39, 'A2', 2, 5, 2),
+(40, 'A3', 3, 5, 8),
+(41, 'B1', 3, 5, 3),
+(42, 'B2', 3, 5, 4),
+(43, 'B3', 3, 5, 5),
+(44, 'B4', 3, 5, 6),
+(45, 'B5', 3, 5, 9),
+(46, 'C1', 3, 5, 7);
 
 -- --------------------------------------------------------
 
@@ -420,17 +501,17 @@ CREATE TABLE `truong` (
 --
 
 INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `LONG_TRUONG`) VALUES
-(1, 4, 'Đại học Cần Thơ', 'icon_DHCT.png', '10.029942937096429', '105.77060926275031'),
-(2, 2, 'Đại Học Greenwich (Việt Nam) - Cơ sở Cần Thơ', 'logo_ Greenwich.jpg', '10.029116555621965', '105.77760138238341'),
-(3, 8, 'Cao đẳng Anh Quốc BTEC FPT', 'logo_BTEC.jpg', '10.048112799710019', '105.77710175539532'),
-(4, 3, 'Trường Cao đẳng Y tế Cần Thơ', 'logo_CDYT.jpg', '10.044342016371923', '105.7653862553953'),
-(5, 3, 'Trường Cao đẳng Kinh tế - Kỹ thuật Cần Thơ', 'logo_CDKTKThuat.jpg', '10.052652426428926', '105.77227277073644'),
+(1, 4, 'Đại học Cần Thơ', 'Logo_Dai_hoc_Can_Tho.svg', '10.029942937096429', '105.77060926275031'),
+(2, 2, 'Đại Học Greenwich (Việt Nam) - Cơ sở Cần Thơ', 'Logo Trường Đại học Greenwich Việt Nam.svg', '10.029116555621965', '105.77760138238341'),
+(3, 8, 'Cao đẳng Anh Quốc BTEC FPT', 'Logo Trường cao đẳng Quốc tế BTEC FPT.svg', '10.048112799710019', '105.77710175539532'),
+(4, 3, 'Trường Cao đẳng Y tế Cần Thơ', 'logo-truong-cao-dang-y-te-can-tho-inkythuatso.svg', '10.044342016371923', '105.7653862553953'),
+(5, 3, 'Trường Cao đẳng Kinh tế - Kỹ thuật Cần Thơ', 'CDKT_KTCT.png', '10.052652426428926', '105.77227277073644'),
 (6, 13, 'Trường CĐ Nghề Việt Mỹ, Phân hiệu CT', 'logo_VietMy.png', '10.020163586353139', '105.7896012929583'),
-(7, 19, 'Trường CĐ Nghề Cần Thơ', 'logo_CDNghe.jpg', '10.062974085287465', '105.76237006441764'),
+(7, 19, 'Trường CĐ Nghề Cần Thơ', 'CDN_CT.png', '10.062974085287465', '105.76237006441764'),
 (8, 10, 'Trường Cao đẳng FPT Polytechnic Cần Thơ', 'logo_FPTPolytechnic.png', '10.027096086939006', '105.75728974005409'),
 (9, 1, 'Trường Cao đẳng Cần Thơ', 'logo_CDCT.png', '10.014335004223907', '105.76479085965416'),
-(10, 10, 'Đại Học Y Dược Cần Thơ', 'logo_DHYD.png', '10.033682322990293', '105.75463464005409'),
-(11, 9, 'Trường Đại học Nam Cần Thơ', 'logo_NCT.png', '10.008231763410771', '105.72287451306573');
+(10, 10, 'Đại Học Y Dược Cần Thơ', 'Logo ĐH Y Dược Cần Thơ - CTUMP.svg', '10.033682322990293', '105.75463464005409'),
+(11, 9, 'Trường Đại học Nam Cần Thơ', 'Logo ĐH Nam Cần Thơ - NCTU.png', '10.008231763410771', '105.72287451306573');
 
 -- --------------------------------------------------------
 
@@ -541,7 +622,9 @@ ALTER TABLE `baiviet`
 -- Indexes for table `chukhutro`
 --
 ALTER TABLE `chukhutro`
-  ADD PRIMARY KEY (`ID_CKT`);
+  ADD PRIMARY KEY (`ID_CKT`),
+  ADD UNIQUE KEY `TENDANGNHAP` (`TENDANGNHAP`),
+  ADD UNIQUE KEY `SDT` (`SDT`);
 
 --
 -- Indexes for table `coloaiphong`
@@ -653,7 +736,7 @@ ALTER TABLE `chukhutro`
 -- AUTO_INCREMENT for table `hinh`
 --
 ALTER TABLE `hinh`
-  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `huyen`
@@ -677,7 +760,13 @@ ALTER TABLE `loaiphong`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `phong`
+--
+ALTER TABLE `phong`
+  MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `tinh`
@@ -717,7 +806,7 @@ ALTER TABLE `baiviet`
 -- Constraints for table `hinh`
 --
 ALTER TABLE `hinh`
-  ADD CONSTRAINT `STT_PHONG` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`);
+  ADD CONSTRAINT `STT_PHONG` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `khoangcach`
