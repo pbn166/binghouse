@@ -92,15 +92,22 @@
   <article class="the-article">
     <div class="article-main-content">
       <h2><i class="fas fa-file"></i><strong> HƯỚNG DẪN NGƯỜI THUÊ</strong></h2><hr>
-      <p>Nếu bạn chưa có tài khoản, hãy <a href="signup.php">Đăng ký tại đây</a> trước khi bắt đầu thuê phòng.</p>
-      <p>Nếu đã có tài khoản, sau khi <a href="login.php">Đăng nhập</a> vào website để bắt đầu tìm kiếm phòng trọ phù hợp với bạn.</p>
       <p><i class="material-icons">attachment</i> Khi thuê phòng các bạn đọc kỹ mô tả, nội dung tin đăng, đặc biệt là mục Giá và Diện tích phù hợp với yêu cầu của bạn hay không.</p>
-
-
-
-
-
-
+      <p>&#8226; Để giúp bạn tìm kiếm nhanh chóng hệ thống hỗ trợ công cụ lọc tìm kiếm nhanh như gợi ý:</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Chọn loại phòng</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Chọn tỉnh</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Chọn huyện</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Chọn xã</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Chọn mức giá</p><hr>
+      <p>&#8226; Tìm kiếm các bài đăng đầy đủ thông tin độ tin cậy cao, giá cả công khai rõ ràng hợp lý.</p>
+      <p><i class="fas fa-heart"></i> Bước 1: Tìm trọ theo tỉnh thành/ quận, huyện/ vị trí </p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Các bạn truy cập vào trang chủ BingHouse, trên thanh công cụ bấm chọn "Địa điểm" chọn Tỉnh/Thành. Hệ thống sẽ trả về thông tin các phòng trọ ở tỉnh thành bạn tìm kiếm. 
+        Nếu muốn thu hẹp tìm trọ ở một "Xã, Quận, Huyện" hay "Vị Trí" cụ thể ở một tỉnh thành. Ví dụ vào ô "Địa điểm" bấm chọn Tỉnh Cần Thơ, tiếp tục vào ô "Quận/huyện" để chọn Quận Ninh Kiều thì hệ thống sẽ trả về kết quả những trọ trong khu vực quận Ninh Kiều. Tương tự với Vị trí. </p>
+      <p><i class="fas fa-heart"></i> Bước 2: Tìm kiếm theo loại hình phòng trọ</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Sau khi chọn Tỉnh Thành, Quận (huyện), Đường phố và Vị trí thì các bạn sẽ tiếp tục thao tác trên trên thanh công cụ. Bấm chọn vào ô "Chọn loại phòng" => Tùy vào nhu cầu bạn có thể bấm chọn "Phòng trọ - Phòng đơn - Phòng đôi - Phòng gia đình - ở ghép,..." để chọn loại hình phòng trọ. Hệ thống sẽ trả về thông tin loại hình phòng trọ mà bạn cần tìm kiếm. </p>
+      <p><i class="fas fa-heart"></i> Bước 3: Tìm phòng trọ theo giá thành và  các tiêu chí khác</p>
+      <p>&nbsp;&nbsp;&nbsp; &#187; Tương tự như cách tìm trọ đã hướng dẫn trên, dựa vào nhu cầu và điều kiện của bạn có thể thuê, các bạn có thể tiếp tục thao tác trên thanh công cụ để tìm chọn phòng trọ có giá thành và tiện nghi phù hợp.</p>
+      <img src="image/giathue.PNG">
 
 
       <section class="section section-support">
@@ -109,7 +116,7 @@
                 </div>
             <div class="list-support clearfix">
             <div class="list-support-title">Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</div>
-            <div class="support-item">
+            <!-- <div class="support-item">
                 <span class="support-item-title">Hỗ trợ thanh toán</span>
                 <a rel="nofollow" href="tel:0917686101">Điện thoại: 0909111112</a>
                 <a rel="nofollow" target="_blank" href="https://zalo.me/0917686101">Zalo: 0917999101</a>
@@ -123,9 +130,7 @@
                 <span class="support-item-title">Hotline 24/7</span>
                 <a rel="nofollow" href="tel:0917686101">Điện thoại: 0917444101</a>
                 <a rel="nofollow" target="_blank" href="https://zalo.me/0917686101">Zalo: 0917666101</a>
-            </div>
-            <a class="btn btn-page-contact" rel="nofollow" href="/lien-he">Gửi liên hệ</a>
-                </div>
+            </div> -->
             </div>
         </section>    
       </article>

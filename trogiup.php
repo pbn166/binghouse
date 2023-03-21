@@ -12,6 +12,7 @@
          <link href="css/trogiup.css" rel="stylesheet" type="text/css" media="all"/>
         <meta name="theme-color" content="#FFBA00"/>
         <meta name="full-screen" content="yes"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="apple-mobile-web-app-status-bar-style" content="#FFBA00"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,7 @@
         <meta property="og:type" content="website"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
+        <script src="js/trogiup.js" type="text/javascript"></script>
       
     </head>
 <body class="hero-anime">
@@ -147,6 +149,54 @@
     </div>
   </div>
 </div>
+
+<!-- SlideShow -->
+<main class="container">
+        <div class="container-slider">
+            <div class="slider">
+              <div class="slides">
+                <!--radio buttons start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio buttons end-->
+                <!--slide images start-->
+                <div class="slide first">
+                  <img  src="image/banner-phong-ngu.jpg" alt="">
+                </div>
+                <div class="slide">
+                  <img class="slide-img" src="banner-phong-ngu.jpg" alt="">
+                </div>
+                <div class="slide">
+                  <img class="slide-img" src="banner-phong-ngu.jpg" alt="">
+                </div>
+                <div class="slide">
+                  <img class="slide-img" src="banner-phong-ngu.jpgs" alt="">
+                </div>
+                <!--slide images end-->
+                <!--automatic navigation start-->
+                <div class="navigation-auto">
+                  <div class="auto-btn1"></div>
+                  <div class="auto-btn2"></div>
+                  <div class="auto-btn3"></div>
+                  <div class="auto-btn4"></div>
+                </div>
+                <!--automatic navigation end-->
+              </div>
+              <!--manual navigation start-->
+              <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+              </div>
+              <!--manual navigation end-->
+            </div>
+            <!--image slider start-->
+            <!--image slider end-->
+          </div>
+<!-- SlideShow -->
 
 <script language="javascript">
  $(document).ready(function () {
