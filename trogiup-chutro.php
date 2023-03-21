@@ -190,7 +190,7 @@
         <h6 class="section-title">Bạn đang có phòng trọ / căn hộ cho thuê?</h6>
         <p>Không phải lo tìm người cho thuê, phòng trống kéo dài</p>
         <a class="btn red" style="padding: 10px 30px;" rel="nofollow" href="login.php">Đăng tin ngay</a></div><br><br><br>
-</article>
+
 
         <section class="section section-support">
             <div class="section-content clearfix">
@@ -198,26 +198,11 @@
                 </div>
             <div class="list-support clearfix">
             <div class="list-support-title">Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</div>
-            <div class="support-item">
-                <span class="support-item-title">Hỗ trợ thanh toán</span>
-                <a rel="nofollow" href="tel:0917686101">Điện thoại: 0909111112</a>
-                <a rel="nofollow" target="_blank" href="https://zalo.me/0917686101">Zalo: 0917999101</a>
-            </div>
-            <div class="support-item">
-                <span class="support-item-title">Hỗ trợ đăng tin</span>
-                <a rel="nofollow" href="tel:0902657123">Điện thoại: 0902222123</a>
-                <a rel="nofollow" target="_blank" href="https://zalo.me/0902657123">Zalo: 0902888123</a>
-            </div>
-            <div class="support-item">
-                <span class="support-item-title">Hotline 24/7</span>
-                <a rel="nofollow" href="tel:0917686101">Điện thoại: 0917444101</a>
-                <a rel="nofollow" target="_blank" href="https://zalo.me/0917686101">Zalo: 0917666101</a>
-            </div>
-            <a class="btn btn-page-contact" rel="nofollow" href="/lien-he">Gửi liên hệ</a>
-                </div>
+            <div class="list-support-title">Gmail: binghouse@gmail.com</div>
+            <div class="list-support-title">Hotline: 0909 999 999</div>
             </div>
         </section>
-
+</article>
 
         <!-- test -->
             <script src="https://kit.fontawesome.com/a076d05399.js"></script>

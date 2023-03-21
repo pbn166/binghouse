@@ -25,20 +25,7 @@ h3{
   .section-support .list-support-title {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    margin-left: 150px;
     color: #233762;
-  }
-  .section-support .support-item {
-    margin-bottom: 25px;
-    width: 33%;
-    float: left;
-  }
-  .section-support .support-item-title {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-    color: #f60;
-    text-transform: uppercase;
   }
   .section-support .support-item a {
     display: block;
