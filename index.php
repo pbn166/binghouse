@@ -6,6 +6,9 @@
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
   session_start();
+  $loaiphong = "SELECT DISTINCT TENLOAIPHONG 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong)
  
   
   
@@ -66,7 +69,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
             </svg>
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                <a class="nav-link " href="index.php" >Home</a>
                 
               </li>
               <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -100,7 +103,7 @@
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="#">Cài đặt</a>
-                  <a class="dropdown-item" href="#">Trợ giúp</a>
+                  <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                 </div>
                             <?php
                           } else {?>
@@ -113,7 +116,7 @@
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="#">Cài đặt</a>
-                  <a class="dropdown-item" href="#">Trợ giúp</a>
+                  <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                   <a class="dropdown-item" href="logout.php">Đăng xuất</a>
                 </div>
                         <?php
@@ -144,29 +147,13 @@
  <i class="icon mcon-city"></i>
  <select name="iCat" class="f-form-input">
  <option value="0">Chọn loại phòng</option>
-  <optgroup label="Nhà đất bán">
-  <option value="324">Bán căn hộ chung cư</option>
+ <?php
+  foreach ($loaiphongsql as $key => $value){?>
+    <option label="<?php echo $value['TENLOAIPHONG']?>"></option>
     
-  <option value="324">Bán căn hộ chung cư</option>
-  <option value="41">Bán nhà riêng</option>
-  <option value="325">Bán nhà biệt thự, liền kề</option>
-  <option value="163">Bán nhà mặt phố</option>
-  <option value="40">Bán đất nền dự án</option>
-  <option value="283">Bán đất</option>
-  <option value="44">Bán trang trại, khu nghỉ dưỡng</option>
-  <option value="45">Bán kho, nhà xưởng</option>
-  <option value="48">Bán loại bất động sản khác</option>
-  </optgroup>
-  <optgroup label="Nhà đất cho thuê">
-  <option value="326">Cho thuê căn hộ chung cư</option>
-  <option value="52">Cho thuê nhà riêng</option>
-  <option value="51">Cho thuê nhà mặt phố</option>
-  <option value="57">Cho thuê nhà trọ, phòng trọ</option>
-  <option value="50">Cho thuê văn phòng</option>
-  <option value="55">Cho thuê cửa hàng, ki ốt</option>
-  <option value="53">Cho thuê kho, nhà xưởng, đất</option>
-  <option value="59">Cho thuê loại bất động sản khác</option>
-  </optgroup>
+<?php } ?>
+  
+  
   </select>
  </div>
  <div class="item-filter">
