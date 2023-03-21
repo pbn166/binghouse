@@ -5,6 +5,10 @@
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
+  session_start();
+  $loaiphong = "SELECT DISTINCT TENLOAIPHONG 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong)
  
   
   
@@ -65,7 +69,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
             </svg>
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                <a class="nav-link " href="index.php" >Home</a>
                 
               </li>
               <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -87,8 +91,11 @@
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="aw__i1t7n4kh aw__i1t7n4kh--active"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.99935 3.08366C6.17938 3.08366 3.08268 6.18036 3.08268 10.0003C3.08268 13.8203 6.17938 16.917 9.99935 16.917C13.8193 16.917 16.916 13.8203 16.916 10.0003C16.916 6.18036 13.8193 3.08366 9.99935 3.08366ZM1.91602 10.0003C1.91602 5.53602 5.53505 1.91699 9.99935 1.91699C14.4637 1.91699 18.0827 5.53602 18.0827 10.0003C18.0827 14.4646 14.4637 18.0837 9.99935 18.0837C5.53505 18.0837 1.91602 14.4646 1.91602 10.0003Z" fill="#222222"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9.99935 6.83366C8.59562 6.83366 7.45768 7.9716 7.45768 9.37533C7.45768 10.779 8.59562 11.917 9.99935 11.917C11.4031 11.917 12.541 10.779 12.541 9.37533C12.541 7.9716 11.4031 6.83366 9.99935 6.83366ZM6.29102 9.37533C6.29102 7.32727 7.95129 5.66699 9.99935 5.66699C12.0474 5.66699 13.7077 7.32727 13.7077 9.37533C13.7077 11.4234 12.0474 13.0837 9.99935 13.0837C7.95129 13.0837 6.29102 11.4234 6.29102 9.37533Z" fill="#222222"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.0005 13.0837C9.06941 13.0837 8.15655 13.3415 7.36306 13.8285C6.56957 14.3156 5.92644 15.0128 5.50496 15.843C5.35912 16.1303 5.00802 16.2449 4.72075 16.0991C4.43349 15.9532 4.31884 15.6021 4.46469 15.3149C4.98369 14.2926 5.77564 13.434 6.75275 12.8342C7.72986 12.2345 8.85396 11.917 10.0005 11.917C11.1469 11.917 12.271 12.2345 13.2481 12.8342C14.2253 13.434 15.0172 14.2926 15.5362 15.3149C15.6821 15.6021 15.5674 15.9532 15.2801 16.0991C14.9929 16.2449 14.6418 16.1303 14.4959 15.843C14.0745 15.0128 13.4313 14.3156 12.6378 13.8285C11.8444 13.3415 10.9315 13.0837 10.0005 13.0837Z" fill="#222222"></path></svg>
                <a class="nav-link" href="#" data-toggle="dropdown">Tài khoản</a>
                <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="aw__d1xmuhl0" id="arrowDownB"><path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path></svg>
-               
-                <div class="dropdown-menu">
+               <?php
+                          // session_destroy();
+                          if (!isset($_SESSION['HOTEN'])) {
+                            ?>
+                              <div class="dropdown-menu"> 
                 <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
@@ -96,8 +103,26 @@
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="#">Cài đặt</a>
-                  <a class="dropdown-item" href="#">Trợ giúp</a>
+                  <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                 </div>
+                            <?php
+                          } else {?>
+                            
+                            <div class="dropdown-menu"> 
+                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span>
+              </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
+              <div class="aw__c1n389kw"></div></div>
+                  <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
+                  <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
+                  <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
+                  <a class="dropdown-item" href="#">Cài đặt</a>
+                  <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
+                  <a class="dropdown-item" href="logout.php">Đăng xuất</a>
+                </div>
+                        <?php
+                        }
+                      ?>   
+                
                             
             </ul>
           </div>
@@ -122,29 +147,13 @@
  <i class="icon mcon-city"></i>
  <select name="iCat" class="f-form-input">
  <option value="0">Chọn loại phòng</option>
-  <optgroup label="Nhà đất bán">
-  <option value="324">Bán căn hộ chung cư</option>
+ <?php
+  foreach ($loaiphongsql as $key => $value){?>
+    <option label="<?php echo $value['TENLOAIPHONG']?>"></option>
     
-  <option value="324">Bán căn hộ chung cư</option>
-  <option value="41">Bán nhà riêng</option>
-  <option value="325">Bán nhà biệt thự, liền kề</option>
-  <option value="163">Bán nhà mặt phố</option>
-  <option value="40">Bán đất nền dự án</option>
-  <option value="283">Bán đất</option>
-  <option value="44">Bán trang trại, khu nghỉ dưỡng</option>
-  <option value="45">Bán kho, nhà xưởng</option>
-  <option value="48">Bán loại bất động sản khác</option>
-  </optgroup>
-  <optgroup label="Nhà đất cho thuê">
-  <option value="326">Cho thuê căn hộ chung cư</option>
-  <option value="52">Cho thuê nhà riêng</option>
-  <option value="51">Cho thuê nhà mặt phố</option>
-  <option value="57">Cho thuê nhà trọ, phòng trọ</option>
-  <option value="50">Cho thuê văn phòng</option>
-  <option value="55">Cho thuê cửa hàng, ki ốt</option>
-  <option value="53">Cho thuê kho, nhà xưởng, đất</option>
-  <option value="59">Cho thuê loại bất động sản khác</option>
-  </optgroup>
+<?php } ?>
+  
+  
   </select>
  </div>
  <div class="item-filter">

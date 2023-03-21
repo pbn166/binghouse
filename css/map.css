@@ -1,0 +1,24 @@
+#left {
+    position: absolute;
+    width: 14%;
+    height: 95%;
+    border: 1px solid blue;
+    margin-top: 50px;
+}
+#map{
+    position: absolute;
+    left: 15%;
+    width: 70%;
+    height: 95%;
+    border: 1px solid red;
+    margin-top: 50px;
+}
+#right{
+    position: absolute;
+    right: 5px;
+    width: 14%;
+    height: 95%;
+    overflow-y: auto;
+    border: 1px solid blue;
+    margin-top: 50px;
+}

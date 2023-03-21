@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 19, 2023 lúc 03:31 PM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 7.4.28
+-- Host: 127.0.0.1
+-- Generation Time: Mar 21, 2023 at 02:05 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanlynhatro`
+-- Database: `qlynhatro2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `baiviet`
+-- Table structure for table `baiviet`
 --
 
 CREATE TABLE `baiviet` (
@@ -37,7 +37,7 @@ CREATE TABLE `baiviet` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chukhutro`
+-- Table structure for table `chukhutro`
 --
 
 CREATE TABLE `chukhutro` (
@@ -51,7 +51,7 @@ CREATE TABLE `chukhutro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `chukhutro`
+-- Dumping data for table `chukhutro`
 --
 
 INSERT INTO `chukhutro` (`ID_CKT`, `HOTEN`, `GIOITINH`, `SDT`, `TENDANGNHAP`, `MATKHAU`, `NGAYLAP`) VALUES
@@ -64,7 +64,7 @@ INSERT INTO `chukhutro` (`ID_CKT`, `HOTEN`, `GIOITINH`, `SDT`, `TENDANGNHAP`, `M
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `coloaiphong`
+-- Table structure for table `coloaiphong`
 --
 
 CREATE TABLE `coloaiphong` (
@@ -75,7 +75,7 @@ CREATE TABLE `coloaiphong` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `giathuephong`
+-- Table structure for table `giathuephong`
 --
 
 CREATE TABLE `giathuephong` (
@@ -84,10 +84,61 @@ CREATE TABLE `giathuephong` (
   `GIA` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `giathuephong`
+--
+
+INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
+(1, 1, 800000),
+(1, 2, 800000),
+(1, 3, 1000000),
+(1, 4, 1000000),
+(1, 5, 1000000),
+(1, 6, 1000000),
+(1, 7, 1200000),
+(1, 8, 800000),
+(1, 9, 1500000),
+(2, 1, 800000),
+(2, 2, 800000),
+(2, 3, 1000000),
+(2, 4, 1000000),
+(2, 5, 1000000),
+(2, 6, 1000000),
+(2, 7, 1200000),
+(2, 8, 1500000),
+(2, 9, 2500000),
+(3, 1, 1000000),
+(3, 2, 1000000),
+(3, 3, 1600000),
+(3, 4, 1600000),
+(3, 5, 1600000),
+(3, 6, 1600000),
+(3, 7, 2500000),
+(3, 8, 1000000),
+(3, 9, 3500000),
+(4, 1, 1000000),
+(4, 2, 1000000),
+(4, 3, 1600000),
+(4, 4, 1600000),
+(4, 5, 1600000),
+(4, 6, 1600000),
+(4, 7, 2500000),
+(4, 8, 1000000),
+(4, 9, 3000000),
+(5, 1, 1200000),
+(5, 2, 1200000),
+(5, 3, 1600000),
+(5, 4, 1600000),
+(5, 5, 1600000),
+(5, 6, 1600000),
+(5, 7, 3500000),
+(5, 8, 1200000),
+(5, 9, 4000000);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hinh`
+-- Table structure for table `hinh`
 --
 
 CREATE TABLE `hinh` (
@@ -96,10 +147,63 @@ CREATE TABLE `hinh` (
   `HINH` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `hinh`
+--
+
+INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
+(14, 1, 'phong-tro-khong-gac-1.jpg'),
+(15, 2, 'phong-tro-khong-gac-2.jpg'),
+(16, 8, 'phong-tro-co-gac-1.jpg'),
+(17, 4, 'phong-tro-co-gac-2.jpg'),
+(18, 5, 'phong-tro-co-gac-3.jpg'),
+(19, 6, 'phong-tro-co-gac-4.jpg'),
+(20, 9, 'phong-tro-co-may-lanh-1.jpg'),
+(21, 3, 'phong-tro-khong-gac-3.jpg'),
+(22, 10, 'phong-tro-co-noi-that-1.jpg'),
+(31, 11, 'phong-tro-khong-gac-4.jpg'),
+(32, 12, 'phong-tro-khong-gac-5.jpg'),
+(33, 14, 'phong-tro-co-gac-5.jpg'),
+(34, 15, 'phong-tro-co-gac-6.jpg'),
+(35, 16, 'phong-tro-co-gac-7.jpg'),
+(36, 17, 'phong-tro-co-gac-8.jpg'),
+(37, 19, 'phong-tro-co-may-lanh-2.jpg'),
+(38, 13, 'phong-tro-khong-gac-6.jpg'),
+(39, 10, 'phong-tro-co-noi-that-2.jpg'),
+(40, 20, 'phong-tro-khong-gac-7.jpg'),
+(41, 18, 'phong-tro-co-noi-that-3.jpg'),
+(42, 21, 'phong-tro-khong-gac-1.jpg'),
+(43, 22, 'phong-tro-co-gac-1.jpg'),
+(44, 23, 'phong-tro-co-gac-2.jpg'),
+(45, 24, 'phong-tro-co-gac-3.jpg'),
+(46, 25, 'phong-tro-co-gac-3.jpg'),
+(47, 26, 'phong-tro-khong-gac-2.jpg'),
+(48, 29, 'phong-tro-khong-gac-3.jpg'),
+(49, 27, 'phong-tro-co-noi-that-1.jpg'),
+(50, 28, 'phong-tro-co-may-lanh-4.jpg'),
+(51, 29, 'phong-tro-khong-gac-3.jpg'),
+(52, 32, 'phong-tro-co-gac-4.jpg'),
+(53, 33, 'phong-tro-co-gac-5.jpg'),
+(54, 34, 'phong-tro-co-gac-6.jpg'),
+(55, 35, 'phong-tro-co-gac-8.jpg'),
+(56, 30, 'phong-tro-khong-gac-4.jpg'),
+(57, 31, 'phong-tro-khong-gac-5.jpg'),
+(58, 36, 'phong-tro-co-noi-that-5.jpg'),
+(59, 37, 'phong-tro-co-may-lanh-6.jpg'),
+(60, 38, 'phong-tro-khong-gac-5.jpg'),
+(61, 41, 'phong-tro-co-gac-8.jpg'),
+(62, 42, 'phong-tro-co-gac-9.jpg'),
+(63, 43, 'phong-tro-co-gac-10.jpg'),
+(64, 44, 'phong-tro-co-gac-1.jpg'),
+(65, 39, 'phong-tro-khong-gac-6.jpg'),
+(66, 40, 'phong-tro-khong-gac-7.jpg'),
+(67, 45, 'phong-tro-co-noi-that-8.jpg'),
+(68, 46, 'phong-tro-co-may-lanh-9.jpg');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `huyen`
+-- Table structure for table `huyen`
 --
 
 CREATE TABLE `huyen` (
@@ -109,7 +213,7 @@ CREATE TABLE `huyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `huyen`
+-- Dumping data for table `huyen`
 --
 
 INSERT INTO `huyen` (`ID_HUYEN`, `ID_TINH`, `TENHUYEN`) VALUES
@@ -126,7 +230,7 @@ INSERT INTO `huyen` (`ID_HUYEN`, `ID_TINH`, `TENHUYEN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khoangcach`
+-- Table structure for table `khoangcach`
 --
 
 CREATE TABLE `khoangcach` (
@@ -136,7 +240,7 @@ CREATE TABLE `khoangcach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khoangcach`
+-- Dumping data for table `khoangcach`
 --
 
 INSERT INTO `khoangcach` (`ID_KHUTRO`, `T_MA`, `KHOANGCACH`) VALUES
@@ -199,7 +303,7 @@ INSERT INTO `khoangcach` (`ID_KHUTRO`, `T_MA`, `KHOANGCACH`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khutro`
+-- Table structure for table `khutro`
 --
 
 CREATE TABLE `khutro` (
@@ -213,7 +317,7 @@ CREATE TABLE `khutro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khutro`
+-- Dumping data for table `khutro`
 --
 
 INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT_TRO`, `LONG_TRO`) VALUES
@@ -226,7 +330,7 @@ INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `loaiphong`
+-- Table structure for table `loaiphong`
 --
 
 CREATE TABLE `loaiphong` (
@@ -237,7 +341,7 @@ CREATE TABLE `loaiphong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `loaiphong`
+-- Dumping data for table `loaiphong`
 --
 
 INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) VALUES
@@ -254,7 +358,7 @@ INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) V
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE `locations` (
@@ -265,7 +369,7 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
@@ -276,7 +380,7 @@ INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phong`
+-- Table structure for table `phong`
 --
 
 CREATE TABLE `phong` (
@@ -287,10 +391,62 @@ CREATE TABLE `phong` (
   `ID_LP` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `phong`
+--
+
+INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
+(1, 'A1', 3, 1, 1),
+(2, 'A2', 2, 1, 2),
+(3, 'A3', 3, 1, 8),
+(4, 'B1', 3, 1, 3),
+(5, 'B2', 3, 1, 4),
+(6, 'B3', 3, 1, 5),
+(7, 'B4', 3, 1, 6),
+(8, 'B5', 3, 1, 5),
+(9, 'C1', 3, 1, 7),
+(10, 'C2', 3, 1, 9),
+(11, 'A1', 3, 2, 1),
+(12, 'A2', 2, 2, 2),
+(13, 'A3', 3, 2, 8),
+(14, 'B1', 3, 2, 3),
+(15, 'B2', 3, 2, 4),
+(16, 'B3', 3, 2, 5),
+(17, 'B4', 3, 2, 6),
+(18, 'B5', 3, 2, 9),
+(19, 'C1', 3, 2, 7),
+(20, 'A1', 3, 3, 1),
+(21, 'A2', 2, 3, 2),
+(22, 'A3', 3, 3, 8),
+(23, 'B1', 3, 3, 3),
+(24, 'B2', 3, 3, 4),
+(25, 'B3', 3, 3, 5),
+(26, 'B4', 3, 3, 6),
+(27, 'B5', 3, 3, 9),
+(28, 'C1', 3, 3, 7),
+(29, 'A1', 3, 4, 1),
+(30, 'A2', 2, 4, 2),
+(31, 'A3', 3, 4, 8),
+(32, 'B1', 3, 4, 3),
+(33, 'B2', 3, 4, 4),
+(34, 'B3', 3, 4, 5),
+(35, 'B4', 3, 4, 6),
+(36, 'B5', 3, 4, 9),
+(37, 'C1', 3, 4, 7),
+(38, 'A1', 3, 5, 1),
+(39, 'A2', 2, 5, 2),
+(40, 'A3', 3, 5, 8),
+(41, 'B1', 3, 5, 3),
+(42, 'B2', 3, 5, 4),
+(43, 'B3', 3, 5, 5),
+(44, 'B4', 3, 5, 6),
+(45, 'B5', 3, 5, 9),
+(46, 'C1', 3, 5, 7);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tinh`
+-- Table structure for table `tinh`
 --
 
 CREATE TABLE `tinh` (
@@ -299,7 +455,7 @@ CREATE TABLE `tinh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tinh`
+-- Dumping data for table `tinh`
 --
 
 INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
@@ -308,7 +464,7 @@ INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `trangthai`
+-- Table structure for table `trangthai`
 --
 
 CREATE TABLE `trangthai` (
@@ -317,7 +473,7 @@ CREATE TABLE `trangthai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `trangthai`
+-- Dumping data for table `trangthai`
 --
 
 INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
@@ -328,7 +484,7 @@ INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `truong`
+-- Table structure for table `truong`
 --
 
 CREATE TABLE `truong` (
@@ -341,7 +497,7 @@ CREATE TABLE `truong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `truong`
+-- Dumping data for table `truong`
 --
 
 INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `LONG_TRUONG`) VALUES
@@ -360,7 +516,7 @@ INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `L
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `xa`
+-- Table structure for table `xa`
 --
 
 CREATE TABLE `xa` (
@@ -370,7 +526,7 @@ CREATE TABLE `xa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `xa`
+-- Dumping data for table `xa`
 --
 
 INSERT INTO `xa` (`ID_XA`, `ID_HUYEN`, `TENXA`) VALUES
@@ -452,18 +608,18 @@ INSERT INTO `xa` (`ID_XA`, `ID_HUYEN`, `TENXA`) VALUES
 (76, 9, 'Vĩnh Quang');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `baiviet`
+-- Indexes for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ID_BAIVIET`),
   ADD KEY `KHUTRO` (`ID_KHUTRO`);
 
 --
--- Chỉ mục cho bảng `chukhutro`
+-- Indexes for table `chukhutro`
 --
 ALTER TABLE `chukhutro`
   ADD PRIMARY KEY (`ID_CKT`),
@@ -471,42 +627,42 @@ ALTER TABLE `chukhutro`
   ADD UNIQUE KEY `SDT` (`SDT`);
 
 --
--- Chỉ mục cho bảng `coloaiphong`
+-- Indexes for table `coloaiphong`
 --
 ALTER TABLE `coloaiphong`
   ADD PRIMARY KEY (`ID_KHUTRO`,`ID_LP`),
   ADD KEY `ID_KHUTRO` (`ID_KHUTRO`,`ID_LP`);
 
 --
--- Chỉ mục cho bảng `giathuephong`
+-- Indexes for table `giathuephong`
 --
 ALTER TABLE `giathuephong`
   ADD PRIMARY KEY (`ID_KHUTRO`,`ID_LP`),
   ADD KEY `ID_KHUTRO` (`ID_KHUTRO`,`ID_LP`);
 
 --
--- Chỉ mục cho bảng `hinh`
+-- Indexes for table `hinh`
 --
 ALTER TABLE `hinh`
   ADD PRIMARY KEY (`ID_HINH`),
   ADD KEY `STT_PHONG` (`STT`);
 
 --
--- Chỉ mục cho bảng `huyen`
+-- Indexes for table `huyen`
 --
 ALTER TABLE `huyen`
   ADD PRIMARY KEY (`ID_HUYEN`),
   ADD KEY `TINH` (`ID_TINH`);
 
 --
--- Chỉ mục cho bảng `khoangcach`
+-- Indexes for table `khoangcach`
 --
 ALTER TABLE `khoangcach`
   ADD PRIMARY KEY (`ID_KHUTRO`,`T_MA`),
   ADD KEY `khoangcach_truong` (`T_MA`);
 
 --
--- Chỉ mục cho bảng `khutro`
+-- Indexes for table `khutro`
 --
 ALTER TABLE `khutro`
   ADD PRIMARY KEY (`ID_KHUTRO`),
@@ -514,19 +670,19 @@ ALTER TABLE `khutro`
   ADD KEY `khutro_chukhutro` (`ID_CKT`);
 
 --
--- Chỉ mục cho bảng `loaiphong`
+-- Indexes for table `loaiphong`
 --
 ALTER TABLE `loaiphong`
   ADD PRIMARY KEY (`ID_LP`);
 
 --
--- Chỉ mục cho bảng `locations`
+-- Indexes for table `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `phong`
+-- Indexes for table `phong`
 --
 ALTER TABLE `phong`
   ADD PRIMARY KEY (`STT`),
@@ -535,133 +691,139 @@ ALTER TABLE `phong`
   ADD KEY `id_lp` (`ID_LP`);
 
 --
--- Chỉ mục cho bảng `tinh`
+-- Indexes for table `tinh`
 --
 ALTER TABLE `tinh`
   ADD PRIMARY KEY (`ID_TINH`);
 
 --
--- Chỉ mục cho bảng `trangthai`
+-- Indexes for table `trangthai`
 --
 ALTER TABLE `trangthai`
   ADD PRIMARY KEY (`ID_TT`);
 
 --
--- Chỉ mục cho bảng `truong`
+-- Indexes for table `truong`
 --
 ALTER TABLE `truong`
   ADD PRIMARY KEY (`T_MA`),
   ADD KEY `ID_XA` (`ID_XA`);
 
 --
--- Chỉ mục cho bảng `xa`
+-- Indexes for table `xa`
 --
 ALTER TABLE `xa`
   ADD PRIMARY KEY (`ID_XA`),
   ADD KEY `HUYEN` (`ID_HUYEN`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `baiviet`
+-- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
   MODIFY `ID_BAIVIET` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `chukhutro`
+-- AUTO_INCREMENT for table `chukhutro`
 --
 ALTER TABLE `chukhutro`
   MODIFY `ID_CKT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `hinh`
+-- AUTO_INCREMENT for table `hinh`
 --
 ALTER TABLE `hinh`
-  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT cho bảng `huyen`
+-- AUTO_INCREMENT for table `huyen`
 --
 ALTER TABLE `huyen`
   MODIFY `ID_HUYEN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `khutro`
+-- AUTO_INCREMENT for table `khutro`
 --
 ALTER TABLE `khutro`
   MODIFY `ID_KHUTRO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `loaiphong`
+-- AUTO_INCREMENT for table `loaiphong`
 --
 ALTER TABLE `loaiphong`
   MODIFY `ID_LP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `locations`
+-- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT cho bảng `tinh`
+-- AUTO_INCREMENT for table `phong`
+--
+ALTER TABLE `phong`
+  MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `tinh`
 --
 ALTER TABLE `tinh`
   MODIFY `ID_TINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `trangthai`
+-- AUTO_INCREMENT for table `trangthai`
 --
 ALTER TABLE `trangthai`
   MODIFY `ID_TT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `truong`
+-- AUTO_INCREMENT for table `truong`
 --
 ALTER TABLE `truong`
   MODIFY `T_MA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `xa`
+-- AUTO_INCREMENT for table `xa`
 --
 ALTER TABLE `xa`
   MODIFY `ID_XA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `baiviet`
+-- Constraints for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD CONSTRAINT `KHUTRO` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `hinh`
+-- Constraints for table `hinh`
 --
 ALTER TABLE `hinh`
-  ADD CONSTRAINT `STT_PHONG` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`);
+  ADD CONSTRAINT `STT_PHONG` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `khoangcach`
+-- Constraints for table `khoangcach`
 --
 ALTER TABLE `khoangcach`
   ADD CONSTRAINT `khoangcach_khutro` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
   ADD CONSTRAINT `khoangcach_truong` FOREIGN KEY (`T_MA`) REFERENCES `truong` (`T_MA`);
 
 --
--- Các ràng buộc cho bảng `khutro`
+-- Constraints for table `khutro`
 --
 ALTER TABLE `khutro`
   ADD CONSTRAINT `khutro_chukhutro` FOREIGN KEY (`ID_CKT`) REFERENCES `chukhutro` (`ID_CKT`),
   ADD CONSTRAINT `khutro_xa` FOREIGN KEY (`ID_XA`) REFERENCES `xa` (`ID_XA`);
 
 --
--- Các ràng buộc cho bảng `phong`
+-- Constraints for table `phong`
 --
 ALTER TABLE `phong`
   ADD CONSTRAINT `id_khutro` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
