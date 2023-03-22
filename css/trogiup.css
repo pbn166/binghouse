@@ -848,7 +848,7 @@ select {
     min-width: 1300px;
 }
 .chutro, .khachthue{
-    margin-top: 100px;
+    margin-top: 50px;
     width: 49%;
     height: 200px;
     background-color: #ffffff;
@@ -900,3 +900,138 @@ div .khachthue:hover{
 }
 
 
+.section-support {
+    border: 10px dashed #c5d6fe;
+    padding: 5px;
+    margin-top: 30px;
+    margin-left: 5px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .section-support .support-bg {
+    height: 300px;
+    background: url(../image/banner_sp.PNG) center no-repeat;
+    background-size: contain;
+  }
+  /* .section-support .list-support {
+    text-align: center;
+    padding: 0px 10px;
+    margin-top: 30px;
+  } */
+  .section-support .list-support {
+    text-align: center;
+    padding: 0px 0px;
+    margin-top: 0px;
+}
+  .section-support .list-support-title {
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+    color: #233762;
+  }
+  .section-support .support-item a {
+    display: block;
+    color: #233762;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  .section-support a.btn {
+    display: inline-flex;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 30px;
+  }
+
+  /* slideShow ---------------------------------------------------------*/
+
+  .container-slider{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+  }
+  .slider{
+    width: 1000px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .slides{
+    width: 500%;
+    height: 300px;
+    display: flex;
+  }
+  
+  .slides input{
+    display: none;
+  }
+  
+  .slide{
+    width: 20%;
+    transition: 2s ease;
+  }
+  
+  .slide img{
+    object-fit: cover;
+    width: 1000px;
+    height: 300px;
+  }
+  /*css for manual slide navigation*/
+  
+  .navigation-manual{
+    position: absolute;
+    width: 1000px;
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .manual-btn{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 2s ease;
+  }
+  
+  .manual-btn:not(:last-child){
+    margin-right: 40px;
+  }
+  
+  .manual-btn:hover{
+    background: #40D3DC;
+  }
+  
+  #radio1:checked ~ .first{
+    margin-left: 0;
+  }
+  
+  #radio2:checked ~ .first{
+    margin-left: -20%;
+  }
+  
+  #radio3:checked ~ .first{
+    margin-left: -40%;
+  }
+  
+  #radio4:checked ~ .first{
+    margin-left: -60%;
+  }
+  /*css for automatic navigation*/
+  #radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #40D3DC;
+  }
+  
+  #radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #40D3DC;
+  }
+  
+  #radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #40D3DC;
+  }
+  
+  #radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #40D3DC;
+  }

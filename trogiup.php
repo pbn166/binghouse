@@ -185,52 +185,47 @@
   </div>
 </div>
 
+<br>
+<!-- <section class="section section-support">
+            <div class="section-content clearfix">
+            <div class="support-bg">
+                </div>
+            <div class="list-support clearfix">
+             <div class="list-support-title">Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</div>
+            
+            <div class="list-support-title">Gmail: binghouse@gmail.com</div>
+            <div class="list-support-title">Hotline: 0909 999 999</div> </div>
+        </section> -->
+
 <!-- SlideShow -->
-<main class="container">
-        <div class="container-slider">
-            <div class="slider">
-              <div class="slides">
-                <!--radio buttons start-->
-                <input type="radio" name="radio-btn" id="radio1">
-                <input type="radio" name="radio-btn" id="radio2">
-                <input type="radio" name="radio-btn" id="radio3">
-                <input type="radio" name="radio-btn" id="radio4">
-                <!--radio buttons end-->
-                <!--slide images start-->
-                <div class="slide first">
-                  <img  src="image/banner-phong-ngu.jpg" alt="">
-                </div>
-                <div class="slide">
-                  <img class="slide-img" src="banner-phong-ngu.jpg" alt="">
-                </div>
-                <div class="slide">
-                  <img class="slide-img" src="banner-phong-ngu.jpg" alt="">
-                </div>
-                <div class="slide">
-                  <img class="slide-img" src="banner-phong-ngu.jpgs" alt="">
-                </div>
-                <!--slide images end-->
-                <!--automatic navigation start-->
-                <div class="navigation-auto">
-                  <div class="auto-btn1"></div>
-                  <div class="auto-btn2"></div>
-                  <div class="auto-btn3"></div>
-                  <div class="auto-btn4"></div>
-                </div>
-                <!--automatic navigation end-->
-              </div>
-              <!--manual navigation start-->
-              <div class="navigation-manual">
-                <label for="radio1" class="manual-btn"></label>
-                <label for="radio2" class="manual-btn"></label>
-                <label for="radio3" class="manual-btn"></label>
-                <label for="radio4" class="manual-btn"></label>
-              </div>
-              <!--manual navigation end-->
-            </div>
-            <!--image slider start-->
-            <!--image slider end-->
-          </div>
+<div class="container-slider">
+    <div class="slider">
+      <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <div class="slide first">
+          <img src="./image/banner_sp.PNG" width="1000px">
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="./image/bg-home-v3.jpg">
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="./image/phong1.PNG">
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="./image/bg-home-v1.jpg">
+        </div>
+      </div>
+      <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+      </div>
+    </div>
+  </div>
 <!-- SlideShow -->
 
 <script language="javascript">
