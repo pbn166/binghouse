@@ -1,0 +1,58 @@
+table, tr, td, th {
+    border: 2px solid #000;
+    }
+
+table {
+    margin-left: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    border: #000 ;
+    background-color: #ffffff;
+    text-align: center;
+}
+.btn{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.btcn{
+    margin-left: 420px;
+    width: 100px;
+    height: 40px;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    background-color: rgb(0, 157, 255);
+    color:#fff;
+}
+.btc{
+    margin-left: 20px;
+    width: 100px;
+    height: 40px;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    background-color: rgb(0, 157, 255);
+    color:#fff;
+}
+#sreach{
+    width: 150px;
+    margin-left: 10px;
+}
+.box-cla-filter-pc-v2 .f-body .row-main-2 .item-filter {
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    flex: 1;
+    margin-left: 20px;
+}
+.opt{
+    margin-left: 150px;
+    max-width: 250px;
+    margin-bottom: -35px;
+}
+.tt{
+    margin-left: 20px;
+}
+.imgp{
+
+    margin-bottom: -74px;
+}
