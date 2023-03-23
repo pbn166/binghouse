@@ -132,6 +132,8 @@
         <div class="card-body">
                         <div class="clearfix mb10 filter_link">
                 <a data-value="all" class="statusview active" href="?v=all">Tất cả (0)</a>
+                <a data-value="all" class="statusview active" href="?v=all">Tin đã duyệt (4)</a>
+                <a data-value="all" class="statusview active" href="?v=all">Tin chưa duyệt (10)</a>
                </div>
             <div class="tablebar mb10 row">
                 <div class="col-sm-3">
@@ -139,10 +141,20 @@
                         <input value="" type="search" class="form-control" name="t" placeholder="Tìm kiếm...">
                         <div style="cursor:pointer;" onclick="search(this);" class="input-group-addon btn-danger">
                             <span class="input-group-text">Tìm</span>
+                            
                         </div>
-                    </div> 
+                        <select class="opt" name="example">
+                            <option value="A">Tin đã duyệt</option>
+                            <option value="B">Tin chưa duyệt</option>
+                            <option value="-">Tất cả</option>
+                        </select>
+                        </div> <br>
+                        
+                    </div>    
+                    
+
                 </div> 
-            </div>
+                <!-- btn btn-outline-gray dropdown-toggle -->
 
             <div class="table_container">
                 <div class="row">
