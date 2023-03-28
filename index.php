@@ -102,7 +102,7 @@
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
-                  <a class="dropdown-item" href="#">Cài đặt</a>
+                  
                   <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                 </div>
                             <?php
@@ -115,7 +115,7 @@
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
-                  <a class="dropdown-item" href="#">Cài đặt</a>
+                  <a class="dropdown-item" href="caidat.php">Cài đặt</a>
                   <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                   <a class="dropdown-item" href="logout.php">Đăng xuất</a>
                 </div>
