@@ -6,7 +6,7 @@
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
   session_start();
-  $loaiphong = "SELECT DISTINCT TENLOAIPHONG 
+  $loaiphong = "SELECT DISTINCT * 
   FROM loaiphong ";
   $loaiphongsql = mysqli_query($conn,$loaiphong)
  
@@ -41,6 +41,7 @@
         <meta property="og:type" content="website"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
+        <script src="js/ajax1.js" type="text/javascript"></script>
       
     </head>
    
@@ -145,11 +146,11 @@
  <div class="row-main">
  <div class="item-filter has-icon border-r flex-none">
  <i class="icon mcon-city"></i>
- <select name="iCat" class="f-form-input">
+ <select name="iCat" class="f-form-input room">
  <option value="0">Chọn loại phòng</option>
  <?php
   foreach ($loaiphongsql as $key => $value){?>
-    <option label="<?php echo $value['TENLOAIPHONG']?>"></option>
+    <option value ='<?php echo $value['ID_LP'] ?>'><?php echo $value['TENLOAIPHONG']?></option>
     
 <?php } ?>
   
@@ -166,11 +167,11 @@
  </div>
  <div class="row-main-2">
  <div class="item-filter">
- <select name="iCitId" class="f-form-input" onchange="getDistrictClaFilter(this.value)">
+ <select name="iCitId" class="f-form-input tentinh" onchange="getDistrictClaFilter(this.value)">
  <option value="0">Tất cả Tỉnh/Thành phố</option>
  <?php
   foreach ($tinhsql as $key => $value){?>
-    <option value=''><?php echo $value['TENTINH'] ?></option>
+    <option value='<?php echo $value['ID_TINH'] ?>'><?php echo $value['TENTINH'] ?></option>
     
 <?php } ?>
   </select>
@@ -191,16 +192,11 @@
  </select>
  </div>
  <div class="item-filter">
-    <select class="f-form-input" name="iPrice">
+    <select class="f-form-input price" name="iPrice">
   <option selected="" value="0">
  Tất cả mức giá
  </option>
-  <option value="1">
- Dưới 1 triệu
- </option>
-  <option value="2">
- 1 triệu - 3 triệu
- </option>
+  
   
   </select>
  </div>

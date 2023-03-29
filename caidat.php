@@ -151,6 +151,27 @@
                 <li><a class="cursor-pointer !text-gray-400">Cài đặt tài khoản</a></li>
             </ul>
         </div>
+        <div class = "bg-white md:py-8 p-4 rounded">
+            <div class ="mb-4 md:mb-8">
+                <h2 class="text-lg font-bold text-gray-900 mb-4"> Hồ sơ cá nhân</h2>
+                <form>
+                   <table>
+                        <tr>
+                            <th>Họ Tên</th>
+                            <td><input type = "text" name ="hoten"></td>
+                        </tr>
+                        <tr>
+                            <th>Họ Tên</th>
+                            <td><input type = "text" name ="hoten"></td>
+                        </tr>
+                        <tr>
+                            <th>Họ Tên</th>
+                            <td><input type = "text" name ="hoten"></td>
+                        </tr>
+                   </table>
+                </form>
+            </div>
+        </div>
     </div>
        
            

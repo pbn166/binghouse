@@ -9,30 +9,25 @@
 </head>
 
 <body>
-<?php
-   $address = "Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam";
-   $api_key = "AIzaSyAWGk2wJhwfcVRvbwWN8_WS5G_e7YRUvjI";
-  
-   $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($address) . "&key=" . $api_key;
-   //echo $url;
-   //exit();
-   
-   // Gửi yêu cầu HTTP để lấy dữ liệu JSON
-   $response = file_get_contents($url);
-   
-   // Giải mã JSON để truy cập vào thông tin địa lý
-   $result = json_decode($response);
-   if ($result->status == "OK") {
-    // Lấy thông tin vị trí
-    $lat = $result->results[0]->geometry->location->lat;
-    $lng = $result->results[0]->geometry->location->lng;
-    
-    // In ra kết quả
-    echo "Vị trí của địa chỉ '" . $address . "' là (" . $lat . ", " . $lng . ")";
-} else {
-    // Xử lý khi không tìm thấy kết quả
-    echo ("Không tìm thấy địa chỉ");}
 
+<?php
+$access_token = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+$address = '2QC8+36W Nhà trọ Nắng Xanh, Hưng Lợi, Ninh Kiều, Cần Thơ';
+
+// Thực hiện yêu cầu tới API Geocoding của Mapbox
+$api_url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' . urlencode($address) . '.json?access_token=' . $access_token;
+$response = file_get_contents($api_url);
+
+// Phân tích dữ liệu JSON để lấy tọa độ của địa chỉ
+$result = json_decode($response);
+$longitude = $result->features[0]->geometry->coordinates[0];
+$latitude = $result->features[0]->geometry->coordinates[1];
+
+// In ra tọa độ của địa chỉ
+echo "Longitude: " . $longitude . "<br>";
+echo "Latitude: " . $latitude;
 ?>
+
+
 </body>
 </html>
