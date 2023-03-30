@@ -46,7 +46,7 @@
             
         </style>
       
-    </head>
+    </head> 
    
     <body class="hero-anime">
 
