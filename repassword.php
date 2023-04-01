@@ -26,6 +26,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <link href="css/setting.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/repassword.css" rel="stylesheet" type="text/css" media="all"/>
+
       
     </head>
 <body class="">
@@ -100,7 +102,7 @@
    <div class="g1gd5utk withWidth withGutter c29gcq6" style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
       <div class="g1gd5utk swjo00u" style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
           <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
-          <h5>Chỉnh sửa trang cá nhân</h5>
+          <div class="h5"><h5>Chỉnh sửa trang cá nhân</h5></div>
           <p class="trc72lf">
               Thông tin cá nhân&nbsp;<a href="setting.php" target="_blank" rel="noreferrer"><br><img src="image/canhan.png" width="40px">Chỉnh sửa thông tin</a><br>
               <a href="mangxahoi.php" target="_blank" rel="noreferrer"><img src="image/mang-xa-hoi.png" width="40px">Liên kết mạng xã hội</a><br>
@@ -182,118 +184,35 @@
    </div>
    <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container" style="">
    <div>
-    <h2><div class="ten">Hồ sơ cá nhân</div></h2>
+    <h2><div class="ten">THAY ĐỔI MẬT KHẨU</div></h2>
     <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Họ và tên <small data-v-5d159d94="" style="color: red;">*</small></label>
+               <label data-v-5d159d94="" class="label-form">Nhập mật khẩu cũ <small data-v-5d159d94="" style="color: red;">*</small></label>
             <input data-v-5d159d94="" type="text" placeholder="Tên chưa cung cấp" name="name" class="form-control">
             </div>
          </div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label>
+               <label data-v-5d159d94="" class="label-form">Nhập mật khẩu mới <small data-v-5d159d94="" style="color: red;">*</small></label>
             <input data-v-5d159d94="" type="text" placeholder="Nhập tên khu trọ" name="name" class="form-control">
             </div>
          </div>
          <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
          <div class="form-group">
                <label class="label-form">
-                  Số điện thoại
+               Nhập lại mật khẩu
                </label>
                <small data-v-5d159d94="" style="color: red;">*</small></label>
                <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="sdt" class="form-control">
                
             </div>
-      <div>
-         <div class="grid-column">
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Số nhà <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ cụ thể" name="address" class="form-control">
-            </div>
-         </div>
-         
-            <div class="form-group">
-               <label class="label-form">
-                  Tỉnh/thành phố <!---->
-               </label>
-               <select name="citid" class="form-control" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn tỉnh/thành phố</option>
-                                          <option value="">Cần Thơ</option>
-                     
-                                    
-               </select>
-               <!---->
-            </div>
-            <div class="form-group">
-               <label class="label-form">
-                  Quận/huyện <!---->
-               </label>
-               <select name="iDisId" class="form-control city" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn quận/huyện</option>
-                  <option value="1">Chọn</option>
-                                          <option value="1">Ninh Kiều</option>
-                        
-                                             <option value="2">Cái Răng</option>
-                        
-                                             <option value="3">Bình Thủy</option>
-                        
-                                             <option value="4">Ô Môn</option>
-                        
-                                             <option value="5">Thốt Nốt</option>
-                        
-                                             <option value="6">Cờ Đỏ</option>
-                        
-                                             <option value="7">Phong Điền</option>
-                        
-                                             <option value="8">Thới Lai</option>
-                        
-                                             <option value="9">Vĩnh Thạnh</option>
-                        
-                                    </select>
-               <!---->
-            </div>
-            <div class="form-group">
-               <label class="label-form">
-                  Phường/xã <!---->
-               </label>
-               <select name="iWardId" class="form-control tinh" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn phường/xã</option>
-                                            <option value="2">Chọn</option>
-                        
-                                             <option value="3">Hưng Lợi</option>
-                        
-                                             <option value="4">An Phú</option>
-                        
-                                             <option value="5">An Nghiệp</option>
-                        
-                                             <option value="6">An Thới</option>
-                        
-                                             <option value="7">Xuân Khánh</option>
-                        
-                                             <option value="8">An Hòa</option>
-                        
-                                             <option value="9">Phong Điền</option>
-               </select>
-               <!---->
-            </div>
-            <div class="grid-column grid-xm-column-1">
-   <div class="form-group">
-      <label class="label-form">
-         Giới thiệu:  
-      </label>
-      <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
-      
-   </div>
-</div>
-</div>
-</div>
-
-                     
+        </div>
+    </div>
+</div>              
                   <div class="l6ks4td">
                      <div class="withGutter c29gcq6" style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
                         <div class="swjo00u" style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch" type="reset">XÓA TẤT CẢ</button></div>
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="button">CẬP NHẬT</button></div>
+                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="button">LƯU MẬT KHẨU</button></div>
                         </div>
                      </div>
                   </div>

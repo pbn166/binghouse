@@ -105,7 +105,7 @@
           <p class="trc72lf">
               Thông tin cá nhân&nbsp;<a href="test.php" target="_blank" rel="noreferrer"><br><img src="image/canhan.png" width="40px">Chỉnh sửa thông tin</a><br>
               <a href="mangxahoi.php" target="_blank" rel="noreferrer"><img src="image/mang-xa-hoi.png" width="40px">Liên kết mạng xã hội</a><br>
-              <a href="doimatkhau.php" target="_blank" rel="noreferrer"><img src="image/doipass.png" width="40px">Cài đặt tài khoản</a>
+              <a href="repassword.php" target="_blank" rel="noreferrer"><img src="image/doipass.png" width="40px">Cài đặt tài khoản</a>
             </p>
                      <span class="f6ete4">
                         
