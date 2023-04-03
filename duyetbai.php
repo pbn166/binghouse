@@ -177,7 +177,7 @@
                                         <th>1200000</th>
                                         <th>Cho thuê phòng giá rẻ cho sinh viên</th>
                                     <th>
-                                        <button type="" id="btn2" class="btn">Chi tiết</button>    
+                                        <button type="" id="btn2" class="btn"><a href="chitietduyetbai.php">Chi tiết</a></button>    
                                         <button type="" id="btn3" class="btn">Duyệt</button>
                                         <button type="" id="btn1" class="btn">Xóa</button>
                                         <script language="javascript">
@@ -199,7 +199,6 @@
                     </div>
                 </div>
             </div>
-
         <div class="clearfix" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #35405a;" align="center">
             <div class="company-info">
                 <p style="font-size: 1rem;" class="company_name">

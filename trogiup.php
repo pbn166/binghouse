@@ -198,35 +198,38 @@
         </section> -->
 
 <!-- SlideShow -->
-<div class="container-slider">
-    <div class="slider">
-      <div class="slides">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
-        <div class="slide first">
-          <img src="./image/banner_sp.PNG" width="1000px">
+     <div class="container-slider">
+        <div class="slider">
+          <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <div class="slide first">
+              <img src="./image/banner_sp.PNG" width="1000px">
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./image/bg-home-v3.jpg">
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./image/phong1.PNG">
+            </div>
+            <div class="slide">
+              <img class="slide-img" src="./image/bg-home-v1.jpg">
+            </div>
+          </div>
+          <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+          </div>
         </div>
-        <div class="slide">
-          <img class="slide-img" src="./image/bg-home-v3.jpg">
-        </div>
-        <div class="slide">
-          <img class="slide-img" src="./image/phong1.PNG">
-        </div>
-        <div class="slide">
-          <img class="slide-img" src="./image/bg-home-v1.jpg">
-        </div>
-      </div>
-      <div class="navigation-manual">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-        <label for="radio4" class="manual-btn"></label>
-      </div>
-    </div>
-  </div>
+      </div> 
 <!-- SlideShow -->
+
+
+
 
 <script language="javascript">
  $(document).ready(function () {
