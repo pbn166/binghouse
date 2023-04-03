@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 02:05 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Apr 03, 2023 at 02:33 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qlynhatro2`
+-- Database: `quanlynhatro`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `baiviet` (
   `ID_KHUTRO` int(11) NOT NULL,
   `TIEUDE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `GIOITHIEUBAIVIET` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,11 +42,11 @@ CREATE TABLE `baiviet` (
 
 CREATE TABLE `chukhutro` (
   `ID_CKT` int(11) NOT NULL,
-  `HOTEN` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `GIOITINH` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `SDT` char(10) COLLATE utf8_unicode_ci NOT NULL,
-  `TENDANGNHAP` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `MATKHAU` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `HOTEN` varchar(30) NOT NULL,
+  `GIOITINH` varchar(5) NOT NULL,
+  `SDT` char(10) NOT NULL,
+  `TENDANGNHAP` varchar(30) NOT NULL,
+  `MATKHAU` varchar(255) NOT NULL,
   `NGAYLAP` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -96,7 +96,6 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (1, 5, 1000000),
 (1, 6, 1000000),
 (1, 7, 1200000),
-(1, 8, 800000),
 (1, 9, 1500000),
 (2, 1, 800000),
 (2, 2, 800000),
@@ -105,7 +104,6 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (2, 5, 1000000),
 (2, 6, 1000000),
 (2, 7, 1200000),
-(2, 8, 1500000),
 (2, 9, 2500000),
 (3, 1, 1000000),
 (3, 2, 1000000),
@@ -114,7 +112,6 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (3, 5, 1600000),
 (3, 6, 1600000),
 (3, 7, 2500000),
-(3, 8, 1000000),
 (3, 9, 3500000),
 (4, 1, 1000000),
 (4, 2, 1000000),
@@ -123,7 +120,6 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (4, 5, 1600000),
 (4, 6, 1600000),
 (4, 7, 2500000),
-(4, 8, 1000000),
 (4, 9, 3000000),
 (5, 1, 1200000),
 (5, 2, 1200000),
@@ -132,7 +128,6 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 (5, 5, 1600000),
 (5, 6, 1600000),
 (5, 7, 3500000),
-(5, 8, 1200000),
 (5, 9, 4000000);
 
 -- --------------------------------------------------------
@@ -144,7 +139,7 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 CREATE TABLE `hinh` (
   `ID_HINH` int(11) NOT NULL,
   `STT` int(11) NOT NULL,
-  `HINH` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `HINH` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -159,7 +154,6 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (18, 5, 'phong-tro-co-gac-3.jpg'),
 (19, 6, 'phong-tro-co-gac-4.jpg'),
 (20, 9, 'phong-tro-co-may-lanh-1.jpg'),
-(21, 3, 'phong-tro-khong-gac-3.jpg'),
 (22, 10, 'phong-tro-co-noi-that-1.jpg'),
 (31, 11, 'phong-tro-khong-gac-4.jpg'),
 (32, 12, 'phong-tro-khong-gac-5.jpg'),
@@ -168,12 +162,10 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (35, 16, 'phong-tro-co-gac-7.jpg'),
 (36, 17, 'phong-tro-co-gac-8.jpg'),
 (37, 19, 'phong-tro-co-may-lanh-2.jpg'),
-(38, 13, 'phong-tro-khong-gac-6.jpg'),
 (39, 10, 'phong-tro-co-noi-that-2.jpg'),
 (40, 20, 'phong-tro-khong-gac-7.jpg'),
 (41, 18, 'phong-tro-co-noi-that-3.jpg'),
 (42, 21, 'phong-tro-khong-gac-1.jpg'),
-(43, 22, 'phong-tro-co-gac-1.jpg'),
 (44, 23, 'phong-tro-co-gac-2.jpg'),
 (45, 24, 'phong-tro-co-gac-3.jpg'),
 (46, 25, 'phong-tro-co-gac-3.jpg'),
@@ -187,7 +179,6 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (54, 34, 'phong-tro-co-gac-6.jpg'),
 (55, 35, 'phong-tro-co-gac-8.jpg'),
 (56, 30, 'phong-tro-khong-gac-4.jpg'),
-(57, 31, 'phong-tro-khong-gac-5.jpg'),
 (58, 36, 'phong-tro-co-noi-that-5.jpg'),
 (59, 37, 'phong-tro-co-may-lanh-6.jpg'),
 (60, 38, 'phong-tro-khong-gac-5.jpg'),
@@ -196,7 +187,6 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (63, 43, 'phong-tro-co-gac-10.jpg'),
 (64, 44, 'phong-tro-co-gac-1.jpg'),
 (65, 39, 'phong-tro-khong-gac-6.jpg'),
-(66, 40, 'phong-tro-khong-gac-7.jpg'),
 (67, 45, 'phong-tro-co-noi-that-8.jpg'),
 (68, 46, 'phong-tro-co-may-lanh-9.jpg');
 
@@ -209,7 +199,7 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 CREATE TABLE `huyen` (
   `ID_HUYEN` int(11) NOT NULL,
   `ID_TINH` int(11) NOT NULL,
-  `TENHUYEN` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENHUYEN` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -310,10 +300,10 @@ CREATE TABLE `khutro` (
   `ID_KHUTRO` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
   `ID_CKT` int(11) NOT NULL,
-  `TENKHUTRO` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `SONHA` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `LAT_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LONG_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENKHUTRO` varchar(30) NOT NULL,
+  `SONHA` varchar(100) NOT NULL,
+  `LAT_TRO` varchar(50) NOT NULL,
+  `LONG_TRO` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -335,7 +325,7 @@ INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT
 
 CREATE TABLE `loaiphong` (
   `ID_LP` int(11) NOT NULL,
-  `TENLOAIPHONG` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TENLOAIPHONG` varchar(30) NOT NULL,
   `SONGUOIOTOIDA` int(11) NOT NULL,
   `DIENTICH` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -345,15 +335,14 @@ CREATE TABLE `loaiphong` (
 --
 
 INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) VALUES
-(1, 'Phòng không có gác', 1, 12),
-(2, 'Phòng không có gác', 2, 14),
-(3, 'Phòng có gác', 3, 15),
-(4, 'Phòng có gác', 4, 16),
-(5, 'Phòng có gác', 2, 12),
-(6, 'Phòng có gác', 3, 14),
-(7, 'Phòng máy lạnh có gác', 4, 16),
-(8, 'Phòng không có gác', 2, 12),
-(9, 'Phòng có nội thất', 4, 20);
+(1, 'Phòng không có gác 12m2', 1, 12),
+(2, 'Phòng không có gác 14m2', 2, 14),
+(3, 'Phòng có gác 15m2', 3, 15),
+(4, 'Phòng có gác 16m2', 4, 16),
+(5, 'Phòng có gác 12m2', 2, 12),
+(6, 'Phòng có gác 14m2', 3, 14),
+(7, 'Phòng máy lạnh có gác 16m2', 4, 16),
+(9, 'Phòng có nội thất 20m2', 4, 20);
 
 -- --------------------------------------------------------
 
@@ -385,7 +374,7 @@ INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
 
 CREATE TABLE `phong` (
   `STT` int(11) NOT NULL,
-  `TENPHONG` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `TENPHONG` varchar(20) NOT NULL,
   `ID_TT` int(11) DEFAULT NULL,
   `ID_KHUTRO` int(11) DEFAULT NULL,
   `ID_LP` int(11) DEFAULT NULL
@@ -398,7 +387,6 @@ CREATE TABLE `phong` (
 INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 (1, 'A1', 3, 1, 1),
 (2, 'A2', 2, 1, 2),
-(3, 'A3', 3, 1, 8),
 (4, 'B1', 3, 1, 3),
 (5, 'B2', 3, 1, 4),
 (6, 'B3', 3, 1, 5),
@@ -408,7 +396,6 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 (10, 'C2', 3, 1, 9),
 (11, 'A1', 3, 2, 1),
 (12, 'A2', 2, 2, 2),
-(13, 'A3', 3, 2, 8),
 (14, 'B1', 3, 2, 3),
 (15, 'B2', 3, 2, 4),
 (16, 'B3', 3, 2, 5),
@@ -417,7 +404,6 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 (19, 'C1', 3, 2, 7),
 (20, 'A1', 3, 3, 1),
 (21, 'A2', 2, 3, 2),
-(22, 'A3', 3, 3, 8),
 (23, 'B1', 3, 3, 3),
 (24, 'B2', 3, 3, 4),
 (25, 'B3', 3, 3, 5),
@@ -426,7 +412,6 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 (28, 'C1', 3, 3, 7),
 (29, 'A1', 3, 4, 1),
 (30, 'A2', 2, 4, 2),
-(31, 'A3', 3, 4, 8),
 (32, 'B1', 3, 4, 3),
 (33, 'B2', 3, 4, 4),
 (34, 'B3', 3, 4, 5),
@@ -435,7 +420,6 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 (37, 'C1', 3, 4, 7),
 (38, 'A1', 3, 5, 1),
 (39, 'A2', 2, 5, 2),
-(40, 'A3', 3, 5, 8),
 (41, 'B1', 3, 5, 3),
 (42, 'B2', 3, 5, 4),
 (43, 'B3', 3, 5, 5),
@@ -451,7 +435,7 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 
 CREATE TABLE `tinh` (
   `ID_TINH` int(11) NOT NULL,
-  `TENTINH` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENTINH` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -469,7 +453,7 @@ INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
 
 CREATE TABLE `trangthai` (
   `ID_TT` int(11) NOT NULL,
-  `TENTT` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `TENTT` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -490,10 +474,10 @@ INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
 CREATE TABLE `truong` (
   `T_MA` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
-  `T_TENTRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `T_ICON` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LAT_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `LONG_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `T_TENTRUONG` varchar(50) NOT NULL,
+  `T_ICON` varchar(50) NOT NULL,
+  `LAT_TRUONG` varchar(50) NOT NULL,
+  `LONG_TRUONG` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -522,7 +506,7 @@ INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `L
 CREATE TABLE `xa` (
   `ID_XA` int(11) NOT NULL,
   `ID_HUYEN` int(11) NOT NULL,
-  `TENXA` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `TENXA` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

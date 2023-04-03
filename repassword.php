@@ -109,8 +109,8 @@
           <div class="h5"><h5>Chỉnh sửa trang cá nhân</h5></div>
           <p class="trc72lf">
               <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="40px">Thông tin cá nhân</a><br>
-              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="40px">Liên kết mạng xã hội</a><br>
-              <a href="repassword.php" rel="noreferrer"><img src="image/doipass.png" width="40px">Cài đặt tài khoản</a>
+              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="50px">Liên kết mạng xã hội</a><br>
+              <a href="repassword.php" rel="noreferrer"><img src="image/khoak.png" width="30px">Cài đặt tài khoản</a>
             </p>
                      <span class="f6ete4">
                         <!-- -->
@@ -192,13 +192,13 @@
     <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
                <label data-v-5d159d94="" class="label-form">Nhập mật khẩu cũ <small data-v-5d159d94="" style="color: red;">*</small></label>
-            <input data-v-5d159d94="" type="text" placeholder="Tên chưa cung cấp" name="name" class="form-control">
+            <input data-v-5d159d94="" type="text" placeholder="Nhập mật khẩu cũ" name="name" class="form-control">
             </div>
          </div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
                <label data-v-5d159d94="" class="label-form">Nhập mật khẩu mới <small data-v-5d159d94="" style="color: red;">*</small></label>
-            <input data-v-5d159d94="" type="text" placeholder="Nhập tên khu trọ" name="name" class="form-control">
+            <input data-v-5d159d94="" type="text" placeholder="Nhập mật khẩu mới" name="name" class="form-control">
             </div>
          </div>
          <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
@@ -207,7 +207,7 @@
                Nhập lại mật khẩu
                </label>
                <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="sdt" class="form-control">
+               <input data-v-5d159d94="" type="text" placeholder="Nhập lại mật khẩu mới" name="sdt" class="form-control">
                
             </div>
         </div>
