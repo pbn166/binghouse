@@ -69,7 +69,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
       //exit();
       if($count > 0){
         $row_data = mysqli_fetch_assoc($query);
-        $_SESSION['HOTEN']=$row_data['HOTEN'];
+        $_SESSION['TENDANGNHAP']=$row_data['TENDANGNHAP'];
         header('location: index.php');
       }
       else{

@@ -1,5 +1,52 @@
 <?php
- session_start();
+  include './config/config.php';
+  $tinh="select * from tinh";
+  $tinhsql = mysqli_query($conn,$tinh);
+  $huyen="select * from huyen";
+  $huyensql = mysqli_query($conn,$huyen);
+  session_start();
+  $ten =  $_SESSION['TENDANGNHAP'];
+  $loaiphong = "SELECT DISTINCT * 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong);
+  $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TENHUYEN, c.TENTINH, d.ID_XA, e.ID_HUYEN
+  FROM khutro as a, chukhutro as b, tinh as c,xa as d, huyen as e
+  where a.ID_CKT = b.ID_CKT
+  and a.ID_XA = d.ID_XA
+  and d.ID_HUYEN = e.ID_HUYEN
+  and e.ID_TINH = c.ID_TINH
+  and b.TENDANGNHAP = '$ten'";
+  $thongtinsql =mysqli_fetch_assoc($conn->query($thongtin));
+  if(isset($_POST['submit'])){
+   $HOTEN = $_POST['HOTEN'];
+   $SDT = $_POST['SDT'];
+   //echo $HOTEN;
+   //echo $TENKHUTRO;
+   //echo $SDT;
+   //echo $SONHA;
+   //echo $TENTINH;
+   //echo $TENHUYEN;
+   //echo $TENXA;
+   //exit();
+
+   //$tendangnhap = $_POST['TENDANGNHAP'];
+
+   $sql1 = "UPDATE `chukhutro` SET `HOTEN` = '$HOTEN', `SDT`='$SDT' WHERE `TENDANGNHAP` = '".$_SESSION['TENDANGNHAP']."'";
+   $query1 = mysqli_query($conn, $sql1);
+   if($query1){
+      echo "<script language='javascript'>alert('Sửa thành công')</script>";
+      header("location:setting.php");
+  }
+  else{
+      echo "Lỗi";
+  }
+     
+     
+  
+   
+  
+  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +76,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <link href="css/setting.css" rel="stylesheet" type="text/css" media="all"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/ajax.js" type="text/javascript"></script>
       
     </head>
 <body class="">
@@ -79,7 +128,7 @@
                         <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="aw__d1xmuhl0" id="arrowDownB"><path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path></svg>
                                                     
                             <div class="dropdown-menu"> 
-                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span>
+                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['TENDANGNHAP'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
@@ -100,15 +149,15 @@
             </div>
           </div>
           <div class="l1tlqmyy">
-          <ol class="mx-3 md:mx-0 s1vf7tl0" style ="padding-bottom:20px" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.chotot.com" itemprop="item"><span itemprop="name">Bing House</span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="1"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="https://www.chotot.com/user/35fcae77f56b0ada8d267b57d6f08949" class="text-blue-500 inline-flex max-w-[150px] md:max-w-none [&amp;>span]:truncate" itemprop="item"><span itemprop="name">Trang cá nhân của <?php echo $_SESSION['HOTEN'];?></span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="2"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><span itemprop="name">Thông tin cá nhân</span><meta itemprop="position" content="3"></li></ol>
+          <ol class="mx-3 md:mx-0 s1vf7tl0" style ="padding-bottom:20px" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="index.php" itemprop="item"><span itemprop="name">Bing House</span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="1"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="setting.php" class="text-blue-500 inline-flex max-w-[150px] md:max-w-none [&amp;>span]:truncate" itemprop="item"><span itemprop="name">Trang cá nhân của <?php echo $_SESSION['TENDANGNHAP'];?></span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="2"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><span itemprop="name">Thông tin cá nhân</span><meta itemprop="position" content="3"></li></ol>
    <div class="g1gd5utk withWidth withGutter c29gcq6" style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
       <div class="g1gd5utk swjo00u" style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
           <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
           <h5>Chỉnh sửa trang cá nhân</h5>
           <p class="trc72lf">
-              <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="40px">Thông tin cá nhân</a><br>
-              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="40px">Liên kết mạng xã hội</a><br>
-              <a href="repassword.php"  rel="noreferrer"><img src="image/doipass.png" width="40px">Cài đặt tài khoản</a>
+              <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
+              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>
+              <a href="repassword.php"  rel="noreferrer"><img src="image/doipass.png" width="16" height="16">Cài đặt tài khoản</a>
             </p>
                      <span class="f6ete4">
                         <!-- -->
@@ -123,7 +172,7 @@
          </div>
           <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
             <div class="f1wri8l5">
-               <form>
+               <form action="" method="post" enctype="multipart/form-data">
                   <div></div>
                   <div>
                      <div class="wbtmmtj"></div>
@@ -190,114 +239,28 @@
     <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
                <label data-v-5d159d94="" class="label-form">Họ và tên <small data-v-5d159d94="" style="color: red;">*</small></label>
-            <input data-v-5d159d94="" type="text" placeholder="Tên chưa cung cấp" name="name" class="form-control">
+            <input data-v-5d159d94="" type="text" placeholder="Tên chưa cung cấp" name="HOTEN" class="form-control" value="<?php echo $thongtinsql['HOTEN'] ?>">
             </div>
          </div>
-         <div class="grid-column">
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label>
-            <input data-v-5d159d94="" type="text" placeholder="Nhập tên khu trọ" name="name" class="form-control">
-            </div>
-         </div>
+         
          <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
          <div class="form-group">
                <label class="label-form">
                   Số điện thoại
                </label>
                <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="sdt" class="form-control">
+               <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="SDT" class="form-control" value="<?php echo $thongtinsql['SDT'] ?>">
                
             </div>
       <div>
-         <div class="grid-column">
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Số nhà <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ cụ thể" name="address" class="form-control">
-            </div>
-         </div>
-         
-            <div class="form-group">
-               <label class="label-form">
-                  Tỉnh/thành phố <!---->
-               </label>
-               <select name="citid" class="form-control" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn tỉnh/thành phố</option>
-                                          <option value="">Cần Thơ</option>
-                     
-                                    
-               </select>
-               <!---->
-            </div>
-            <div class="form-group">
-               <label class="label-form">
-                  Quận/huyện <!---->
-               </label>
-               <select name="iDisId" class="form-control city" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn quận/huyện</option>
-                  <option value="1">Chọn</option>
-                                          <option value="1">Ninh Kiều</option>
-                        
-                                             <option value="2">Cái Răng</option>
-                        
-                                             <option value="3">Bình Thủy</option>
-                        
-                                             <option value="4">Ô Môn</option>
-                        
-                                             <option value="5">Thốt Nốt</option>
-                        
-                                             <option value="6">Cờ Đỏ</option>
-                        
-                                             <option value="7">Phong Điền</option>
-                        
-                                             <option value="8">Thới Lai</option>
-                        
-                                             <option value="9">Vĩnh Thạnh</option>
-                        
-                                    </select>
-               <!---->
-            </div>
-            <div class="form-group">
-               <label class="label-form">
-                  Phường/xã <!---->
-               </label>
-               <select name="iWardId" class="form-control tinh" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn phường/xã</option>
-                                            <option value="2">Chọn</option>
-                        
-                                             <option value="3">Hưng Lợi</option>
-                        
-                                             <option value="4">An Phú</option>
-                        
-                                             <option value="5">An Nghiệp</option>
-                        
-                                             <option value="6">An Thới</option>
-                        
-                                             <option value="7">Xuân Khánh</option>
-                        
-                                             <option value="8">An Hòa</option>
-                        
-                                             <option value="9">Phong Điền</option>
-               </select>
-               <!---->
-            </div>
-            <div class="grid-column grid-xm-column-1">
-   <div class="form-group">
-      <label class="label-form">
-         Giới thiệu:  
-      </label>
-      <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
-      
-   </div>
-</div>
-</div>
-</div>
+        
 
                      
                   <div class="l6ks4td">
                      <div class="withGutter c29gcq6" style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
                         <div class="swjo00u" style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch" type="reset">XÓA TẤT CẢ</button></div>
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="button">CẬP NHẬT</button></div>
+                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch" type="reset">Reset</button></div>
+                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" name="submit" id="submit">CẬP NHẬT</button></div>
                         </div>
                      </div>
                   </div>
