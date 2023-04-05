@@ -2304,6 +2304,30 @@ a:hover{
     
 }
 
+.container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .item {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  .container:hover .dropdown {
+    display: block;
+  }
+
 
 
 

@@ -42,14 +42,14 @@
   }
   else{
       echo "Lỗi";
-  }
-     
-     
-  
-   
-  
-  
+  } 
 }
+$khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
+  FROM khutro as a, chukhutro as b
+  WHERE a.ID_CKT = b.ID_CKT
+  AND b.TENDANGNHAP='".$_SESSION['TENDANGNHAP']."'";
+  $khutrosql = mysqli_query($conn,$khutro);
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,6 +81,7 @@
         <link href="css/setting.css" rel="stylesheet" type="text/css" media="all"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       
     </head>
 <body class="">
@@ -159,8 +160,21 @@
           <h5>Chỉnh sửa trang cá nhân</h5>
           <p class="trc72lf">
               <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
-              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>
-              <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a>
+              <!--<a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br>-->
+              <div class="container">
+                  <p class="item"><a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br></p>
+                  <div class="dropdown">
+                  <?php if (($khutrosql)) {?>
+                        <?php foreach ($khutrosql as $key => $value) {?>
+                            <a href="setting_khutro.php?ID_KHUTRO=<?php echo $value['ID_KHUTRO'] ?>"><?php echo $value['TENKHUTRO'] ?></a>
+                        <?php } ?>
+                        <?php } ?>
+                
+                  </div>
+               </div>
+              <!--<a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>-->
+              <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a><br>
+              
             </p>
                      <span class="f6ete4">
                         <!-- -->

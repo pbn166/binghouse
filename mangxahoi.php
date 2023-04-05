@@ -118,9 +118,10 @@
           <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
           <h5>Chỉnh sửa trang cá nhân</h5>
           <p class="trc72lf">
-              <a href="setting.php" rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
-              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>
-              <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a>
+          <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
+              <a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br>
+              <!--<a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>-->
+              <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a><br>
             </p>
                      <span class="f6ete4">
                         
