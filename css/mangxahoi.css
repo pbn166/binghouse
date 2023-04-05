@@ -348,9 +348,7 @@ html {
     --tw-backdrop-saturate: ;
     --tw-backdrop-sepia: ;
 }
-.abc{
-    text-align: center;
-}
+
 li{-webkit-text-size-adjust: 100%;
     tab-size: 4;
     font-feature-settings: normal;
@@ -412,4 +410,59 @@ li{-webkit-text-size-adjust: 100%;
     }
     .trc72lf a{
         text-decoration:none
+    }
+    
+    .snf9jyk {
+        flex: 1 0;
+        align-self: var(--snf9jyk-0);
+        order: var(--snf9jyk-1)
+    }
+    
+    .snf9jyk.withSpan {
+        flex: 0 0 var(--snf9jyk-2);
+        max-width: var(--snf9jyk-2)
+    }
+    
+    .snf9jyk.withOffset {
+        margin-left: var(--snf9jyk-4)
+    }
+    
+    @media screen and (min-width:576px) {
+        .snf9jyk.withSpan {
+            flex: 0 0 var(--snf9jyk-6);
+            max-width: var(--snf9jyk-6)
+        }
+        .snf9jyk.withOffset {
+            margin-left: var(--snf9jyk-8)
+        }
+    }
+    
+    @media screen and (min-width:768px) {
+        .snf9jyk.withSpan {
+            flex: 0 0 var(--snf9jyk-10);
+            max-width: var(--snf9jyk-10)
+        }
+        .snf9jyk.withOffset {
+            margin-left: var(--snf9jyk-12)
+        }
+    }
+    
+    @media screen and (min-width:992px) {
+        .snf9jyk.withSpan {
+            flex: 0 0 var(--snf9jyk-14);
+            max-width: var(--snf9jyk-14)
+        }
+        .snf9jyk.withOffset {
+            margin-left: var(--snf9jyk-16)
+        }
+    }
+    
+    @media screen and (min-width:1200px) {
+        .snf9jyk.withSpan {
+            flex: 0 0 var(--snf9jyk-18);
+            max-width: var(--snf9jyk-18)
+        }
+        .snf9jyk.withOffset {
+            margin-left: var(--snf9jyk-20)
+        }
     }

@@ -113,7 +113,7 @@
                 <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['TENDANGNHAP'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
-                  <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
+                  <a class="dropdown-item" href="tindaluu.php">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="setting.php">Cài đặt</a>

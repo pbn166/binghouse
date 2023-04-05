@@ -29,7 +29,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <link href="css/setting.css" rel="stylesheet" type="text/css" media="all"/>
-       
+        <!-- <link href="css/mangxahoi.css" rel="stylesheet" type="text/css" media="all"/> -->
+
       
     </head>
 <body class="">
@@ -83,7 +84,7 @@
                 <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"> <?php echo $_SESSION['TENDANGNHAP'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
-                  <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
+                  <a class="dropdown-item" href="tindaluu.php">Tin đăng đã lưu</a>
                   <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                   <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="setting.php">Cài đặt</a>
@@ -100,7 +101,16 @@
               </div>
             </div>
           </div>
-
+                        <!-- <div class="bg-white rounded h-max md:p-4 pt-7">
+               <ul class="flex flex-col gap-4">
+               <li>
+               <a class="font-bold cursor-default text-gray-900">Thông tin cá nhân</a></li>
+               <li>
+               <a class="cursor-pointer !text-gray-400">Liên kết mạng xã hội</a></li>
+               <li>
+               <a class="cursor-pointer !text-gray-400">Cài đặt tài khoản</a></li>
+               </ul>
+               </div> -->
           <div class="l1tlqmyy">
           <ol class="mx-3 md:mx-0 s1vf7tl0" style ="padding-bottom:20px" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="index.php" itemprop="item"><span itemprop="name">Bing House</span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="1"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a href="setting.php" class="text-blue-500 inline-flex max-w-[150px] md:max-w-none [&amp;>span]:truncate" itemprop="item"><span itemprop="name">Trang cá nhân của <?php echo $_SESSION['TENDANGNHAP'];?></span></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20" data-type="monochrome" width="1em" height="1em" fill="none" class="separator"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M2 2l8 7.9L2 18"></path></svg><meta itemprop="position" content="2"></li><li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><span itemprop="name">Liên kết mạng xã hội</span><meta itemprop="position" content="3"></li></ol>
           <div class="g1gd5utk withWidth withGutter c29gcq6" style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
@@ -108,9 +118,9 @@
           <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
           <h5>Chỉnh sửa trang cá nhân</h5>
           <p class="trc72lf">
-              <a href="setting.php" rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
-              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>
-              <a href="repassword.php"  rel="noreferrer"><img src="image/doipass.png" width="16" height="16">Cài đặt tài khoản</a>
+              <a href="setting.php" rel="noreferrer"><br><img src="image/canhan.png" width="40px">Thông tin cá nhân</a><br>
+              <a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="40px">Liên kết mạng xã hội</a><br>
+              <a href="repassword.php"  rel="noreferrer"><img src="image/doipass.png" width="40px">Cài đặt tài khoản</a>
             </p>
                      <span class="f6ete4">
                         
