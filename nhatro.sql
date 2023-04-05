@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2023 at 02:33 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Apr 05, 2023 at 06:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlynhatro`
+-- Database: `nhatro`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,56 @@ CREATE TABLE `baiviet` (
   `ID_BAIVIET` int(11) NOT NULL,
   `ID_KHUTRO` int(11) NOT NULL,
   `TIEUDE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `GIOITHIEUBAIVIET` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `GIOITHIEUBAIVIET` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `STT` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `baiviet`
+--
+
+INSERT INTO `baiviet` (`ID_BAIVIET`, `ID_KHUTRO`, `TIEUDE`, `GIOITHIEUBAIVIET`, `STT`) VALUES
+(1, 1, 'Cho thuê phòng trọ đầy đủ tiện nghi', 'Phòng rộng rãi sạch sẽ thoáng mát', 1),
+(2, 1, 'Cho thuê phòng trọ có nội thất', 'Rất tiện lợi', 9),
+(22, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng', 'Phòng trọ gần trung tâm', 2),
+(24, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng giá rẻ', 'Phòng trọ gần trường đại học', 4),
+(25, 1, 'Cho thuê phòng Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 5),
+(26, 1, 'Nhà trọ Bảy Bảnh cho thuê', 'Phòng trọ gần chợ', 6),
+(27, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng gần các trường đại học', 'Phòng trọ gần trung tâm', 7),
+(28, 1, 'Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 8),
+(33, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 11),
+(34, 2, 'Nhà trọ Nắng Xanh cho thuê phòng', 'Phòng trọ gần các trường đại học cao đẳng', 12),
+(38, 2, 'Nhà trọ Nắng Xanh cho thuê phòng trọ', 'Phòng trọ gần trung tâm phòng lớn rộng rãi an ninh', 15),
+(39, 2, 'Nhà trọ Nắng Xanh cho sinh viên thuê', 'Phòng trọ trong trung tâm', 16),
+(40, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 17),
+(41, 2, 'Cho thuê Phòng Giá tốt Nhà trọ Nắng Xanh', 'Phòng trọ thoáng mát an ninh có camera', 18),
+(42, 2, 'Phòng trọ cho thuê Nhà trọ Nắng Xanh', 'Vị trí đắc địa trong trung tâm thành phố', 19),
+(43, 3, 'Nhà trọ Sinh Viên Số 55 cho thuê phòng', 'Phòng trọ gần trung tâm', 20),
+(44, 3, 'Nhà trọ Sinh viên số 55 Phòng trọ giá hợp lý', 'Phòng trọ gần các trường đại học cao đẳng, Phòng không có gác phù hợp 1 - 2 người', 21),
+(48, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có gác', 24),
+(49, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác thoáng mát không ngập nước', 25),
+(50, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng trọ có gác thoáng mát không ngập nước', 26),
+(51, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có nội thất đầy đủ tiện nghi', 27),
+(52, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác có máy lạnh thoáng mát không ngập nước', 28),
+(53, 4, 'Nhà trọ Sinh Viên Huỳnh Liên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng không có gác thoáng mát không ngập nước', 29),
+(54, 4, 'Nhà trọ Sinh Viên Huỳnh Liên cho thuê phòng', 'Phòng không có gác an ninh có camera chóng trộm', 30),
+(56, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng trọ giá rẻ', 'Phòng không có gác an ninh không ngập nước trong trung tâm', 32),
+(57, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng', 'Phòng có gác an ninh không ngập nước trong trung tâm', 33),
+(58, 4, 'Huỳnh Liên Nhà trọ cho thuê phòng trọ giá rẻ', 'Phòng trọ có gác an ninh không ngập nước trong trung tâm', 34),
+(59, 4, ' Nhà trọ Huỳnh Liên cho Sinh Viên thuê phòng trọ giá rẻ', 'Phòng có gác an ninh, giờ giấc tự do, không ngập nước trong trung tâm', 35),
+(60, 4, 'Huỳnh Liên cho thuê phòng trọ giá rẻ', 'Phòng trọ có đầy đủ nội thất, tiện nghi, an ninh, không ngập nước trong trung tâm', 36),
+(61, 4, 'Cho thuê phòng trọ giá rẻ Nhà trọ Huỳnh Liên ', 'Phòng trọ có máy lạnh, giờ giấc tự do, an ninh, không ngập nước trong trung tâm', 37),
+(62, 5, 'Nhà trọ sinh viên VŨ', 'Phòng trọ không gác, thoáng mát, an ninh', 38),
+(63, 5, 'Nhà trọ sinh viên VŨ cho thuê phòng', 'Phòng trọ không gác, giờ giấc tự do, thoáng mát, an ninh', 39),
+(65, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Phòng trọ không có gác, giờ giấc tự do, gần các trường đại học, an ninh', 41),
+(66, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Giờ giấc tự do, gần các trường đại học, an ninh', 42),
+(67, 5, 'Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 43),
+(68, 5, 'Nhà trọ Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh có camera, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 44),
+(69, 5, 'Cho thuê phòng trọ Anh Vũ ', 'Phòng trọ có nội thất đầy đủ tiện nghi, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 45),
+(70, 5, 'Nhà trọ sinh viên Anh Vũ', 'Phòng trọ có máy lạnh, gần các trường đại học, chợ, siêu thị tiện lợi', 46),
+(72, 2, 'Cho thuê phòng trọ Nhà Trọ Nắng Xanh', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 14),
+(73, 3, 'Cho thuê phòng trọ Cần Thơ', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 23),
+(76, 1, 'Cho thuê phòng trọ Cần Thơ', 'Phòng trọ có nội thất, rộng rãi, thoáng mát, an ninh, gần các trường đại học cao đẳng', 10);
 
 -- --------------------------------------------------------
 
@@ -42,11 +90,11 @@ CREATE TABLE `baiviet` (
 
 CREATE TABLE `chukhutro` (
   `ID_CKT` int(11) NOT NULL,
-  `HOTEN` varchar(30) NOT NULL,
-  `GIOITINH` varchar(5) NOT NULL,
-  `SDT` char(10) NOT NULL,
-  `TENDANGNHAP` varchar(30) NOT NULL,
-  `MATKHAU` varchar(255) NOT NULL,
+  `HOTEN` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `GIOITINH` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `SDT` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `TENDANGNHAP` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `MATKHAU` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `NGAYLAP` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -71,6 +119,20 @@ CREATE TABLE `coloaiphong` (
   `ID_KHUTRO` int(11) NOT NULL,
   `ID_LP` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `coloaiphong`
+--
+
+INSERT INTO `coloaiphong` (`ID_KHUTRO`, `ID_LP`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 9);
 
 -- --------------------------------------------------------
 
@@ -139,7 +201,7 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 CREATE TABLE `hinh` (
   `ID_HINH` int(11) NOT NULL,
   `STT` int(11) NOT NULL,
-  `HINH` varchar(255) NOT NULL
+  `HINH` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -199,7 +261,7 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 CREATE TABLE `huyen` (
   `ID_HUYEN` int(11) NOT NULL,
   `ID_TINH` int(11) NOT NULL,
-  `TENHUYEN` varchar(50) NOT NULL
+  `TENHUYEN` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -300,10 +362,10 @@ CREATE TABLE `khutro` (
   `ID_KHUTRO` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
   `ID_CKT` int(11) NOT NULL,
-  `TENKHUTRO` varchar(30) NOT NULL,
-  `SONHA` varchar(100) NOT NULL,
-  `LAT_TRO` varchar(50) NOT NULL,
-  `LONG_TRO` varchar(50) NOT NULL
+  `TENKHUTRO` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `SONHA` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `LAT_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `LONG_TRO` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -325,7 +387,7 @@ INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT
 
 CREATE TABLE `loaiphong` (
   `ID_LP` int(11) NOT NULL,
-  `TENLOAIPHONG` varchar(30) NOT NULL,
+  `TENLOAIPHONG` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `SONGUOIOTOIDA` int(11) NOT NULL,
   `DIENTICH` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -374,7 +436,7 @@ INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
 
 CREATE TABLE `phong` (
   `STT` int(11) NOT NULL,
-  `TENPHONG` varchar(20) NOT NULL,
+  `TENPHONG` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `ID_TT` int(11) DEFAULT NULL,
   `ID_KHUTRO` int(11) DEFAULT NULL,
   `ID_LP` int(11) DEFAULT NULL
@@ -435,7 +497,7 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 
 CREATE TABLE `tinh` (
   `ID_TINH` int(11) NOT NULL,
-  `TENTINH` varchar(50) NOT NULL
+  `TENTINH` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -453,7 +515,7 @@ INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
 
 CREATE TABLE `trangthai` (
   `ID_TT` int(11) NOT NULL,
-  `TENTT` varchar(20) NOT NULL
+  `TENTT` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -474,10 +536,10 @@ INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
 CREATE TABLE `truong` (
   `T_MA` int(11) NOT NULL,
   `ID_XA` int(11) NOT NULL,
-  `T_TENTRUONG` varchar(50) NOT NULL,
-  `T_ICON` varchar(50) NOT NULL,
-  `LAT_TRUONG` varchar(50) NOT NULL,
-  `LONG_TRUONG` varchar(50) NOT NULL
+  `T_TENTRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `T_ICON` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `LAT_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `LONG_TRUONG` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -506,7 +568,7 @@ INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `L
 CREATE TABLE `xa` (
   `ID_XA` int(11) NOT NULL,
   `ID_HUYEN` int(11) NOT NULL,
-  `TENXA` varchar(50) NOT NULL
+  `TENXA` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -600,7 +662,8 @@ INSERT INTO `xa` (`ID_XA`, `ID_HUYEN`, `TENXA`) VALUES
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ID_BAIVIET`),
-  ADD KEY `KHUTRO` (`ID_KHUTRO`);
+  ADD KEY `KHUTRO` (`ID_KHUTRO`),
+  ADD KEY `STT` (`STT`);
 
 --
 -- Indexes for table `chukhutro`
@@ -615,7 +678,7 @@ ALTER TABLE `chukhutro`
 --
 ALTER TABLE `coloaiphong`
   ADD PRIMARY KEY (`ID_KHUTRO`,`ID_LP`),
-  ADD KEY `ID_KHUTRO` (`ID_KHUTRO`,`ID_LP`);
+  ADD KEY `ID_LP` (`ID_LP`);
 
 --
 -- Indexes for table `giathuephong`
@@ -708,7 +771,7 @@ ALTER TABLE `xa`
 -- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
-  MODIFY `ID_BAIVIET` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_BAIVIET` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `chukhutro`
@@ -784,7 +847,15 @@ ALTER TABLE `xa`
 -- Constraints for table `baiviet`
 --
 ALTER TABLE `baiviet`
-  ADD CONSTRAINT `KHUTRO` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `KHUTRO` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `baiviet_ibfk_1` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`);
+
+--
+-- Constraints for table `coloaiphong`
+--
+ALTER TABLE `coloaiphong`
+  ADD CONSTRAINT `coloaiphong_ibfk_1` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
+  ADD CONSTRAINT `coloaiphong_ibfk_2` FOREIGN KEY (`ID_LP`) REFERENCES `loaiphong` (`ID_LP`);
 
 --
 -- Constraints for table `hinh`
