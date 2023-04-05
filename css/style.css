@@ -884,7 +884,9 @@ select {
 
 .home_buy_sell .listing {
     flex: 1;
-    padding-right: 8px
+    padding-right: 8px;
+   
+
 }
 
 .home_buy_sell .listing:last-child {
@@ -903,9 +905,10 @@ select {
 
 .home_buy_sell .home_listing {
     display: block;
-    height: calc(100% - 36px);
-    padding: 8px 0;
-    width: 100%
+    
+    /*height: calc(100% - 36px);
+    padding: 8px 0;*/
+    width: 100%;
 }
 
 .home_buy_sell .home_listing>div.item_suggest {
@@ -1083,13 +1086,13 @@ select {
     color: #f1c40f!important
 }
 
-.home_buy_sell .home_listing>div.item .info .if {
+/*.home_buy_sell .home_listing>div.item .info .if {
     display: block;
     margin-bottom: 3px;
     max-height: 28px;
     overflow: hidden;
     width: 310px
-}
+}*/
 
 .home_buy_sell .home_listing>div.item .info .if i {
     margin-right: 6px
@@ -1120,10 +1123,12 @@ select {
     -webkit-box-orient: vertical;
     color: #005e00;
     display: -webkit-box;
-    max-width: 200px;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis
 }
+
+
 
 .home_buy_sell .home_listing>div.item .info .if .acreage sup {
     font-size: 9px

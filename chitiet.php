@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if(isset($_GET['ID_BAIVIET'])){
+    $ID_BAIVIET = $_GET['ID_BAIVIET'];
+    echo $ID_BAIVIET;
+    exit();
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -353,56 +362,7 @@
                 <img class="small" src="./image/home.png" alt="">
             </div>
         </div>
-        <!-- <div class="thongtinchutro" >
-            <h2>Thông Tin Khu Trọ</h2>
-            <div>
-                <h3>Tên khu trọ: Nhà Trọ Bảy Bảnh</h3>
-                <div class="ttchutro">
-                    <p style="margin-left: 10px;" ><b>Chủ khu trọ: </b>Nguyễn Văn Bảnh</p>
-                </div>
-                
-                <div class="ttchutro" >
-                    <p style="margin-left: 10px;"><b>Giá thuê: </b>3.000.000</p>
-                </div>
-                
-                <button type="button" class="detail" >
-                    0123456789
-
-                </button>
-                <div class="diachi">
-                    <p style="margin-left: 10px;"><b>Địa chỉ:</b>
-                            278/32/18 - đường Tầm Vu, Hưng Lợi, Cần Thơ
-                    </p>
-                </div>
-            </div>
-        </div> -->
-        
-          <!-- <div class="detail-v2-user-info">
-              <div class="main-info">
-                <img alt="Đặng Thị Huệ" src="https://connect.sosanhnha.com/avata.php?id=634339" class="picture">
-                <small>Được đăng bởi</small>
-                <div class="username">
-                Đặng Thị Huệ
-                </div>
-                  <a href="/p/nha-dat-khanh-hoa-gia-re-id2173" title="Nhà đất Khánh Hòa GÍA RẺ" class="show-page">
-                  Xem chuyên trang
-                </a>
-              </div>
-              <div class="user-options">
-                <button class="btn-phone button " onclick="showPhone('0918849696',null)">
-                  <i class="mcon-phone "></i> <span class=" p_0918849696">0918849 *** Hiện số</span>
-                </button>
-                <a href="mailto:huedthi321@gmail.com" class="btn-email button">
-                  <i class="mcon-email"></i> huedthi321@gmail.com
-                </a>
-                <button class="btn-chat button" onclick="CreateChat({&quot;to_id&quot;:&quot;634339&quot;,&quot;product_detail&quot;:{&quot;id&quot;:&quot;24614100&quot;,&quot;url&quot;:&quot;https:\/\/sosanhnha.com\/gia-qua-re-nha-mat-tien-dien-tich-lon-120m2-duong-lam-son-gia-chi-15tr-thang-cla18xX5R&quot;,&quot;title&quot;:&quot;[ GI\u00c1 QU\u00c1 R\u1eba ] NH\u00c0 M\u1eb6T TI\u1ec0N DI\u1ec6N T\u00cdCH L\u1edaN 120M2 \u0110\u01af\u1edcNG LAM S\u01a0N  GI\u00c1 CH\u1ec8 15TR\/ TH\u00c1NG&quot;,&quot;acreage&quot;:&quot;120 m\u00b2&quot;,&quot;price&quot;:&quot;15 tri\u1ec7u\/th\u00e1ng&quot;,&quot;picture&quot;:&quot;https:\/\/media.sosanhnha.com\/webp\/150x150\/2023\/03\/1679972584-tyd.jpg&quot;}})">
-                  <i class="mcon-chat"></i> Chat với người đăng tin
-                </button>
-                <button class="btn-chat button" onclick="openRequireContact()">
-                  Yêu cầu liên hệ lại
-                </button>
-              </div>
-          </div> -->
+       
           <div class="home_filter" style="height: auto !important;">
             <div class="detail-v2-user-info">
             <div class="main-info">

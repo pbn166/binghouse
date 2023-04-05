@@ -8,7 +8,24 @@
   session_start();
   $loaiphong = "SELECT DISTINCT * 
   FROM loaiphong ";
-  $loaiphongsql = mysqli_query($conn,$loaiphong)
+  $loaiphongsql = mysqli_query($conn,$loaiphong);
+  $baiviet = "SELECT a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA
+  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, coloaiphong as h, phong as p, giathuephong as t, hinh as k, chukhutro as f
+  where a.ID_KHUTRO = b.ID_KHUTRO
+  and a.STT = p.STT
+  and b.ID_CKT = f.ID_CKT
+  and b.ID_XA = e.ID_XA
+  and e.ID_HUYEN = d.ID_HUYEN
+  and d.ID_TINH = c.ID_TINH
+  and h.ID_KHUTRO = b.ID_KHUTRO
+  and h.ID_LP = g.ID_LP
+  and p.ID_KHUTRO = b.ID_KHUTRO
+  and p.ID_LP = g.ID_LP
+  and t.ID_KHUTRO = b.ID_KHUTRO
+  and t.ID_LP = g.ID_LP
+  and k.STT=p.STT
+  GROUP BY a.ID_BAIVIET DESC";
+  $baivietsql = mysqli_query($conn,$baiviet);
  
   
   
@@ -252,164 +269,57 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
         </div>
+        
     <div class="ssn_pw home_buy_sell">
         <div class="listing">
         <strong class="label">TIN ĐĂNG MỚI</strong>
 
-            <div class="home_listing">
+        <?php 
+                
+                if (($baivietsql)) {?>
+                  <?php foreach ($baivietsql as $key => $row){?>
+                    <div class="home_listing">
                 
                                     <div class=" item">
-                        <a class="img_r " href="/can-ban-25x45-1125m2-dat-gan-khu-cong-nghiep-ngay-cho-dan-dong-gia-290tr5x45m-claP0B3Bq" title="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
+                        <a class="img_r " href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?> ">
                                                           
-                                                                             <img src="https://media.sosanhnha.com/webp/150x150/2023/03/1678263479-wbq.jpg" alt="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
+                                                                             <img src="./ha_phong/<?php echo $row['HINH'] ?>" style="width:150px; height:150px" alt="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
                                                     </a>
                         <div class="info">
                             <h3>
-                                <a class="name-vip title" href="/can-ban-25x45-1125m2-dat-gan-khu-cong-nghiep-ngay-cho-dan-dong-gia-290tr5x45m-claP0B3Bq" title="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
-                                    Cần Bán 25X45= 1125M2 Đất Gần Khu Công Nghiệp                          </a>
+                                <a class="name-vip title" href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?>">
+                                <?php echo $row['TIEUDE'] ?>                          </a>
                             </h3>
                             <div class="if">
                                 <span class="label"> Giá </span>
-                                                                    <strong class="f3b1abed9c57992b822e259ef8c7ac1f price">290 triệu</strong>                                                            </div>
+                                                                    <strong class="f3b1abed9c57992b822e259ef8c7ac1f price"><?php echo number_format ($row['GIA']) .' VNĐ'?></strong>                                                            </div>
                                                             <div class="if">
                                     <span class="label"> Diện tích </span>
-                                                                            <strong class="acreage">1125m<sup>2</sup></strong>
+                                                                            <div class="acreage"><strong><?php echo $row['DIENTICH'] ?>m<sup>2</sup></strong></div>
                                                                     </div>
                                                             <div class="if">
                                 <span class="label"> Địa chỉ </span>
-                                <strong class="address"><b>Chơn Thành</b></strong>
+                                <div class="address"><strong><?php echo $row['SONHA'] ?>,<?php echo $row['TENXA'] ?>,<?php echo $row['TENHUYEN'] ?>,<?php echo $row['TENTINH'] ?></strong></div>
+                        
                             </div>
-                            <div class="info_user_home">
+                            <div class="info_user_home" >
                                 <div class="user_name">
                                     <div class="user_avatar">
                                                                                     <img src="https://connect.sosanhnha.com/avata.php?id=629978" alt="user avatar">
                                                                             </div>
                                     <div class="avatar_name">
-                                        <span class="phone_name" title="Thị Kim">Thị Kim</span>
-                                                                                    <span class="phone_number p_0896873698" onclick="showPhoneV2('0896873698',this)"> 089687*** </span>
+                                        <span class="phone_name" title="Thị Kim"><?php echo $row['HOTEN'] ?></span>
+                                                                                    <span class="phone_number p_0896873698" onclick="showPhoneV2('0896873698',this)"> <?php echo $row['SDT'] ?> </span>
                                                                             </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                                       <div class=" item">
-                        <a class="img_r " href="/ban-gap-2-sao-dat-vuon-2060m2-gia-410trshr-sat-kcn-viet-han-dan-cu-dong-gan-qlo-tien-lam-kho-bai-cla6RQMQ5" title="Bán gấp 2 sào đất vườn [2.060m2 - giá 410tr/shr) sát kcn việt-hàn dân cư đông, gần q.lộ tiện làm kho bãi">
-                                                          
-                                                                                    <img src="https://media.sosanhnha.com/webp/150x150/2023/03/1678929222-ryh.jpg" alt="Bán gấp 2 sào đất vườn [2.060m2 - giá 410tr/shr) sát kcn việt-hàn dân cư đông, gần q.lộ tiện làm kho bãi">
-                                                    </a>
-                        <div class="info">
-                            <h3>
-                                <a class="name-vip title" href="/ban-gap-2-sao-dat-vuon-2060m2-gia-410trshr-sat-kcn-viet-han-dan-cu-dong-gan-qlo-tien-lam-kho-bai-cla6RQMQ5" title="Bán gấp 2 sào đất vườn [2.060m2 - giá 410tr/shr) sát kcn việt-hàn dân cư đông, gần q.lộ tiện làm kho bãi">
-                                    Bán Gấp 2 Sào Đất Vườn [2.060M2 - Giá 410Tr/Shr) Sát Kcn Việt-Hàn Dân Cư Đông, Gần Q.lộ Tiện Làm Kho Bãi                                </a>
-                            </h3>
-                            <div class="if">
-                                <span class="label"> Giá </span>
-                                                                    <strong class="4f39118b502d966b6932abd6380c1a0a price">410 triệu</strong>                                                            </div>
-                                                            <div class="if">
-                                    <span class="label"> Diện tích </span>
-                                                                            <strong class="acreage">2060m<sup>2</sup></strong>
-                                                                    </div>
-                                                            <div class="if">
-                                <span class="label"> Địa chỉ </span>
-                                <strong class="address"><b>TX CHƠN THÀNH</b>,<b> BÌNH PHƯỚC</b></strong>
-                            </div>
-                            <div class="info_user_home">
-                                <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <img src="https://connect.sosanhnha.com/avata.php?id=469546" alt="user avatar">
-                                                                            </div>
-                                    <div class="avatar_name">
-                                        <span class="phone_name" title="0766.376.337">0766.376.337</span>
-                                                                                    <span class="phone_number p_0766376337" onclick="showPhoneV2('0766376337',this)"> 076637*** </span>
-                                                                            </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-            </div>
-        </div>
-        <div class="listing">
-        <strong class="label">TIN ĐĂNG MỚI</strong>
-            <div class="home_listing">
-                                    <div class=" item">
-                        <a class="img_r " href="/nha-3-lau-3pn-3wc-hem-thong-xe-hoi-sau-cho-dau-moi-thu-duc-cladA7Apl" title="Nhà 3 lầu 3 phòng ngủ 3 vệ sinhhẻm thông xe hơi sau chợ đầu mối thủ đức">
-                                                        <img src="https://media.sosanhnha.com/webp/150x150/2023/03/1679153347-pictureb4nyu.jpeg" alt="Nhà 3 lầu 3 phòng ngủ 3 vệ sinhhẻm thông xe hơi sau chợ đầu mối thủ đức">
-                                                    </a>
-                        <div class="info">
-                            <h3>
-                                <a class="title" href="/nha-3-lau-3pn-3wc-hem-thong-xe-hoi-sau-cho-dau-moi-thu-duc-cladA7Apl" title="Nhà 3 lầu 3 phòng ngủ 3 vệ sinhhẻm thông xe hơi sau chợ đầu mối thủ đức">
-                                    Nhà 3 Lầu 3 Phòng Ngủ 3 Vệ Sinhhẻm Thông Xe Hơi Sau Chợ Đầu Mối Thủ Đức                                </a>
-                            </h3>
-                            <div class="if">
-                                <span class="label"> Giá </span>
-                                                                    <strong class="price">7,5 triệu/tháng</strong>
-                                                            </div>
+</div>
+                  <?php } }?> 
 
-                            <div class="if">
-                                <span class="label"> Diện tích </span>
-                                                                    <strong class="acreage">53m<sup>2</sup></strong>
-                                                            </div>
-
-                            <div class="if">
-                                <span class="label"> Địa chỉ </span>
-                                <strong class="address"><b> Phường Bình Chiểu</b>,<b> Thủ Đức</b>,<b> Hồ Chí Minh</b></strong>
-                            </div>
-                            <div class="info_user_home">
-                                <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <span>b</span>
-                                                                            </div>
-                                    <div class="avatar_name">
-                                        <span class="phone_name" title="Bùi Thị Thùy Dương">Bùi Thị Thùy Dương</span>
-                                                                                    <span class="phone_number " onclick="showPhoneV2('0904478178',this)"> 090447*** </span>
-                                                                                </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                                    <div class=" item">
-                        <a class="img_r " href="/cho-thue-nha-nguyen-can-duong-3-2-p-11-q-10-4m-x-10m-clag9o9yN" title="Cho thuê nhà nguyên căn đường 3/2 , p.11, q.10, 4m x 10m">
-                                                        <img src="https://media.sosanhnha.com/webp/150x150/2023/03/1679153347-picturemuz2b.jpg" alt="Cho thuê nhà nguyên căn đường 3/2 , p.11, q.10, 4m x 10m">
-                                                    </a>
-                        <div class="info">
-                            <h3>
-                                <a class="title" href="/cho-thue-nha-nguyen-can-duong-3-2-p-11-q-10-4m-x-10m-clag9o9yN" title="Cho thuê nhà nguyên căn đường 3/2 , p.11, q.10, 4m x 10m">
-                                    Cho Thuê Nhà Nguyên Căn Đường 3/2 , P.11, Q.10, 4M X 10M                                </a>
-                            </h3>
-                            <div class="if">
-                                <span class="label"> Giá </span>
-                                                                    <strong class="price">33 triệu/tháng</strong>
-                                                            </div>
-
-                            <div class="if">
-                                <span class="label"> Diện tích </span>
-                                                                    <strong class="acreage">40m<sup>2</sup></strong>
-                                                            </div>
-
-                            <div class="if">
-                                <span class="label"> Địa chỉ </span>
-                                <strong class="address"><b> phường 11</b>,<b> quận 10</b>,<b> hồ chí minh</b></strong>
-                            </div>
-                            <div class="info_user_home">
-                                <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <span>h</span>
-                                                                            </div>
-                                    <div class="avatar_name">
-                                        <span class="phone_name" title="Hồ Ngọc Thảo My">Hồ Ngọc Thảo My</span>
-                                                                                    <span class="phone_number " onclick="showPhoneV2('0909870029',this)"> 090987*** </span>
-                                                                                </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                            </div>
-        </div>
+</div>
+                                      
     </div>
 
     <div class="ssn_pw home_ad">
