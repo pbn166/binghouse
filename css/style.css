@@ -222,7 +222,7 @@ p {
     padding-top: 10px;
     opacity: 1;
     transform: translate(0);
-    transition: all 300ms linear;
+    /* transition: all 300ms linear; */
     transition-delay: 1700ms;
 }
 
@@ -1895,39 +1895,39 @@ element.style {
     --c29gcq6-61: 32px;
 }
 
-@media screen and (min-width: 1200px) .c29gcq6.withGutter {
+@media screen and (min-width: 1200px){} .c29gcq6.withGutter {
     padding-left: var(--c29gcq6-53);
     padding-right: var(--c29gcq6-53);
 }
 
-@media screen and (min-width: 1200px) .c29gcq6.withWidth {
+@media screen and (min-width: 1200px){} .c29gcq6.withWidth {
     width: var(--c29gcq6-52);
 }
 
-@media screen and (min-width: 992px) .c29gcq6.withGutter {
+@media screen and (min-width: 992px){} .c29gcq6.withGutter {
     padding-left: var(--c29gcq6-40);
     padding-right: var(--c29gcq6-40);
 }
 
-@media screen and (min-width: 992px) .c29gcq6.withWidth {
+@media screen and (min-width: 992px){} .c29gcq6.withWidth {
     width: var(--c29gcq6-39);
 }
 
-@media screen and (min-width: 768px) .c29gcq6.withGutter {
+@media screen and (min-width: 768px){} .c29gcq6.withGutter {
     padding-left: var(--c29gcq6-27);
     padding-right: var(--c29gcq6-27);
 }
 
-@media screen and (min-width: 768px) .c29gcq6.withWidth {
+@media screen and (min-width: 768px){} .c29gcq6.withWidth {
     width: var(--c29gcq6-26);
 }
 
-@media screen and (min-width: 576px) <style>.c29gcq6.withGutter {
+@media screen and (min-width: 576px){} .c29gcq6.withGutter {
     padding-left: var(--c29gcq6-14);
     padding-right: var(--c29gcq6-14);
 }
 
-@media screen and (min-width: 576px) .c29gcq6.withWidth {
+@media screen and (min-width: 576px){} .c29gcq6.withWidth {
     width: var(--c29gcq6-13);
 }
 

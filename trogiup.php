@@ -186,16 +186,7 @@
 </div>
 
 <br>
-<!-- <section class="section section-support">
-            <div class="section-content clearfix">
-            <div class="support-bg">
-                </div>
-            <div class="list-support clearfix">
-             <div class="list-support-title">Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</div>
-            
-            <div class="list-support-title">Gmail: binghouse@gmail.com</div>
-            <div class="list-support-title">Hotline: 0909 999 999</div> </div>
-        </section> -->
+
 
 <!-- SlideShow -->
      <div class="container-slider">
