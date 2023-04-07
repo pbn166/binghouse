@@ -111,24 +111,62 @@
     <div id="page">
         <div class="logo">
             <ion-icon name="aperture-outline"></ion-icon>
+            
         </div>    
             <div class="content">
                 <div class="left">
             <div class="title">
-                <h1>Welcome!</h1>
+                <h1 class="font">Welcome!</h1>
             </div>    
-            <p>Đăng ký khu trọ của bạn tại đây, bạn sẽ có thể đăng cho thuê ngay bây giờ!</p>
-            <button type="" href="index.php">Trang chủ</button>
+            <p class="font">Đăng ký khu trọ của bạn tại đây, bạn sẽ có thể đăng cho thuê ngay bây giờ!</p>
+            <!-- <button type="" href="index.php">Trang chủ</button> -->
         </div>
             <div class="right">
                 <form action="">
                     <h2>Đăng ký thông tin khu trọ</h2>
-                    <input type="text" placeholder="Tên chủ trọ" id="username">
-                    <input type="text" placeholder="Tên khu trọ" id="username">
-                    <input type="text" placeholder="Địa chỉ" id="address">
-                    <input type="phone" placeholder="Số điện thoại" id="username">
+                    <input type="text" placeholder="Nhập tên khu trọ" id="username">
+                    <input type="text" placeholder="Nhập số nhà" id="address">
+                      <div class="dimem">
+                      <select name="as" id="as">
+                      <option value="0">Xã</option>
+                        <option value="">Hưng Lợi</option>
+                        <option value="1">Xuân Khánh</option>
+                        <option value="2">An Hòa</option>
+                        <option value="3">An Thới</option>
+                        <option value="4">An Cư</option>
+                        <option value="5">An Nghiệp</option>
+                      </select>
+                      <br><br>
+                      <select name="as" id="as">
+                      <option value="0">Huyện</option>
+                        <option value="0">Ninh Kiều</option>
+                        <option value="1">Cái Răng</option>
+                        <option value="2">Bình Thủy</option>
+                        <option value="3">Thốt Nốt</option>
+                        <option value="4">Ô Môn</option>
+                      </select>
+                      <br><br>
+                      <select name="as" id="as">
+                      <option value="0">Tỉnh</option>
+                        <option value="0">Cần Thơ</option>
+                      </select>
+             
+        <!-- <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="outline: none;"></div>
+        <script>
+            var mapOptions = {
+                center:[10.0279603,105.7664918],
+                zoom:10
+            }
+            var map = new L.map('map', mapOptions);
+            var layer = new L.TileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+                                            maxZoom: 20,
+                                            subdomains:['mt0', 'mt1', 'mt2', 'mt3']
+            });
+            var layer = new L.TitleLayer("https://www.google.com/maps/@10.023307,105.7703402,15z");
+            map.addLayer(layer);
+            </div> -->
+            <input class="inpu" type="submit" value="ĐĂNG KÝ">
 
-                        <input type="submit" value="ĐĂNG KÝ">
                 </form>
             </div>
     </div>
@@ -157,8 +195,8 @@
  }
 </style>
 </div>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
 
 </body>
 </html>
