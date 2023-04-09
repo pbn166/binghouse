@@ -149,7 +149,11 @@
                       <select name="as" id="as">
                       <option value="0">Tỉnh</option>
                         <option value="0">Cần Thơ</option>
-                      </select>
+                      </select><br>
+                      <div class="ami">
+                      <input type="text" placeholder="Nhập vĩ độ của bạn" id="lat">
+                      <input type="text" placeholder="Nhập kinh độ của bạn" id="long">
+</div>
              
         <!-- <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="outline: none;"></div>
         <script>
@@ -165,6 +169,28 @@
             var layer = new L.TitleLayer("https://www.google.com/maps/@10.023307,105.7703402,15z");
             map.addLayer(layer);
             </div> -->
+
+            <!-- Lấy Vĩ độ và Kinh độ -->
+            
+            <!-- <h4>Nhấn vào đây để lấy tọa độ vị trí của bạn</h4>
+            <button class="nehe" onclick="getUserLocation()">ĐỊNH VỊ</button>
+            <p id="demo"></p>
+            <script>
+                var x = document.getElementById("demo");
+                function getUserLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    } else {
+                        alert("Geolocation is not supported by this browser.")
+                    }
+                }
+                function showPosition(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    alert('Vĩ độ của bạn là:' + lat + ' và Kinh độ của bạn là:' + lon);
+                }
+            </script> -->
+
             <input class="inpu" type="submit" value="ĐĂNG KÝ">
 
                 </form>
