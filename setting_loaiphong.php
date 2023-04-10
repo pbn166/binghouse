@@ -85,7 +85,7 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
       
     </head>
 <body class="">
-            <div class="navigation-wrap bg-light start-header start-style">
+                         <div class="navigation-wrap bg-light start-header start-style">
             <div class="container">
               <div class="row">
                 <div class="col-12">
@@ -162,7 +162,8 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
               <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
               <!--<a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br>-->
               <div class="container">
-                                    <p class="item"><a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br></p>
+                  
+                  <p class="item"><a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br></p>
                   <div class="dropdown">
                   <?php if (($khutrosql)) {?>
                         <?php foreach ($khutrosql as $key => $value) {?>
@@ -176,10 +177,12 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
                               <a href="">Phòng </a>
                            <ul class="dropdown-content">
                               <li  class="dropdown-content">
-                               <a href="setting_loaiphong.php">Loại phòng</a>
+                               <a href="#">Loại phòng</a>
                               </li>
                            </ul> 
-                           </div>
+                          
+                         
+                        </div>
   
                         
                   </div>
@@ -264,7 +267,7 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
    </div>
    <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container" style="">
    <div>
-    <h2><div class="ten">Hồ sơ cá nhân</div></h2>
+    <h2><div class="ten">Thông tin loại phòng</div></h2>
     <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
                <label data-v-5d159d94="" class="label-form">Họ và tên <small data-v-5d159d94="" style="color: red;">*</small></label>
