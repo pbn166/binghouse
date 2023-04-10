@@ -173,10 +173,10 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
                         <a href="javascript:void(0)" class="dropbtn"></a>
                         <div class="dropdown-content">
                            <li>
-                              <a href="">Phòng </a>
+                              <a href="">Loại phòng </a>
                            <ul class="dropdown-content">
                               <li  class="dropdown-content">
-                               <a href="setting_loaiphong.php">Loại phòng</a>
+                               <a href="setting_loaiphong.php">Phòng</a>
                               </li>
                            </ul> 
                            </div>

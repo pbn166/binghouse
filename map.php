@@ -45,6 +45,8 @@
         <link rel="stylesheet" href="css/map.css">
         <link rel="stylesheet" href="leaflet/leaflet.css">
         <script src="leaflet/leaflet.js"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
         <style>
             .custom .leaflet-popup-tip,
             .custom .leaflet-popup-content-wrapper {
@@ -169,11 +171,11 @@
             };
             var map = new L.map('map', mapOptions);
             var layer = new
-            //L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-            L.TileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-                maxZoom:20,
-                subdomains:['mt0','mt1','mt2','mt3']
-            });
+            L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+            //L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            //    maxZoom:20,
+            //    subdomains:['mt0','mt1','mt2','mt3']
+            //});
             map.addLayer(layer);
            
             var customOptions ={

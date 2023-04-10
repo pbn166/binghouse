@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <?php
   include './config/config.php';
-  session_start();
   $tinh="select * from tinh";
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
-  $baiviet = "SELECT a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA 
-  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f 
-  where a.ID_KHUTRO = b.ID_KHUTRO 
-  and a.STT = p.STT 
-  and b.ID_CKT = f.ID_CKT 
-  and b.ID_XA = e.ID_XA 
-  and e.ID_HUYEN = d.ID_HUYEN 
-  and d.ID_TINH = c.ID_TINH 
-  and t.ID_KHUTRO = b.ID_KHUTRO 
-  and t.ID_LP = g.ID_LP
-  and k.STT= p.STT 
-  GROUP BY a.ID_BAIVIET DESC;";
-  $baivietsql = mysqli_query($conn,$baiviet);
+  session_start();
+  $map= "select * from truong";
+  $mapsql=mysqli_query($conn,$map);
+  
+
  
   
   
 
 ?>
-<html lang="vi">
+<html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -51,11 +42,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/ajax1.js" type="text/javascript"></script>
-      
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="css/map.css">
     </head>
-   
-    <body class="hero-anime">
-
+<body class="hero-anime">
 <div class="navigation-wrap bg-light start-header start-style">
   <div class="container">
     <div class="row">
@@ -142,194 +133,65 @@
     </div>
   </div>
 </div>
-
 <div class="my-4 py-4">
 </div>
+<div id="map"></div>
 
-<!-- Link to page
-================================================== -->
-<div class="ssn_pw_filter" >
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        //style: 'mapbox://styles/mapbox/light-v11',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [10.03451,105.77106],
+        zoom: 11.15,
+        hash: true
+    });
+    function createIcon(icon) {
+    var el = document.createElement('div');
+    el.style.backgroundImage = 'url(' + icon.url + ')';
+    el.style.width = icon.size[0] + 'px';
+    el.style.height = icon.size[1] + 'px';
+    el.style.backgroundSize = '100%';
+    el.style.backgroundRepeat = 'no-repeat';
+    el.style.backgroundPosition = 'center';
+    el.style.borderRadius = '50%';
+    return el;
+}
+    <?php
+  foreach ($mapsql as $key => $value){?>
   
-    <div class="box-cla-filter-pc-v2">
- <form class="f-body cla-filter" action="/search" method="get">
- <div class="row-main">
- <div class="item-filter has-icon border-r flex-none">
- <i class="icon mcon-city"></i>
- <select name="iCat" class="f-form-input room">
- <option value="0">Chọn loại phòng</option>
- <?php
-  foreach ($loaiphongsql as $key => $value){?>
-    <option value ='<?php echo $value['ID_LP'] ?>'><?php echo $value['TENLOAIPHONG']?></option>
-    
-<?php } ?>
-  
-  
-  </select>
- </div>
- <div class="item-filter">
- <input type="text" value="" id="input-form-search" placeholder="Từ khóa tìm kiếm. VD: Thuê nhà trọ Cầu Giấy" name="keyword" class="f-form-input" autocomplete="off">
- </div>
- <button type="submit" class="btn btn-primary">
- Tìm kiếm
- </button>
-
- </div>
- <div class="row-main-2">
- <div class="item-filter">
- <select name="iCitId" class="f-form-input tentinh" onchange="getDistrictClaFilter(this.value)">
- <option value="0">Tất cả Tỉnh/Thành phố</option>
- <?php
-  foreach ($tinhsql as $key => $value){?>
-    <option value='<?php echo $value['ID_TINH'] ?>'><?php echo $value['TENTINH'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iDisId" class="f-form-input city" onchange="getWardClaFilter(this.value)">
-  <option value="">Quận/Huyện</option>
-  <?php
-  foreach ($huyensql as $key => $value){?>
-    <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iWardId" class="f-form-input tinh">
-  <option value="0">Phường/Xã</option>    
- </select>
- </div>
- <div class="item-filter">
-    <select class="f-form-input price" name="iPrice">
-  <option selected="" value="0">
- Tất cả mức giá
- </option>
-  
-  
-  </select>
- </div>
- <div class="option-reset" onclick="resetFilterCla()">
  
-            <svg width="25px" height="25px" viewBox="0 0 24 24" class="mcon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="/385/assets/images/icons.svg#refresh"></use>
-            </svg>
-        
- </div>
- </div>
- </form>
- </div>
     
-<script language="javascript">
- $(document).ready(function () {
- $('#input-form-search').autocomplete({
- serviceUrl: '/ajax/suggest?secret=45c09f3828245d941d0da984d0222cb2',
- noCache: true,
- autoSelectFirst: false,
- deferRequestBy: 300,
- minChars: 0,
- onSelect: function (suggestion) {
- url = suggestion.url || '';
- if (url !== '') {
- window.location.href = url;
- }
- }
- });
- });
+  var name = <?php echo json_encode($value['T_TENTRUONG']); ?>;
+  var popupHtml = '<h3>' + name + '</h3>';
+  var popup = new mapboxgl.Popup({
+    offset: 25
+  }).setHTML(popupHtml);
+  var icon = {
+    url: './icon/<?php echo $value['T_ICON'] ;?>', // đường dẫn đến file hình ảnh icon
+    size: [40,40], // kích thước của icon
+    anchor: [20,20], // vị trí neo của icon, tính từ góc trái trên cùng
+};
+    
+var marker = new mapboxgl.Marker({
+    element: createIcon(icon), // tạo element mới chứa hình ảnh icon
+})
+    .setLngLat([<?php echo $value['LONG_TRUONG'] ?>,<?php echo $value['LAT_TRUONG'] ?>])
+    .setPopup(popup) // đặt vị trí địa lý cho đối tượng Marker
+    .addTo(map);
+    
+
+<?php } ?>
+
+
+    // This GeoJSON contains features that include an "icon"
+    // property. The value of the "icon" property corresponds
+    // to an image in the Mapbox Light style's sprite.
+    
 </script>
 
-<style>
- .autocomplete-suggestions{
- z-index: 10050000!important;
- }
-</style>
-<section class="ssn_container ssn_buy_sell fix_pos">
-
-    <div class="home_fixed">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-    <div class="ssn_pw home_ad">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-        
-    <div class="ssn_pw home_buy_sell">
-        <div class="listing">
-        <strong class="label">TIN ĐĂNG MỚI</strong>
-
-        <?php 
-                
-                if (($baivietsql)) {?>
-                  <?php foreach ($baivietsql as $key => $row){?>
-                    <div class="home_listing">
-                
-                                    <div class=" item">
-                        <a class="img_r " href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?> ">
-                                                          
-                                                                             <img src="./ha_phong/<?php echo $row['HINH'] ?>" style="width:150px; height:150px" alt="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
-                                                    </a>
-                        <div class="info">
-                            <h3>
-                                <a class="name-vip title" href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?>">
-                                <?php echo $row['TIEUDE'] ?>                          </a>
-                            </h3>
-                            <div class="if">
-                                <span class="label"> Giá </span>
-                                                                    <strong class="f3b1abed9c57992b822e259ef8c7ac1f price"><?php echo number_format ($row['GIA']) .' VNĐ'?></strong>                                                            </div>
-                                                            <div class="if">
-                                    <span class="label"> Diện tích </span>
-                                                                            <div class="acreage"><strong><?php echo $row['DIENTICH'] ?>m<sup>2</sup></strong></div>
-                                                                    </div>
-                                                            <div class="if">
-                                <span class="label"> Địa chỉ </span>
-                                <div class="address"><strong><?php echo $row['SONHA'] ?>,<?php echo $row['TENXA'] ?>,<?php echo $row['TENHUYEN'] ?>,<?php echo $row['TENTINH'] ?></strong></div>
-                        
-                            </div>
-                            <div class="info_user_home" >
-                                <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <img src="https://connect.sosanhnha.com/avata.php?id=629978" alt="user avatar">
-                                                                            </div>
-                                    <div class="avatar_name">
-                                        <span class="phone_name" title="Thị Kim"><?php echo $row['HOTEN'] ?></span>
-                                                                                    <span class="phone_number p_0896873698" onclick="showPhoneV2('0896873698',this)"> <?php echo $row['SDT'] ?> </span>
-                                                                            </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-</div>
-                  <?php } }?> 
-
-</div>
-                                      
-    </div>
-
-    <div class="ssn_pw home_ad">
-    </div>
-
-    <div class="home_fixed home_r">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-
-</section>
 
 </body>
-
 </html>
-
-
