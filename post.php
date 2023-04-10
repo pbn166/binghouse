@@ -47,9 +47,9 @@
     </head>
    
     <body class="hero-anime">
-      <?php if(isset($_SESSION['HOTEN'])) {?>
+      <?php if(isset($_SESSION['TENDANGNHAP'])) {?>
          <?php
-      $query="SELECT * FROM chukhutro WHERE HOTEN = '".$_SESSION['HOTEN']."' ";
+      $query="SELECT * FROM chukhutro WHERE TENDANGNHAP = '".$_SESSION['TENDANGNHAP']."' ";
       $chukhutro = mysqli_fetch_assoc($conn->query($query));
       ?>
           <div class="navigation-wrap bg-light start-header start-style">

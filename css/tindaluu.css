@@ -6080,7 +6080,7 @@ body.page_dashboard .page_body {
 }
 .card_view .card_item {
     background: #fff;
-    border-radius: 3px;
+    border-radius: 10px;
     display: flex;
     border: 1px solid #e6e6e6;
     box-shadow: none;
@@ -6097,6 +6097,7 @@ body.page_dashboard .page_body {
     /* display: block; */
     font-size: 1.5rem;
     font-weight: bold;
+    margin-left: 160px;
     /* color: #f60; */
 }
 .card_view .card_item .card_icon {
