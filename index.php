@@ -6,6 +6,9 @@
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
+  $loaiphong = "SELECT DISTINCT * 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong);
   $baiviet = "SELECT a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA 
   from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f 
   where a.ID_KHUTRO = b.ID_KHUTRO 

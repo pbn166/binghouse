@@ -44,7 +44,64 @@
         <script src="js/ajax1.js" type="text/javascript"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
-        <link rel="stylesheet" href="css/map.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        
+        
+        <style>
+   
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    padding-top:10px;
+}
+
+.left-panel {
+    position: absolute;
+    width: 300px;
+    height: calc(100vh - 2rem);
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    background-color: #fff;
+    transition: 1s ease;
+}
+
+.right-panel {
+    position: absolute;
+    width: 300px;
+    max-height: calc(100vh - 2rem);
+    right: 1rem;
+    top: 1rem;
+    z-index: 10;
+    background-color: #fff;
+    height: 200px;
+}
+
+.btn-open-leftpanel {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 9;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    </style>
+        
+
     </head>
 <body class="hero-anime">
 <div class="navigation-wrap bg-light start-header start-style">
@@ -135,16 +192,44 @@
 </div>
 <div class="my-4 py-4">
 </div>
-<div id="map"></div>
+<div class="wrapper">
+        <div class="left-panel">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chức năng<i class="fas fa-arrow-left" style="float: right;" onclick="closeLeftPanel()"></i></h5>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                             Danh Sách Các Trường Đại Học/ Cao Đẳng Trên Địa Bàn Thành Phố Cần Thơ
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul class="list-group list-group-flush" id="lstUnv">
+                                     <li class ="list-group-item">And a fifth</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-open-leftpanel" onclick="openLeftPanel()">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        <div id='map'></div>
+
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
-    const map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
         container: 'map',
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         //style: 'mapbox://styles/mapbox/light-v11',
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [10.03451,105.77106],
+        center: [105.77577,10.03825,],
         zoom: 11.15,
         hash: true
     });
@@ -165,7 +250,7 @@
  
     
   var name = <?php echo json_encode($value['T_TENTRUONG']); ?>;
-  var popupHtml = '<h3>' + name + '</h3>';
+  var popupHtml = '<p>'+'<strong>' + name +'</strong>'+ '</p>';
   var popup = new mapboxgl.Popup({
     offset: 25
   }).setHTML(popupHtml);
@@ -184,6 +269,65 @@ var marker = new mapboxgl.Marker({
     
 
 <?php } ?>
+
+    
+function getDataToHtml(data, elmParentId, fieldVisible) {
+  var content = "";
+  var elm = document.getElementById(elmParentId);
+  if (elm) {
+    <?php foreach ($mapsql as $key => $value){?>
+      var name = <?php echo json_encode($value['T_TENTRUONG']); ?>;
+      var lat = <?php echo json_encode($value['LAT_TRUONG']); ?>;
+      var lng = <?php echo json_encode($value['LONG_TRUONG']); ?>;
+      content += '<li class="list-group-item" onclick="flyToSchool(' + lat + ', ' + lng + ')">' + name + '</li>';
+    <?php } ?>
+    elm.innerHTML = content;
+  }
+}
+
+
+
+
+getDataToHtml(null, 'lstUnv', 'T_TENTRUONG');
+function flyToSchool(lat, lng) {
+  map.flyTo({
+    center: [lng, lat],
+    zoom: 16,
+    essential: true
+  });
+}
+
+// Lặp qua các phần tử li trong danh sách và thêm sự kiện click
+function closeLeftPanel() {
+    var elm = document.querySelector('.wrapper .left-panel');
+    if (elm) {
+        elm.style.left = '-100%';
+    }
+    document.querySelector('.wrapper .btn-open-leftpanel').style.display = 'flex';
+}
+
+function openLeftPanel() {
+    var elm = document.querySelector('.wrapper .left-panel');
+    if (elm) {
+        elm.style.left = '1rem';
+    }
+    document.querySelector('.wrapper .btn-open-leftpanel').style.display = 'none';
+}
+
+function closeRightPanel() {
+    var elm = document.querySelector('.wrapper .right-panel');
+    if (elm) {
+        elm.style.display = 'none';
+    }
+}
+
+function openRightPanel() {
+    var elm = document.querySelector('.wrapper .right-panel');
+    if (elm) {
+        elm.style.display = 'block';
+    }
+}
+
 
 
     // This GeoJSON contains features that include an "icon"
