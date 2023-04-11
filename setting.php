@@ -180,14 +180,11 @@ $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
                               </li>
                            </ul> 
                            </div>
-  
-                        
                   </div>
                </div>
               <!--<a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>-->
               <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a><br>
-              
-            </p>
+                          </p>
                      <span class="f6ete4">
                         <!-- -->
             <div class="wsk6u1i" style="--wsk6u1i-0:24px;">
