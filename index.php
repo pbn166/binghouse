@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <?php
   include './config/config.php';
+  session_start();
   $tinh="select * from tinh";
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
+  $loaiphong = "SELECT DISTINCT * 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong);
+  $baiviet = "SELECT a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA 
+  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f 
+  where a.ID_KHUTRO = b.ID_KHUTRO 
+  and a.STT = p.STT 
+  and b.ID_CKT = f.ID_CKT 
+  and b.ID_XA = e.ID_XA 
+  and e.ID_HUYEN = d.ID_HUYEN 
+  and d.ID_TINH = c.ID_TINH 
+  and t.ID_KHUTRO = b.ID_KHUTRO 
+  and t.ID_LP = g.ID_LP
+  and k.STT= p.STT 
+  GROUP BY a.ID_BAIVIET DESC;";
+  $baivietsql = mysqli_query($conn,$baiviet);
  
   
   
