@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 13, 2023 lúc 06:40 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 7.4.28
+-- Host: 127.0.0.1
+-- Generation Time: Apr 13, 2023 at 02:15 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `hiiiiiiiii`
+-- Database: `quanly_nhatro`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `baiviet`
+-- Table structure for table `baiviet`
 --
 
 CREATE TABLE `baiviet` (
@@ -32,60 +32,61 @@ CREATE TABLE `baiviet` (
   `ID_KHUTRO` int(11) NOT NULL,
   `TIEUDE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `GIOITHIEUBAIVIET` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `STT` int(11) DEFAULT NULL
+  `STT` int(11) DEFAULT NULL,
+  `NGAYDANG` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `baiviet`
+-- Dumping data for table `baiviet`
 --
 
-INSERT INTO `baiviet` (`ID_BAIVIET`, `ID_KHUTRO`, `TIEUDE`, `GIOITHIEUBAIVIET`, `STT`) VALUES
-(1, 1, 'Cho thuê phòng trọ đầy đủ tiện nghi', 'Phòng rộng rãi sạch sẽ thoáng mát', 1),
-(2, 1, 'Cho thuê phòng trọ có nội thất', 'Rất tiện lợi', 9),
-(22, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng', 'Phòng trọ gần trung tâm', 2),
-(24, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng giá rẻ', 'Phòng trọ gần trường đại học', 4),
-(25, 1, 'Cho thuê phòng Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 5),
-(26, 1, 'Nhà trọ Bảy Bảnh cho thuê', 'Phòng trọ gần chợ', 6),
-(27, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng gần các trường đại học', 'Phòng trọ gần trung tâm', 7),
-(28, 1, 'Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 8),
-(33, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 11),
-(34, 2, 'Nhà trọ Nắng Xanh cho thuê phòng', 'Phòng trọ gần các trường đại học cao đẳng', 12),
-(38, 2, 'Nhà trọ Nắng Xanh cho thuê phòng trọ', 'Phòng trọ gần trung tâm phòng lớn rộng rãi an ninh', 15),
-(39, 2, 'Nhà trọ Nắng Xanh cho sinh viên thuê', 'Phòng trọ trong trung tâm', 16),
-(40, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 17),
-(41, 2, 'Cho thuê Phòng Giá tốt Nhà trọ Nắng Xanh', 'Phòng trọ thoáng mát an ninh có camera', 18),
-(42, 2, 'Phòng trọ cho thuê Nhà trọ Nắng Xanh', 'Vị trí đắc địa trong trung tâm thành phố', 19),
-(43, 3, 'Nhà trọ Sinh Viên Số 55 cho thuê phòng', 'Phòng trọ gần trung tâm', 20),
-(44, 3, 'Nhà trọ Sinh viên số 55 Phòng trọ giá hợp lý', 'Phòng trọ gần các trường đại học cao đẳng, Phòng không có gác phù hợp 1 - 2 người', 21),
-(48, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có gác', 24),
-(49, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác thoáng mát không ngập nước', 25),
-(50, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng trọ có gác thoáng mát không ngập nước', 26),
-(51, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có nội thất đầy đủ tiện nghi', 27),
-(52, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác có máy lạnh thoáng mát không ngập nước', 28),
-(53, 4, 'Nhà trọ Sinh Viên Huỳnh Liên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng không có gác thoáng mát không ngập nước', 29),
-(54, 4, 'Nhà trọ Sinh Viên Huỳnh Liên cho thuê phòng', 'Phòng không có gác an ninh có camera chóng trộm', 30),
-(56, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng trọ giá rẻ', 'Phòng không có gác an ninh không ngập nước trong trung tâm', 32),
-(57, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng', 'Phòng có gác an ninh không ngập nước trong trung tâm', 33),
-(58, 4, 'Huỳnh Liên Nhà trọ cho thuê phòng trọ giá rẻ', 'Phòng trọ có gác an ninh không ngập nước trong trung tâm', 34),
-(59, 4, ' Nhà trọ Huỳnh Liên cho Sinh Viên thuê phòng trọ giá rẻ', 'Phòng có gác an ninh, giờ giấc tự do, không ngập nước trong trung tâm', 35),
-(60, 4, 'Huỳnh Liên cho thuê phòng trọ giá rẻ', 'Phòng trọ có đầy đủ nội thất, tiện nghi, an ninh, không ngập nước trong trung tâm', 36),
-(61, 4, 'Cho thuê phòng trọ giá rẻ Nhà trọ Huỳnh Liên ', 'Phòng trọ có máy lạnh, giờ giấc tự do, an ninh, không ngập nước trong trung tâm', 37),
-(62, 5, 'Nhà trọ sinh viên VŨ', 'Phòng trọ không gác, thoáng mát, an ninh', 38),
-(63, 5, 'Nhà trọ sinh viên VŨ cho thuê phòng', 'Phòng trọ không gác, giờ giấc tự do, thoáng mát, an ninh', 39),
-(65, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Phòng trọ không có gác, giờ giấc tự do, gần các trường đại học, an ninh', 41),
-(66, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Giờ giấc tự do, gần các trường đại học, an ninh', 42),
-(67, 5, 'Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 43),
-(68, 5, 'Nhà trọ Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh có camera, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 44),
-(69, 5, 'Cho thuê phòng trọ Anh Vũ ', 'Phòng trọ có nội thất đầy đủ tiện nghi, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 45),
-(70, 5, 'Nhà trọ sinh viên Anh Vũ', 'Phòng trọ có máy lạnh, gần các trường đại học, chợ, siêu thị tiện lợi', 46),
-(72, 2, 'Cho thuê phòng trọ Nhà Trọ Nắng Xanh', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 14),
-(73, 3, 'Cho thuê phòng trọ Cần Thơ', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 23),
-(76, 1, 'Cho thuê phòng trọ Cần Thơ', 'Phòng trọ có nội thất, rộng rãi, thoáng mát, an ninh, gần các trường đại học cao đẳng', 10);
+INSERT INTO `baiviet` (`ID_BAIVIET`, `ID_KHUTRO`, `TIEUDE`, `GIOITHIEUBAIVIET`, `STT`, `NGAYDANG`) VALUES
+(1, 1, 'Cho thuê phòng trọ đầy đủ tiện nghi', 'Phòng rộng rãi sạch sẽ thoáng mát', 1, '2023-04-13 19:14:51'),
+(2, 1, 'Cho thuê phòng trọ có nội thất', 'Rất tiện lợi', 9, '2023-04-13 19:14:51'),
+(22, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng', 'Phòng trọ gần trung tâm', 2, '2023-04-13 19:14:51'),
+(24, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng giá rẻ', 'Phòng trọ gần trường đại học', 4, '2023-04-13 19:14:51'),
+(25, 1, 'Cho thuê phòng Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 5, '2023-04-13 19:14:51'),
+(26, 1, 'Nhà trọ Bảy Bảnh cho thuê', 'Phòng trọ gần chợ', 6, '2023-04-13 19:14:51'),
+(27, 1, 'Nhà trọ Bảy Bảnh cho thuê phòng gần các trường đại học', 'Phòng trọ gần trung tâm', 7, '2023-04-13 19:14:51'),
+(28, 1, 'Nhà trọ Bảy Bảnh', 'Phòng trọ gần trung tâm', 8, '2023-04-13 19:14:51'),
+(33, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 11, '2023-04-13 19:14:51'),
+(34, 2, 'Nhà trọ Nắng Xanh cho thuê phòng', 'Phòng trọ gần các trường đại học cao đẳng', 12, '2023-04-13 19:14:51'),
+(38, 2, 'Nhà trọ Nắng Xanh cho thuê phòng trọ', 'Phòng trọ gần trung tâm phòng lớn rộng rãi an ninh', 15, '2023-04-13 19:14:51'),
+(39, 2, 'Nhà trọ Nắng Xanh cho sinh viên thuê', 'Phòng trọ trong trung tâm', 16, '2023-04-13 19:14:51'),
+(40, 2, 'Nhà trọ Nắng Xanh', 'Phòng trọ gần trung tâm', 17, '2023-04-13 19:14:51'),
+(41, 2, 'Cho thuê Phòng Giá tốt Nhà trọ Nắng Xanh', 'Phòng trọ thoáng mát an ninh có camera', 18, '2023-04-13 19:14:51'),
+(42, 2, 'Phòng trọ cho thuê Nhà trọ Nắng Xanh', 'Vị trí đắc địa trong trung tâm thành phố', 19, '2023-04-13 19:14:51'),
+(43, 3, 'Nhà trọ Sinh Viên Số 55 cho thuê phòng', 'Phòng trọ gần trung tâm', 20, '2023-04-13 19:14:51'),
+(44, 3, 'Nhà trọ Sinh viên số 55 Phòng trọ giá hợp lý', 'Phòng trọ gần các trường đại học cao đẳng, Phòng không có gác phù hợp 1 - 2 người', 21, '2023-04-13 19:14:51'),
+(48, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có gác', 24, '2023-04-13 19:14:51'),
+(49, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác thoáng mát không ngập nước', 25, '2023-04-13 19:14:51'),
+(50, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng trọ có gác thoáng mát không ngập nước', 26, '2023-04-13 19:14:51'),
+(51, 3, 'Nhà trọ Sinh Viên 55 cho thuê trọ', 'Phòng trọ gần trung tâm thoáng mát sạch sẽ, Phòng có nội thất đầy đủ tiện nghi', 27, '2023-04-13 19:14:51'),
+(52, 3, 'Nhà trọ Số 55 Sinh Viên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng có gác có máy lạnh thoáng mát không ngập nước', 28, '2023-04-13 19:14:51'),
+(53, 4, 'Nhà trọ Sinh Viên Huỳnh Liên', 'Phòng trọ gần các trường đại học cao đẳng - Phòng không có gác thoáng mát không ngập nước', 29, '2023-04-13 19:14:51'),
+(54, 4, 'Nhà trọ Sinh Viên Huỳnh Liên cho thuê phòng', 'Phòng không có gác an ninh có camera chóng trộm', 30, '2023-04-13 19:14:51'),
+(56, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng trọ giá rẻ', 'Phòng không có gác an ninh không ngập nước trong trung tâm', 32, '2023-04-13 19:14:51'),
+(57, 4, 'Huỳnh Liên Nhà trọ Sinh Viên cho thuê phòng', 'Phòng có gác an ninh không ngập nước trong trung tâm', 33, '2023-04-13 19:14:51'),
+(58, 4, 'Huỳnh Liên Nhà trọ cho thuê phòng trọ giá rẻ', 'Phòng trọ có gác an ninh không ngập nước trong trung tâm', 34, '2023-04-13 19:14:51'),
+(59, 4, ' Nhà trọ Huỳnh Liên cho Sinh Viên thuê phòng trọ giá rẻ', 'Phòng có gác an ninh, giờ giấc tự do, không ngập nước trong trung tâm', 35, '2023-04-13 19:14:51'),
+(60, 4, 'Huỳnh Liên cho thuê phòng trọ giá rẻ', 'Phòng trọ có đầy đủ nội thất, tiện nghi, an ninh, không ngập nước trong trung tâm', 36, '2023-04-13 19:14:51'),
+(61, 4, 'Cho thuê phòng trọ giá rẻ Nhà trọ Huỳnh Liên ', 'Phòng trọ có máy lạnh, giờ giấc tự do, an ninh, không ngập nước trong trung tâm', 37, '2023-04-13 19:14:51'),
+(62, 5, 'Nhà trọ sinh viên VŨ', 'Phòng trọ không gác, thoáng mát, an ninh', 38, '2023-04-13 19:14:51'),
+(63, 5, 'Nhà trọ sinh viên VŨ cho thuê phòng', 'Phòng trọ không gác, giờ giấc tự do, thoáng mát, an ninh', 39, '2023-04-13 19:14:51'),
+(65, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Phòng trọ không có gác, giờ giấc tự do, gần các trường đại học, an ninh', 41, '2023-04-13 19:14:51'),
+(66, 5, 'Cho thuê phòng Nhà trọ sinh viên VŨ ', 'Giờ giấc tự do, gần các trường đại học, an ninh', 42, '2023-04-13 19:14:51'),
+(67, 5, 'Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 43, '2023-04-13 19:14:51'),
+(68, 5, 'Nhà trọ Anh Vũ cho thuê phòng trọ', 'Phòng trọ có gác, an ninh có camera, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 44, '2023-04-13 19:14:51'),
+(69, 5, 'Cho thuê phòng trọ Anh Vũ ', 'Phòng trọ có nội thất đầy đủ tiện nghi, an ninh, sạch sẽ, gần các trường đại học, chợ, siêu thị tiện lợi', 45, '2023-04-13 19:14:51'),
+(70, 5, 'Nhà trọ sinh viên Anh Vũ', 'Phòng trọ có máy lạnh, gần các trường đại học, chợ, siêu thị tiện lợi', 46, '2023-04-13 19:14:51'),
+(72, 2, 'Cho thuê phòng trọ Nhà Trọ Nắng Xanh', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 14, '2023-04-13 19:14:51'),
+(73, 3, 'Cho thuê phòng trọ Cần Thơ', 'Phòng mới tiện nghi, gần các trường đại học cao đẳng', 23, '2023-04-13 19:14:51'),
+(76, 1, 'Cho thuê phòng trọ Cần Thơ', 'Phòng trọ có nội thất, rộng rãi, thoáng mát, an ninh, gần các trường đại học cao đẳng', 10, '2023-04-13 19:14:51');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chukhutro`
+-- Table structure for table `chukhutro`
 --
 
 CREATE TABLE `chukhutro` (
@@ -99,7 +100,7 @@ CREATE TABLE `chukhutro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `chukhutro`
+-- Dumping data for table `chukhutro`
 --
 
 INSERT INTO `chukhutro` (`ID_CKT`, `HOTEN`, `GIOITINH`, `SDT`, `TENDANGNHAP`, `MATKHAU`, `NGAYLAP`) VALUES
@@ -112,7 +113,7 @@ INSERT INTO `chukhutro` (`ID_CKT`, `HOTEN`, `GIOITINH`, `SDT`, `TENDANGNHAP`, `M
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `coloaiphong`
+-- Table structure for table `coloaiphong`
 --
 
 CREATE TABLE `coloaiphong` (
@@ -121,7 +122,7 @@ CREATE TABLE `coloaiphong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `coloaiphong`
+-- Dumping data for table `coloaiphong`
 --
 
 INSERT INTO `coloaiphong` (`ID_KHUTRO`, `ID_LP`) VALUES
@@ -137,7 +138,7 @@ INSERT INTO `coloaiphong` (`ID_KHUTRO`, `ID_LP`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `giathuephong`
+-- Table structure for table `giathuephong`
 --
 
 CREATE TABLE `giathuephong` (
@@ -147,7 +148,7 @@ CREATE TABLE `giathuephong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `giathuephong`
+-- Dumping data for table `giathuephong`
 --
 
 INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
@@ -195,7 +196,7 @@ INSERT INTO `giathuephong` (`ID_KHUTRO`, `ID_LP`, `GIA`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hinh`
+-- Table structure for table `hinh`
 --
 
 CREATE TABLE `hinh` (
@@ -205,7 +206,7 @@ CREATE TABLE `hinh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `hinh`
+-- Dumping data for table `hinh`
 --
 
 INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
@@ -224,7 +225,6 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (35, 16, 'phong-tro-co-gac-7.jpg'),
 (36, 17, 'phong-tro-co-gac-8.jpg'),
 (37, 19, 'phong-tro-co-may-lanh-2.jpg'),
-(39, 10, 'phong-tro-co-noi-that-2.jpg'),
 (40, 20, 'phong-tro-khong-gac-7.jpg'),
 (41, 18, 'phong-tro-co-noi-that-3.jpg'),
 (42, 21, 'phong-tro-khong-gac-1.jpg'),
@@ -235,7 +235,6 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (48, 29, 'phong-tro-khong-gac-3.jpg'),
 (49, 27, 'phong-tro-co-noi-that-1.jpg'),
 (50, 28, 'phong-tro-co-may-lanh-4.jpg'),
-(51, 29, 'phong-tro-khong-gac-3.jpg'),
 (52, 32, 'phong-tro-co-gac-4.jpg'),
 (53, 33, 'phong-tro-co-gac-5.jpg'),
 (54, 34, 'phong-tro-co-gac-6.jpg'),
@@ -250,12 +249,13 @@ INSERT INTO `hinh` (`ID_HINH`, `STT`, `HINH`) VALUES
 (64, 44, 'phong-tro-co-gac-1.jpg'),
 (65, 39, 'phong-tro-khong-gac-6.jpg'),
 (67, 45, 'phong-tro-co-noi-that-8.jpg'),
-(68, 46, 'phong-tro-co-may-lanh-9.jpg');
+(68, 46, 'phong-tro-co-may-lanh-9.jpg'),
+(69, 7, 'phong-tro-co-gac-2.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `huyen`
+-- Table structure for table `huyen`
 --
 
 CREATE TABLE `huyen` (
@@ -265,7 +265,7 @@ CREATE TABLE `huyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `huyen`
+-- Dumping data for table `huyen`
 --
 
 INSERT INTO `huyen` (`ID_HUYEN`, `ID_TINH`, `TENHUYEN`) VALUES
@@ -282,7 +282,7 @@ INSERT INTO `huyen` (`ID_HUYEN`, `ID_TINH`, `TENHUYEN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khoangcach`
+-- Table structure for table `khoangcach`
 --
 
 CREATE TABLE `khoangcach` (
@@ -292,7 +292,7 @@ CREATE TABLE `khoangcach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khoangcach`
+-- Dumping data for table `khoangcach`
 --
 
 INSERT INTO `khoangcach` (`ID_KHUTRO`, `T_MA`, `KHOANGCACH`) VALUES
@@ -355,7 +355,7 @@ INSERT INTO `khoangcach` (`ID_KHUTRO`, `T_MA`, `KHOANGCACH`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khutro`
+-- Table structure for table `khutro`
 --
 
 CREATE TABLE `khutro` (
@@ -369,7 +369,7 @@ CREATE TABLE `khutro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khutro`
+-- Dumping data for table `khutro`
 --
 
 INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT_TRO`, `LONG_TRO`) VALUES
@@ -382,7 +382,7 @@ INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `loaiphong`
+-- Table structure for table `loaiphong`
 --
 
 CREATE TABLE `loaiphong` (
@@ -393,7 +393,7 @@ CREATE TABLE `loaiphong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `loaiphong`
+-- Dumping data for table `loaiphong`
 --
 
 INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) VALUES
@@ -409,7 +409,7 @@ INSERT INTO `loaiphong` (`ID_LP`, `TENLOAIPHONG`, `SONGUOIOTOIDA`, `DIENTICH`) V
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE `locations` (
@@ -420,7 +420,7 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
@@ -431,7 +431,7 @@ INSERT INTO `locations` (`id`, `latitude`, `longitude`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phong`
+-- Table structure for table `phong`
 --
 
 CREATE TABLE `phong` (
@@ -443,7 +443,7 @@ CREATE TABLE `phong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phong`
+-- Dumping data for table `phong`
 --
 
 INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
@@ -492,7 +492,7 @@ INSERT INTO `phong` (`STT`, `TENPHONG`, `ID_TT`, `ID_KHUTRO`, `ID_LP`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tinh`
+-- Table structure for table `tinh`
 --
 
 CREATE TABLE `tinh` (
@@ -501,7 +501,7 @@ CREATE TABLE `tinh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tinh`
+-- Dumping data for table `tinh`
 --
 
 INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
@@ -510,7 +510,7 @@ INSERT INTO `tinh` (`ID_TINH`, `TENTINH`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `trangthai`
+-- Table structure for table `trangthai`
 --
 
 CREATE TABLE `trangthai` (
@@ -519,7 +519,7 @@ CREATE TABLE `trangthai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `trangthai`
+-- Dumping data for table `trangthai`
 --
 
 INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
@@ -530,7 +530,7 @@ INSERT INTO `trangthai` (`ID_TT`, `TENTT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `truong`
+-- Table structure for table `truong`
 --
 
 CREATE TABLE `truong` (
@@ -543,7 +543,7 @@ CREATE TABLE `truong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `truong`
+-- Dumping data for table `truong`
 --
 
 INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `LONG_TRUONG`) VALUES
@@ -562,7 +562,7 @@ INSERT INTO `truong` (`T_MA`, `ID_XA`, `T_TENTRUONG`, `T_ICON`, `LAT_TRUONG`, `L
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `xa`
+-- Table structure for table `xa`
 --
 
 CREATE TABLE `xa` (
@@ -572,7 +572,7 @@ CREATE TABLE `xa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `xa`
+-- Dumping data for table `xa`
 --
 
 INSERT INTO `xa` (`ID_XA`, `ID_HUYEN`, `TENXA`) VALUES
@@ -654,11 +654,11 @@ INSERT INTO `xa` (`ID_XA`, `ID_HUYEN`, `TENXA`) VALUES
 (76, 9, 'Vĩnh Quang');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `baiviet`
+-- Indexes for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ID_BAIVIET`),
@@ -666,7 +666,7 @@ ALTER TABLE `baiviet`
   ADD KEY `STT` (`STT`);
 
 --
--- Chỉ mục cho bảng `chukhutro`
+-- Indexes for table `chukhutro`
 --
 ALTER TABLE `chukhutro`
   ADD PRIMARY KEY (`ID_CKT`),
@@ -674,42 +674,42 @@ ALTER TABLE `chukhutro`
   ADD UNIQUE KEY `SDT` (`SDT`);
 
 --
--- Chỉ mục cho bảng `coloaiphong`
+-- Indexes for table `coloaiphong`
 --
 ALTER TABLE `coloaiphong`
   ADD PRIMARY KEY (`ID_KHUTRO`,`ID_LP`),
   ADD KEY `ID_LP` (`ID_LP`);
 
 --
--- Chỉ mục cho bảng `giathuephong`
+-- Indexes for table `giathuephong`
 --
 ALTER TABLE `giathuephong`
   ADD PRIMARY KEY (`ID_KHUTRO`,`ID_LP`),
   ADD KEY `ID_KHUTRO` (`ID_KHUTRO`,`ID_LP`);
 
 --
--- Chỉ mục cho bảng `hinh`
+-- Indexes for table `hinh`
 --
 ALTER TABLE `hinh`
   ADD PRIMARY KEY (`ID_HINH`),
   ADD KEY `STT_PHONG` (`STT`);
 
 --
--- Chỉ mục cho bảng `huyen`
+-- Indexes for table `huyen`
 --
 ALTER TABLE `huyen`
   ADD PRIMARY KEY (`ID_HUYEN`),
   ADD KEY `TINH` (`ID_TINH`);
 
 --
--- Chỉ mục cho bảng `khoangcach`
+-- Indexes for table `khoangcach`
 --
 ALTER TABLE `khoangcach`
   ADD PRIMARY KEY (`ID_KHUTRO`,`T_MA`),
   ADD KEY `khoangcach_truong` (`T_MA`);
 
 --
--- Chỉ mục cho bảng `khutro`
+-- Indexes for table `khutro`
 --
 ALTER TABLE `khutro`
   ADD PRIMARY KEY (`ID_KHUTRO`),
@@ -717,19 +717,19 @@ ALTER TABLE `khutro`
   ADD KEY `khutro_chukhutro` (`ID_CKT`);
 
 --
--- Chỉ mục cho bảng `loaiphong`
+-- Indexes for table `loaiphong`
 --
 ALTER TABLE `loaiphong`
   ADD PRIMARY KEY (`ID_LP`);
 
 --
--- Chỉ mục cho bảng `locations`
+-- Indexes for table `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `phong`
+-- Indexes for table `phong`
 --
 ALTER TABLE `phong`
   ADD PRIMARY KEY (`STT`),
@@ -738,147 +738,147 @@ ALTER TABLE `phong`
   ADD KEY `id_lp` (`ID_LP`);
 
 --
--- Chỉ mục cho bảng `tinh`
+-- Indexes for table `tinh`
 --
 ALTER TABLE `tinh`
   ADD PRIMARY KEY (`ID_TINH`);
 
 --
--- Chỉ mục cho bảng `trangthai`
+-- Indexes for table `trangthai`
 --
 ALTER TABLE `trangthai`
   ADD PRIMARY KEY (`ID_TT`);
 
 --
--- Chỉ mục cho bảng `truong`
+-- Indexes for table `truong`
 --
 ALTER TABLE `truong`
   ADD PRIMARY KEY (`T_MA`),
   ADD KEY `ID_XA` (`ID_XA`);
 
 --
--- Chỉ mục cho bảng `xa`
+-- Indexes for table `xa`
 --
 ALTER TABLE `xa`
   ADD PRIMARY KEY (`ID_XA`),
   ADD KEY `HUYEN` (`ID_HUYEN`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `baiviet`
+-- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
   MODIFY `ID_BAIVIET` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT cho bảng `chukhutro`
+-- AUTO_INCREMENT for table `chukhutro`
 --
 ALTER TABLE `chukhutro`
   MODIFY `ID_CKT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `hinh`
+-- AUTO_INCREMENT for table `hinh`
 --
 ALTER TABLE `hinh`
-  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `ID_HINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- AUTO_INCREMENT cho bảng `huyen`
+-- AUTO_INCREMENT for table `huyen`
 --
 ALTER TABLE `huyen`
   MODIFY `ID_HUYEN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `khutro`
+-- AUTO_INCREMENT for table `khutro`
 --
 ALTER TABLE `khutro`
   MODIFY `ID_KHUTRO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `loaiphong`
+-- AUTO_INCREMENT for table `loaiphong`
 --
 ALTER TABLE `loaiphong`
   MODIFY `ID_LP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `locations`
+-- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT cho bảng `phong`
+-- AUTO_INCREMENT for table `phong`
 --
 ALTER TABLE `phong`
   MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT cho bảng `tinh`
+-- AUTO_INCREMENT for table `tinh`
 --
 ALTER TABLE `tinh`
   MODIFY `ID_TINH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `trangthai`
+-- AUTO_INCREMENT for table `trangthai`
 --
 ALTER TABLE `trangthai`
   MODIFY `ID_TT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `truong`
+-- AUTO_INCREMENT for table `truong`
 --
 ALTER TABLE `truong`
   MODIFY `T_MA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `xa`
+-- AUTO_INCREMENT for table `xa`
 --
 ALTER TABLE `xa`
   MODIFY `ID_XA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `baiviet`
+-- Constraints for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD CONSTRAINT `KHUTRO` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `baiviet_ibfk_1` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`);
 
 --
--- Các ràng buộc cho bảng `coloaiphong`
+-- Constraints for table `coloaiphong`
 --
 ALTER TABLE `coloaiphong`
   ADD CONSTRAINT `coloaiphong_ibfk_1` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
   ADD CONSTRAINT `coloaiphong_ibfk_2` FOREIGN KEY (`ID_LP`) REFERENCES `loaiphong` (`ID_LP`);
 
 --
--- Các ràng buộc cho bảng `hinh`
+-- Constraints for table `hinh`
 --
 ALTER TABLE `hinh`
   ADD CONSTRAINT `STT_PHONG` FOREIGN KEY (`STT`) REFERENCES `phong` (`STT`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `khoangcach`
+-- Constraints for table `khoangcach`
 --
 ALTER TABLE `khoangcach`
   ADD CONSTRAINT `khoangcach_khutro` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
   ADD CONSTRAINT `khoangcach_truong` FOREIGN KEY (`T_MA`) REFERENCES `truong` (`T_MA`);
 
 --
--- Các ràng buộc cho bảng `khutro`
+-- Constraints for table `khutro`
 --
 ALTER TABLE `khutro`
   ADD CONSTRAINT `khutro_chukhutro` FOREIGN KEY (`ID_CKT`) REFERENCES `chukhutro` (`ID_CKT`),
   ADD CONSTRAINT `khutro_xa` FOREIGN KEY (`ID_XA`) REFERENCES `xa` (`ID_XA`);
 
 --
--- Các ràng buộc cho bảng `phong`
+-- Constraints for table `phong`
 --
 ALTER TABLE `phong`
   ADD CONSTRAINT `id_khutro` FOREIGN KEY (`ID_KHUTRO`) REFERENCES `khutro` (`ID_KHUTRO`),
