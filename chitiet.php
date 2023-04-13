@@ -1,9 +1,30 @@
 <?php
+   include './config/config.php';
   session_start();
   if(isset($_GET['ID_BAIVIET'])){
     $ID_BAIVIET = $_GET['ID_BAIVIET'];
-    echo $ID_BAIVIET;
-    exit();
+    //echo $ID_BAIVIET;
+    //exit();
+    $baiviet = "SELECT f.SDT,a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
+    from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l
+    where a.ID_KHUTRO = b.ID_KHUTRO 
+    and a.STT = p.STT 
+    and b.ID_CKT = f.ID_CKT 
+    and b.ID_XA = e.ID_XA 
+    and e.ID_HUYEN = d.ID_HUYEN 
+    and d.ID_TINH = c.ID_TINH 
+    and t.ID_KHUTRO = b.ID_KHUTRO 
+    and t.ID_LP = g.ID_LP 
+    and k.STT= p.STT 
+    and p.ID_LP = g.ID_LP 
+    and l.ID_TT= p.ID_TT
+    AND a.ID_BAIVIET = '$ID_BAIVIET';";
+    $baivietsql = mysqli_query($conn,$baiviet);
+    $result =mysqli_fetch_assoc($baivietsql);
+    $SDT = $result['SDT'];
+    //echo $SDT;
+    //exit();
+    
     
 }
 ?>
@@ -36,7 +57,24 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
       <style>
-       
+       .place-card {
+    background-color: white;
+    border: 4px solid #ccc;
+    padding: 10px;
+    max-width: 300px;
+    border-radius: 5px;
+  }
+  #map {
+  position: absolute;
+  
+}
+
+.place-card {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
       </style>
     </head>
 <body class="hero-anime">
@@ -244,7 +282,7 @@
                                        <div>
                                           <div class="AdImage_sliderItem__rl6i_" data-index="2" data-type="image" tabindex="-1" style="width: 100%; display: inline-block;">
                                              <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
-                                                <img alt="Cho thuê phòng full nội thất" role="presentation" src="https://cdn.chotot.com/BLea62kWriRdkBKjheazzcgz25UvbGKkQMshwo0OmcA/preset:view/plain/22251846f0c9aeacdd03d018d06b129a-2820419668707787017.jpg" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                                                <img alt="<?php echo $result['TIEUDE'] ?>" role="presentation" src="./ha_phong/<?php echo $result['HINH'] ?>" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
                                                 <noscript></noscript>
                                              </span>
                                           </div>
@@ -339,7 +377,7 @@
                <div class="DetailView_adviewPtyItem__V_sof">
                   <div class="AdDecriptionVeh_adDecriptionWrapper__bleBW">
                      <h1 class="AdDecriptionVeh_adTitle__vEuKD" itemprop="name">
-                        <!-- --> <!-- -->Cho thuê phòng full nội thất
+                        <!-- --> <!-- --><?php echo $result['TIEUDE'] ?>
                      </h1>
                      <div class="AdDecriptionVeh_priceWrapper__y7Aj6">
                         <meta itemprop="position" content="1">
@@ -349,9 +387,9 @@
                                  <span class="AdDecriptionVeh_priceWrapper__y7Aj6 AdDecriptionVeh_priceWrapperVeh__mBdrn">
                                     <span class="AdDecriptionVeh_price__u_N83">
                                        <span itemprop="price">
-                                          4 triệu/tháng<!-- --> 
+                                       <?php echo number_format ($result['GIA']) .' VNĐ'?><!-- --> 
                                           <span class="AdDecriptionVeh_squareMetre__eG8lb">
-                                             - <!-- -->15<!-- --> m<sup>2</sup>
+                                             - <!-- --><?php echo $result['DIENTICH'] ?><!-- --> m<sup>2</sup>
                                           </span>
                                        </span>
                                        <span style="display:none" itemprop="priceCurrency">đ &nbsp;&nbsp;</span>
@@ -407,13 +445,13 @@
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Tình trạng" src="https://static.chotot.com/storage/icons/logos/ad-param/condition_ad.png"></div>
-                           <div class="media-body media-middle"><span><span>Tình trạng: </span><span itemprop="condition_ad" class="AdParam_adParamValue__IfaYa">Đã sử dụng</span></span></div>
+                           <div class="media-body media-middle"><span><span>Tình trạng: </span><span itemprop="condition_ad" class="AdParam_adParamValue__IfaYa"><?php echo $result['TENTT'] ?></span></span></div>
                         </div>
                      </div>
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Diện tích" src="https://static.chotot.com/storage/icons/logos/ad-param/size.png"></div>
-                           <div class="media-body media-middle"><span><span>Diện tích: </span><span itemprop="size" class="AdParam_adParamValue__IfaYa">15 m²</span></span></div>
+                           <div class="media-body media-middle"><span><span>Diện tích: </span><span itemprop="size" class="AdParam_adParamValue__IfaYa"><?php echo $result['DIENTICH'] ?> m²</span></span></div>
                         </div>
                      </div>
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
@@ -452,7 +490,53 @@
                      <div class="col-xs-12 no-padding">
                         <div class="AdParam_adMapImage__Ysu7w">
                            <h2>Địa điểm bất động sản</h2>
-                           <img role="button" tabindex="0" alt="Cho thuê phòng full nội thất" title="Cho thuê phòng full nội thất" src="https://cdn.chotot.com/admincentre/location/10x821050_106x707950_c.jpg">
+                           
+
+                           <div class="place-card place-card-large">
+  <h3 style="text-align: center;"><?php echo $result["TENKHUTRO"]; ?></h3>
+  <p><?php echo $result["SONHA"]; ?> <?php echo $result["TENXA"]; ?> <?php echo $result["TENHUYEN"]; ?> <?php echo $result["TENTINH"]; ?></p>
+</div>
+
+
+
+        <div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            //center: [105.7664918,10.0279603], // starting position [lng, lat]
+            center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
+            //pitch: 60,
+//bearing: -60,
+zoom: 10, hash:true
+        });
+const data = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        type: "Feature",
+        geometry: {
+          coordinates: [
+            //105.773318,10.029433,
+             //105.77061370522297,10.029943222691958,
+             <?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>,
+            
+          ],
+          type:'Point'
+        },
+        properties: {
+          'description': " <?php echo $result["TENKHUTRO"]; ?>"
+        }
+      },
+    ]
+  }
+  var marker = new mapboxgl.Marker()
+  .setLngLat([<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>])
+  .addTo(map);
+
+
+</script>
                         </div>
                      </div>
                   </div>
@@ -518,7 +602,7 @@
                            </div>
                         </div>
                         <div class="LeadButton_wrapperLeadButtonDesktop__SVKE8" style="padding: 8px 12px 4px;">
-                           <div class="LeadButton_chatDesktopButton__HSQyg"><a href="https://chat.chotot.com/chatroom/join/MjQ4NTYxNTF8MTA1MzkyODA2" class="btn LeadButton_buttonOnlyChatDesktop__PzaRw" rel="nofollow"><span class="text-success"><span>CHAT VỚI NGƯỜI BÁN</span></span></a></div>
+                           <div class="LeadButton_chatDesktopButton__HSQyg"><a href="https://chat.zalo.me/?phone=<?php echo $SDT?>" id="linkzalo" target="_blank" rel="noopener noreferrer" class="btn LeadButton_buttonOnlyChatDesktop__PzaRw" rel="nofollow"><span class="text-success"><span>CHAT VỚI NGƯỜI BÁN</span></span></a></div>
                            <div class="LeadButton_onlyChatDesciption__JsKi4">Tin đăng được người bán ẩn số điện thoại</div>
                         </div>
                         <div class="LeadButton_wrapperLeadButtonMobileHidePhone__Ei0ME"><a id="chat_btn" href="https://chat.chotot.com/chatroom/join/MjQ4NTYxNTF8MTA1MzkyODA2" class="btn LeadButton_chatButton__E_aMM" rel="nofollow">CHAT VỚI NGƯỜI BÁN</a></div>
@@ -541,6 +625,11 @@
   
 </div>
 </body>
+<script>
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.getElementById("linkzalo").href = "https://zalo.me/<?php $result['SDT'] ?>";
+    }
+</script>
 </html>
 
 

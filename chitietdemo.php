@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <?php
   include './config/config.php';
-  session_start();
   $tinh="select * from tinh";
   $tinhsql = mysqli_query($conn,$tinh);
   $huyen="select * from huyen";
   $huyensql = mysqli_query($conn,$huyen);
-  $loaiphong = "SELECT DISTINCT * 
-  FROM loaiphong ";
-  $loaiphongsql = mysqli_query($conn,$loaiphong);
-  $baiviet = "SELECT a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
-  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l
-  where a.ID_KHUTRO = b.ID_KHUTRO 
-  and a.STT = p.STT 
-  and b.ID_CKT = f.ID_CKT 
-  and b.ID_XA = e.ID_XA 
-  and e.ID_HUYEN = d.ID_HUYEN 
-  and d.ID_TINH = c.ID_TINH 
-  and t.ID_KHUTRO = b.ID_KHUTRO 
-  and t.ID_LP = g.ID_LP 
-  and k.STT= p.STT 
-  and p.ID_LP = g.ID_LP 
-  and l.ID_TT= p.ID_TT
-  GROUP BY a.ID_BAIVIET DESC;";
-  $baivietsql = mysqli_query($conn,$baiviet);
+  session_start();
+  $map= "select  a.TENKHUTRO, a.SONHA, a.LAT_TRO, a.LONG_TRO, d.TENXA, c.TENHUYEN, b.TENTINH
+  from khutro as a, tinh as b, huyen as c, xa as d, baiviet as e
+  where a.ID_XA = d.ID_XA
+  and d.ID_HUYEN = c.ID_HUYEN
+  and c.ID_TINH = b.ID_TINH
+  and e.ID_KHUTRO = a.ID_KHUTRO
+  and id_baiviet=76";
+  $mapsql=mysqli_query($conn,$map);
+  $result =mysqli_fetch_assoc($mapsql);
+  //var_dump($result) ;
+  //exit();
+  
 
  
   
   
 
 ?>
-<html lang="vi">
+<html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -57,11 +51,43 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/ajax1.js" type="text/javascript"></script>
-      
-    </head>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        
+        
+        <style>
    
-    <body class="hero-anime">
 
+  .place-card {
+    background-color: white;
+    border: 4px solid #ccc;
+    padding: 10px;
+    max-width: 300px;
+    border-radius: 5px;
+  }
+  #map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.place-card {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+    </style>
+        
+
+    </head>
+<body class="hero-anime">
 <div class="navigation-wrap bg-light start-header start-style">
   <div class="container">
     <div class="row">
@@ -148,199 +174,61 @@
     </div>
   </div>
 </div>
-
 <div class="my-4 py-4">
 </div>
-
-<!-- Link to page
-================================================== -->
-<div class="ssn_pw_filter" >
-  
-    <div class="box-cla-filter-pc-v2">
- <form class="f-body cla-filter" action="" method="get">
- <div class="row-main">
- <div class="item-filter has-icon border-r flex-none">
- <i class="icon mcon-city"></i>
- <select name="iCat" class="f-form-input room">
- <option  value="0">Chọn loại phòng</option>
- <?php
-  foreach ($loaiphongsql as $key => $value){?>
-    <option  value ='<?php echo $value['ID_LP'] ?>'><?php echo $value['TENLOAIPHONG']?></option>
-    
-<?php } ?>
-  
-  
-  </select>
- </div>
- <div class="item-filter">
- <input type="text" value="" id="input-form-search" placeholder="Từ khóa tìm kiếm. VD: Thuê nhà trọ Cầu Giấy" name="keyword" class="f-form-input" autocomplete="off">
- </div>
- <button type="submit" class="btn btn-primary" name = "submit">
- Tìm kiếm
- </button>
-
- </div>
- <div class="row-main-2">
- <div class="item-filter">
- <select name="iCitId" class="f-form-input tentinh" onchange="getDistrictClaFilter(this.value)">
- <option value="0">Tất cả Tỉnh/Thành phố</option>
- <?php
-  foreach ($tinhsql as $key => $value){?>
-    <option value='<?php echo $value['ID_TINH'] ?>'><?php echo $value['TENTINH'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iDisId" class="f-form-input city" onchange="getWardClaFilter(this.value)">
-  <option value="">Quận/Huyện</option>
-  <?php
-  foreach ($huyensql as $key => $value){?>
-    <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iWardId" class="f-form-input tinh">
-  <option value="0">Phường/Xã</option>    
- </select>
- </div>
- <div class="item-filter">
-    <select class="f-form-input price" name="iPrice">
-  <option selected="" value="0">
- Tất cả mức giá
- </option>
-  
-  
-  </select>
- </div>
- <div class="option-reset" onclick="resetFilterCla()">
- 
-            <svg width="25px" height="25px" viewBox="0 0 24 24" class="mcon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="/385/assets/images/icons.svg#refresh"></use>
-            </svg>
-        
- </div>
- </div>
- </form>
- </div>
-    
-<script language="javascript">
- $(document).ready(function () {
- $('#input-form-search').autocomplete({
- serviceUrl: '/ajax/suggest?secret=45c09f3828245d941d0da984d0222cb2',
- noCache: true,
- autoSelectFirst: false,
- deferRequestBy: 300,
- minChars: 0,
- onSelect: function (suggestion) {
- url = suggestion.url || '';
- if (url !== '') {
- window.location.href = url;
- }
- }
- });
- });
-</script>
-
-<style>
- .autocomplete-suggestions{
- z-index: 10050000!important;
- }
-</style>
-<section class="ssn_container ssn_buy_sell fix_pos">
-
-    <div class="home_fixed">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-    <div class="ssn_pw home_ad">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-        
-    <div class="ssn_pw home_buy_sell">
-        <div class="listing">
-        <strong class="label">TIN ĐĂNG MỚI</strong>
-
-        <?php 
-                
-                if (($baivietsql)) {?>
-                  <?php foreach ($baivietsql as $key => $row){?>
-                    <div class="home_listing">
-                
-                                    <div class=" item">
-                        <a class="img_r " href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?> ">
-                                                          
-                                                                             <img src="./ha_phong/<?php echo $row['HINH'] ?>" style="width:150px; height:150px" alt="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
-                                                    </a>
-                        <div class="info">
-                            <h3>
-                                <a class="name-vip title" href="chitiet.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" title="<?php echo $row['TIEUDE'] ?>">
-                                <?php echo $row['TIEUDE'] ?>                          </a>
-                            </h3>
-                            <div class="if">
-                                <span class="label"> Giá </span>
-                                                                    <strong class="f3b1abed9c57992b822e259ef8c7ac1f price"><?php echo number_format ($row['GIA']) .' VNĐ'?></strong>                                                            </div>
-                                                            <div class="if">
-                                    <span class="label"> Diện tích </span>
-                                                                            <div class="acreage"><strong><?php echo $row['DIENTICH'] ?>m<sup>2</sup></strong></div>
-                                                                    </div>
-                                                            <div class="if">
-                                <span class="label"> Địa chỉ </span>
-                                <div class="address"><strong><?php echo $row['SONHA'] ?>,<?php echo $row['TENXA'] ?>,<?php echo $row['TENHUYEN'] ?>,<?php echo $row['TENTINH'] ?></strong></div>
-                        
-                            </div>
-                            <div class="if">
-                                <span class="label"> Ngày đăng </span>
-                                <div class="address"><?php echo $row['NGAYDANG'] ?></div>
-                        
-                            </div>
-                            <div class="info_user_home" >
-                                <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <img src="https://connect.sosanhnha.com/avata.php?id=629978" alt="user avatar">
-                                                                            </div>
-                                    <div class="avatar_name">
-                                        <span class="phone_name" title="Thị Kim"><?php echo $row['HOTEN'] ?></span>
-                                                                                    <span class="phone_number p_0896873698" onclick="showPhoneV2('0896873698',this)"> <?php echo $row['SDT'] ?> </span>
-                                                                            </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="wrapper">
+<div class="place-card place-card-large">
+  <h3 style="text-align: center;"><?php echo $result["TENKHUTRO"]; ?></h3>
+  <p><?php echo $result["SONHA"]; ?> <?php echo $result["TENXA"]; ?> <?php echo $result["TENHUYEN"]; ?> <?php echo $result["TENTINH"]; ?></p>
 </div>
-                  <?php } }?> 
 
-</div>
-                                      
-    </div>
 
-    <div class="ssn_pw home_ad">
-    </div>
 
-    <div class="home_fixed home_r">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
+        <div id='map'></div>
 
-</section>
+
+        <script>
+   
+   mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            //center: [105.7664918,10.0279603], // starting position [lng, lat]
+            center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
+            //pitch: 60,
+//bearing: -60,
+zoom: 10, hash:true
+        });
+const data = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        type: "Feature",
+        geometry: {
+          coordinates: [
+            //105.773318,10.029433,
+             //105.77061370522297,10.029943222691958,
+             <?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>,
+            
+          ],
+          type:'Point'
+        },
+        properties: {
+          'description': " <?php echo $result["TENKHUTRO"]; ?>"
+        }
+      },
+    ]
+  }
+  var marker = new mapboxgl.Marker()
+  .setLngLat([<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>])
+  .addTo(map);
+
+
+    
+   
+   </script>
+   
+
 
 </body>
-
 </html>
-
-
