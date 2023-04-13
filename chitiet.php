@@ -5,7 +5,7 @@
     $ID_BAIVIET = $_GET['ID_BAIVIET'];
     //echo $ID_BAIVIET;
     //exit();
-    $baiviet = "SELECT f.SDT,a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
+    $baiviet = "SELECT f.SDT,a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO,b.LAT_TRO,b.LONG_TRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
     from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l
     where a.ID_KHUTRO = b.ID_KHUTRO 
     and a.STT = p.STT 
@@ -56,6 +56,9 @@
         <meta property="og:type" content="website"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+       
       <style>
        .place-card {
     background-color: white;
@@ -66,12 +69,17 @@
   }
   #map {
   position: absolute;
+  top: 100px;
+  bottom: 0;
+  height: 500px;
+  width:155%;
+  z-index: 0;
   
 }
 
 .place-card {
   position: absolute;
-  top: 10px;
+  top: 100px;
   left: 10px;
   z-index: 1;
 }
@@ -439,25 +447,25 @@
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="" src="https://static.chotot.com/storage/icons/logos/ad-param/ad_type.png"></div>
-                           <div class="media-body media-middle"><span><span></span><span itemprop="ad_type" class="AdParam_adParamValue__IfaYa">Cho thuê</span></span></div>
+                           <div class="media-body media-middle" style="margin-top:40px; margin-left:10px"><span><span></span><span itemprop="ad_type" class="AdParam_adParamValue__IfaYa">Cho thuê</span></span></div>
                         </div>
                      </div>
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Tình trạng" src="https://static.chotot.com/storage/icons/logos/ad-param/condition_ad.png"></div>
-                           <div class="media-body media-middle"><span><span>Tình trạng: </span><span itemprop="condition_ad" class="AdParam_adParamValue__IfaYa"><?php echo $result['TENTT'] ?></span></span></div>
+                           <div class="media-body media-middle" style="margin-top:40px; margin-left:10px"><span><span>Tình trạng: </span><span itemprop="condition_ad" class="AdParam_adParamValue__IfaYa"><?php echo $result['TENTT'] ?></span></span></div>
                         </div>
                      </div>
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Diện tích" src="https://static.chotot.com/storage/icons/logos/ad-param/size.png"></div>
-                           <div class="media-body media-middle"><span><span>Diện tích: </span><span itemprop="size" class="AdParam_adParamValue__IfaYa"><?php echo $result['DIENTICH'] ?> m²</span></span></div>
+                           <div class="media-body media-middle" style="margin-top:40px; margin-left:10px"><span><span>Diện tích: </span><span itemprop="size" class="AdParam_adParamValue__IfaYa"><?php echo $result['DIENTICH'] ?> m²</span></span></div>
                         </div>
                      </div>
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
                            <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Số tiền cọc" src="https://static.chotot.com/storage/icons/logos/ad-param/deposit.png"></div>
-                           <div class="media-body media-middle"><span><span>Số tiền cọc: </span><span itemprop="deposit" class="AdParam_adParamValue__IfaYa">4.000.000 đ</span></span></div>
+                           <div class="media-body media-middle" style="margin-top:40px; margin-left:10px"><span><span>Giá thuê: </span><span itemprop="deposit" class="AdParam_adParamValue__IfaYa"><?php echo number_format ($result['GIA']) .' VNĐ'?></span></span></div>
                         </div>
                      </div>
                   </div>
@@ -500,8 +508,9 @@
 
 
         <div id='map'></div>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+        <script>
+   
+   mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -509,7 +518,7 @@
             center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
             //pitch: 60,
 //bearing: -60,
-zoom: 10, hash:true
+zoom: 15, hash:true
         });
 const data = {
     "type": "FeatureCollection",
@@ -536,7 +545,9 @@ const data = {
   .addTo(map);
 
 
-</script>
+    
+   
+   </script>
                         </div>
                      </div>
                   </div>

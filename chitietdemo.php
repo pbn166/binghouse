@@ -70,15 +70,16 @@
   }
   #map {
   position: absolute;
-  top: 0;
+  top: 200px;
   bottom: 0;
-  width: 100%;
+  height: 500px;
+  width:100%;
   z-index: 0;
 }
 
 .place-card {
   position: absolute;
-  top: 10px;
+  top: 200px;
   left: 10px;
   z-index: 1;
 }
@@ -197,7 +198,7 @@
             center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
             //pitch: 60,
 //bearing: -60,
-zoom: 10, hash:true
+zoom: 15, hash:true
         });
 const data = {
     "type": "FeatureCollection",
