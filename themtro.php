@@ -1,4 +1,119 @@
 <!DOCTYPE html>
+<?php
+  include './config/config.php';
+  session_start();
+  if(!isset($_SESSION['TENDANGNHAP'])){
+    header('location: login.php');}
+
+  $tinh="select * from tinh";
+  $tinhsql = mysqli_query($conn,$tinh);
+  $huyen="select * from huyen";
+  $huyensql = mysqli_query($conn,$huyen);
+  $loaiphong = "SELECT DISTINCT * 
+  FROM loaiphong ";
+  $loaiphongsql = mysqli_query($conn,$loaiphong);
+  $sql4 = "SELECT ID_CKT FROM chukhutro WHERE TENDANGNHAP= '".$_SESSION['TENDANGNHAP']."'";
+        $result4 = mysqli_query($conn, $sql4);
+        $row4 = mysqli_fetch_assoc($result4);
+        $idckt = $row4["ID_CKT"];
+        //echo $idckt;
+        //exit();
+  if(isset($_POST['submit'])){
+        $username = $_POST["username"];
+        $address = $_POST["address"];
+        $iCitId = $_POST["iCitId"];
+        $iDisId = $_POST["iDisId"];
+        $iWardId = $_POST["iWardId"];
+        $lat = $_POST["lat"];
+        $long = $_POST["long"];
+
+        
+
+        $sql1 = "SELECT tentinh FROM tinh WHERE id_tinh= $iCitId";
+        $result1 = mysqli_query($conn, $sql1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $tentinh = $row1["tentinh"];
+        //echo $tentinh;
+        $sql2 = "SELECT tenhuyen FROM huyen WHERE id_huyen= $iDisId";
+        $result2 = mysqli_query($conn, $sql2);
+        $row2 = mysqli_fetch_assoc($result2);
+        $tenhuyen = $row2["tenhuyen"];
+        //echo $tenhuyen;
+        $sql3 = "SELECT tenxa FROM xa WHERE id_xa= $iWardId";
+        $result3 = mysqli_query($conn, $sql3);
+        $row3 = mysqli_fetch_assoc($result3);
+        $tenxa = $row3["tenxa"];
+        
+        
+
+        
+        //echo $tenxa;
+        //exit();
+        // echo $username;
+        // echo '<br>';
+        // echo $address;
+        // echo '<br>';
+        // echo $iCitId;
+        // echo '<br>';
+        // echo $iDisId;
+        // echo '<br>';
+        // echo $iWardId;
+        // echo '<br>';
+        // echo $lat;
+        // echo '<br>';
+        // echo $long;
+        $access_token = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+//$address = ': 124/8/2 bờ kè, Đ. Mạc Thiên Tích, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam ';
+
+// Thực hiện yêu cầu tới API Geocoding của Mapbox
+$api_url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' . urlencode($address . ', ' . $tenxa . ', ' . $tenhuyen . ', ' . $tentinh). '.json?access_token=' . $access_token;
+$response = file_get_contents($api_url);
+
+// Phân tích dữ liệu JSON để lấy tọa độ của địa chỉ
+$result = json_decode($response);
+$longitude = $result->features[0]->geometry->coordinates[0];
+$latitude = $result->features[0]->geometry->coordinates[1];
+
+// In ra tọa độ của địa chỉ
+//echo "Longitude: " . $longitude . "<br>";
+//echo "Latitude: " . $latitude."<br>";
+$distance = sqrt(pow($lat - $latitude, 2) + pow($long - $longitude, 2));
+    if ($distance < 0.001) {
+
+      $sql = "SELECT * FROM chukhutro as a, khutro as b WHERE a.ID_CKT = b.ID_CKT and a.TENDANGNHAP='".$_SESSION['TENDANGNHAP']."'";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0)
+      {
+          echo '<script language="javascript">alert("Khu trọ đã tồn tại"); window.location="themtro.php";</script>';
+          die ();
+      }
+        //echo "Tọa độ của khu trọ phù hợp với địa chỉ của nó";
+        //$cautruyvan = "INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT_TRO`, `LONG_TRO`) VALUES (NULL, '$iWardId', '6', 'Nhà trọ Cẩm Tú', 'Hẻm 51 51/51H đường 3/2', '10.029433', '105.773318')";
+       
+       else{
+        $cautruyvan = "INSERT INTO `khutro` (`ID_KHUTRO`, `ID_XA`, `ID_CKT`, `TENKHUTRO`, `SONHA`, `LAT_TRO`, `LONG_TRO`) VALUES (NULL, '$iWardId', '$idckt', '$username', '$address', '$lat', '$long')";
+        $cautruyvansql = mysqli_query($conn, $cautruyvan);
+        if($cautruyvansql){
+            echo "<script language='javascript'>alert('Thêm thành công')</script>";
+
+            header("location:themtro.php"); 
+                }
+
+       } 
+      } 
+      else {
+      echo '<script>alert("Tọa độ của khu trọ không phù hợp với địa chỉ của nó");</script>';
+      header('Refesh: 5url=themtro.php');
+    }
+
+  }
+  
+
+ 
+  
+  
+
+?>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
@@ -28,7 +143,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/trogiup.js" type="text/javascript"></script>
-      
+        <script src="js/ajax1.js" type="text/javascript"></script>
     </head>
 <body class="hero-anime">
 <div class="navigation-wrap bg-light start-header start-style">
@@ -77,28 +192,39 @@
                <a class="nav-link" href="#" data-toggle="dropdown">Tài khoản</a>
                <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="aw__d1xmuhl0" id="arrowDownB"><path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path></svg>
 
+               <?php
+                          // session_destroy();
+                          if (!isset($_SESSION['TENDANGNHAP'])) {
+                            ?>
                               <div class="dropdown-menu"> 
                 <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
-                  <a class="dropdown-item" href="tindaluu.php">Tin đăng đã lưu</a>
-                  <a class="dropdown-item" href="timkiemdaluu.php">Tìm kiếm đã lưu</a>
-                  <a class="dropdown-item" href="setting.php">Cài đặt</a>
+                  <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
+                  <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
+                  <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
+                  
                   <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                 </div>
+                            <?php
+                          } else {?>
+                            
                             <div class="dropdown-menu"> 
-                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"></span>
+                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['TENDANGNHAP'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
                   <a class="dropdown-item" href="tindaluu.php">Tin đăng đã lưu</a>
-                  <a class="dropdown-item" href="timkiemdaluu.php">Tìm kiếm đã lưu</a>
+                  <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
+                  <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
                   <a class="dropdown-item" href="setting.php">Cài đặt</a>
                   <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                   <a class="dropdown-item" href="logout.php">Đăng xuất</a>
                 </div>
-  
-                             </li>
-
+                        <?php
+                        }
+                      ?>   
+                
+                            
             </ul>
           </div>
 
@@ -122,37 +248,36 @@
             <!-- <button type="" href="index.php">Trang chủ</button> -->
         </div>
             <div class="right">
-                <form action="">
+                <form action="" method="post" enctype="multipart/form-data">
                     <h2>Đăng ký thông tin khu trọ</h2>
-                    <input type="text" placeholder="Nhập tên khu trọ" id="username">
-                    <input type="text" placeholder="Nhập số nhà" id="address">
+                    <input type="text" placeholder="Nhập tên khu trọ" id="username" name="username">
+                    <input type="text" placeholder="Nhập số nhà" id="address" name="address">
                       <div class="dimem">
-                      <select name="as" id="as">
-                      <option value="0">Xã</option>
-                        <option value="">Hưng Lợi</option>
-                        <option value="1">Xuân Khánh</option>
-                        <option value="2">An Hòa</option>
-                        <option value="3">An Thới</option>
-                        <option value="4">An Cư</option>
-                        <option value="5">An Nghiệp</option>
+                      <select name="iCitId" class="f-form-input tentinh" onchange="getDistrictClaFilter(this.value)">
+ <option value="0" >Tất cả Tỉnh/Thành phố</option>
+ <?php
+  foreach ($tinhsql as $key => $value){?>
+    <option   value='<?php echo $value['ID_TINH'] ?>'><?php echo $value['TENTINH'] ?></option>
+    
+<?php } ?>
+  </select>
                       </select>
                       <br><br>
-                      <select name="as" id="as">
-                      <option value="0">Huyện</option>
-                        <option value="0">Ninh Kiều</option>
-                        <option value="1">Cái Răng</option>
-                        <option value="2">Bình Thủy</option>
-                        <option value="3">Thốt Nốt</option>
-                        <option value="4">Ô Môn</option>
-                      </select>
+                      <select name="iDisId" class="f-form-input city" onchange="getWardClaFilter(this.value)">
+  <option value="">Quận/Huyện</option>
+  <?php
+  foreach ($huyensql as $key => $value){?>
+    <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
+    
+<?php } ?>
+  </select>
                       <br><br>
-                      <select name="as" id="as">
-                      <option value="0">Tỉnh</option>
-                        <option value="0">Cần Thơ</option>
-                      </select><br>
+                      <select name="iWardId" class="f-form-input tinh">
+  <option value="0">Phường/Xã</option>    
+ </select><br>
                       <div class="ami">
-                      <input type="text" placeholder="Nhập vĩ độ của bạn" id="lat">
-                      <input type="text" placeholder="Nhập kinh độ của bạn" id="long">
+                      <input type="text" placeholder="Nhập vĩ độ của bạn" id="lat" name = "lat">
+                      <input type="text" placeholder="Nhập kinh độ của bạn" id="long" name="long">
 </div>
              
         <!-- <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="outline: none;"></div>
@@ -191,7 +316,7 @@
                 }
             </script> -->
 
-            <input class="inpu" type="submit" value="ĐĂNG KÝ">
+            <input class="inpu"  name="submit" type="submit" value="ĐĂNG KÝ">
 
                 </form>
             </div>

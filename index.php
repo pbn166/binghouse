@@ -312,7 +312,7 @@
                                                                             </div>
                                     <div class="avatar_name">
                                         <span class="phone_name" title="Thị Kim"><?php echo $row['HOTEN'] ?></span>
-                                                                                    <span class="phone_number p_0896873698" onclick="showPhoneV2('0896873698',this)"> <?php echo $row['SDT'] ?> </span>
+                                                                                    <span class="phone_number"> <?php echo $row['SDT'] ?> </span>
                                                                             </div>
                                 </div>
                             </div>

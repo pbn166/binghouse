@@ -13,7 +13,7 @@
 $lat = 10.029433;
 $lng = 105.773318;
 $access_token = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
-$address = 'Khu II, Đ. 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam';
+$address = '47/5, Đường 3/2, Quận Ninh Kiều, Tp Cần Thơ, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam';
 
 // Thực hiện yêu cầu tới API Geocoding của Mapbox
 $api_url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' . urlencode($address) . '.json?access_token=' . $access_token;
