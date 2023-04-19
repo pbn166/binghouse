@@ -642,7 +642,7 @@ body.dark .logo img {
     padding: 28px 160px 20px;
 }
 
-.ssn_thongtin,
+.ssn_container,
 .ssn_pw_filter {
     display: block;
     min-width: 1300px;
@@ -2316,7 +2316,7 @@ a:hover {
     text-decoration: none;
 }
 
-.thongtin {
+.container {
     position: relative;
     display: inline-block;
 }
@@ -2336,6 +2336,6 @@ a:hover {
     border: 1px solid #ccc;
 }
 
-.thongtin:hover .dropdown {
+.container:hover .dropdown {
     display: block;
 }
