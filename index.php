@@ -270,7 +270,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   </select>
  </div>
  <div class="item-filter">
- <input type="text" value="" id="input-form-search" placeholder="Từ khóa tìm kiếm. VD: Thuê nhà trọ Cầu Giấy" name="keyword" class="f-form-input" autocomplete="off">
+ <input type="text" value="" id="input-form-search" placeholder="Từ khóa tìm kiếm. VD: Thuê nhà trọ Ninh Kiều" name="keyword" class="f-form-input" autocomplete="off">
  </div>
  <button type="submit" class="btn btn-primary" name = "submit">
  Tìm kiếm

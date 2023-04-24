@@ -447,13 +447,13 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                                 style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                                                                 <button
                                                                     class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
-                                                                    type="reset">Reset</button>
+                                                                    type="reset">Đặt lại</button>
                                                             </div>
                                                             <div class="snf9jyk"
                                                                 style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                                                                 <button type="submit"
                                                                     class="b1ek51v5 accent r-normal large w-normal i-left stretch"
-                                                                    name="submit" id="submit">CẬP NHẬT</button>
+                                                                    name="submit" id="submit">Cập nhật</button>
                                                             </div>
                                                         </div>
                                                     </div>
