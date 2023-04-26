@@ -17,32 +17,32 @@ $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TE
   and e.ID_TINH = c.ID_TINH
   and b.TENDANGNHAP = '$ten'";
 $thongtinsql = mysqli_fetch_assoc($conn->query($thongtin));
-if (isset($_POST['submit'])) {
-   $HOTEN = $_POST['HOTEN'];
-   $SDT = $_POST['SDT'];
-   //echo $HOTEN;
-   //echo $TENKHUTRO;
-   //echo $SDT;
-   //echo $SONHA;
-   //echo $TENTINH;
-   //echo $TENHUYEN;
-   //echo $TENXA;
-   //exit();
+// if (isset($_POST['submit'])) {
+//    $HOTEN = $_POST['HOTEN'];
+//    $SDT = $_POST['SDT'];
+//    //echo $HOTEN;
+//    //echo $TENKHUTRO;
+//    //echo $SDT;
+//    //echo $SONHA;
+//    //echo $TENTINH;
+//    //echo $TENHUYEN;
+//    //echo $TENXA;
+//    //exit();
 
-   //$tendangnhap = $_POST['TENDANGNHAP'];
+//    //$tendangnhap = $_POST['TENDANGNHAP'];
 
-   $sql1 = "UPDATE `chukhutro` SET `HOTEN` = '$HOTEN', `SDT`='$SDT' WHERE `TENDANGNHAP` = '" . $_SESSION['TENDANGNHAP'] . "'";
-   $query1 = mysqli_query($conn, $sql1);
-   if ($query1) {
-      echo '<script>alert("Cập nhật thành công");</script>';
-      header("location:setting.php");
-      //header("refresh: 5; url = setting.php");
+//    $sql1 = "UPDATE `chukhutro` SET `HOTEN` = '$HOTEN', `SDT`='$SDT' WHERE `TENDANGNHAP` = '" . $_SESSION['TENDANGNHAP'] . "'";
+//    $query1 = mysqli_query($conn, $sql1);
+//    if ($query1) {
+//       echo '<script>alert("Cập nhật thành công");</script>';
+//       header("location:setting.php");
+//       //header("refresh: 5; url = setting.php");
 
 
-   } else {
-      echo "Lỗi";
-   }
-}
+//    } else {
+//       echo "Lỗi";
+//    }
+// }
 $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
   FROM khutro as a, chukhutro as b
   WHERE a.ID_CKT = b.ID_CKT
@@ -54,6 +54,10 @@ $khutrosql = mysqli_query($conn, $khutro);
 <html lang="en">
 
 <head>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
    <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -249,6 +253,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                      tin cá nhân</a><br>
                   <!--<a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br>-->
                <div class="container">
+
                   <p class="item"><a href="repassword.php" rel="noreferrer"><img src="image/logo.png" width="16"
                            height="16"></i>Thông tin khu trọ</a><br></p>
                   <div class="dropdown">
@@ -261,18 +266,23 @@ $khutrosql = mysqli_query($conn, $khutro);
                      <a href="javascript:void(0)" class="dropbtn"></a>
                      <div class="dropdown-content">
                         <li>
-                           <a href="setting_loaiphong.php">Loại phòng </a>
+                           <a href="setting_loaiphong.php">Loại phòng</a>
                            <ul class="dropdown-content">
                               <li class="dropdown-content">
-                                 <a href="setting_phong.php">Phòng</a>
+                                 <a href="setting_phong.php">Phòng </a>
                               </li>
                            </ul>
+
+
                      </div>
+
+
                   </div>
                </div>
                <!--<a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>-->
                <a href="repassword.php" rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài
                   khoản</a><br>
+
                </p>
                <span class="f6ete4">
                   <!-- -->
@@ -368,32 +378,67 @@ $khutrosql = mysqli_query($conn, $khutro);
                         style="">
                         <div>
                            <h2>
-                              <div class="ten">Hồ sơ cá nhân</div>
+                              <div class="ten">Thông tin phòng</div>
                            </h2>
                            <div class="grid-column">
                               <div data-v-5d159d94="" class="form-group">
-                                 <label data-v-5d159d94="" class="label-form">Họ và tên <small data-v-5d159d94=""
+                                 <!-- <label data-v-5d159d94="" class="label-form">Tên loại phòng <small data-v-5d159d94=""
                                        style="color: red;">*</small></label>
-                                 <input data-v-5d159d94="" type="text" placeholder="Tên chưa cung cấp" name="HOTEN"
-                                    class="form-control" value="<?php echo $thongtinsql['HOTEN'] ?>">
+                                 <input data-v-5d159d94="" type="text" placeholder="Tên loại phòng" name="TENLOAIPHONG"
+                                    class="form-control" value="<?php //echo $thongtinsql['HOTEN'] ?>"> -->
+
+                                 <table class="table table-bordered">
+                                    <?php
+                                    //$sql_loaiphong = "SELECT * FROM loaiphong as lp, phong as p, khutro as kt, trangthai tt, coloaiphong clp where lp.ID_LP = p.ID_LP and kt.ID_KHUTRO = p.ID_KHUTRO and tt.ID_TT = p.ID_TT and clp.ID_KHUTRO = kt.ID_KHUTRO and clp.ID_KHUTRO = $value[ID_KHUTRO]";
+                                    $sql_loaiphong = "SELECT * FROM loaiphong as lp, phong as p, khutro as kt, trangthai tt, hinh h where lp.ID_LP = p.ID_LP and kt.ID_KHUTRO = p.ID_KHUTRO and tt.ID_TT = p.ID_TT and h.STT = p.STT and p.ID_KHUTRO = $value[ID_KHUTRO] order by p.STT DESC";
+                                    $query_loaiphong = mysqli_query($conn, $sql_loaiphong);
+                                    ?>
+                                    <thead>
+                                       <tr>
+                                          <!-- <th>Tên khu trọ</th> -->
+                                          <th>Tên loại phòng</th>
+                                          <th>Tên Phòng</th>
+                                          <th>Hình</th>
+                                          <th>Trạng thái</th>
+                                          <th>Quản lý</th>
+                                       </tr>
+                                    </thead>
+                                    <?php
+                                    $i = 0;
+                                    while ($row = mysqli_fetch_array($query_loaiphong)) {
+                                       $i++;
+                                       ?>
+                                       <tbody>
+                                          <tr>
+                                             <!-- <td>
+                                                <?php //echo $row['TENKHUTRO'] ?>
+                                             </td> -->
+                                             <td>
+                                                <?php echo $row['TENLOAIPHONG'] ?>
+                                             </td>
+                                             <td>
+                                                <?php echo $row['TENPHONG'] ?>
+                                             </td>
+                                             <td>
+                                                <img src="ha_phong/<?php echo $row['HINH'] ?>" width="100px">
+                                             </td>
+                                             <td>
+                                                <?php echo $row['TENTT'] ?>
+                                             </td>
+                                             <td><a href="suaphong.php?STT=<?php echo $row['STT'] ?>">Sửa</a> | <a href="xoaphong.php?STT=<?php echo $row['STT'] ?>">Xóa</a></td>
+                                          </tr>
+                                       </tbody>
+                                       <?php
+                                    }
+                                    ?>
+                                 </table>
+
                               </div>
                            </div>
 
                            <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]"
                               value="[object Object]">
-                              <div class="form-group">
-                                 <label class="label-form">
-                                    Số điện thoại
-                                 </label>
-                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
-                                 <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="SDT"
-                                    class="form-control" value="<?php echo $thongtinsql['SDT'] ?>">
-
-                              </div>
                               <div>
-
-
-
                                  <div class="l6ks4td">
                                     <div class="withGutter c29gcq6"
                                        style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
@@ -403,11 +448,13 @@ $khutrosql = mysqli_query($conn, $khutro);
                                              style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                                              <button
                                                 class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
-                                                type="reset">Reset</button></div>
+                                                type="reset">Reset</button>
+                                          </div>
                                           <div class="snf9jyk"
                                              style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
-                                             <button class="b1ek51v5 accent r-normal large w-normal i-left stretch"
-                                                name="submit" id="submit">CẬP NHẬT</button></div>
+                                             <a class="b1ek51v5 accent r-normal large w-normal i-left stretch"
+                                                name="submit" id="submit" href="themphong.php"> THÊM PHÒNG</a>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>

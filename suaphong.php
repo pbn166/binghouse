@@ -9,6 +9,9 @@ $ten = $_SESSION['TENDANGNHAP'];
 $loaiphong = "SELECT DISTINCT * 
   FROM loaiphong ";
 $loaiphongsql = mysqli_query($conn, $loaiphong);
+$sql = "SELECT * FROM PHONG P, LOAIPHONG LP, HINH H WHERE LP.ID_LP = P.ID_LP AND H.STT = P.STT AND P.STT = '$_GET[STT]'";
+$query_sql = mysqli_query($conn, $sql);
+
 $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TENHUYEN, c.TENTINH, d.ID_XA, e.ID_HUYEN
   FROM khutro as a, chukhutro as b, tinh as c,xa as d, huyen as e
   where a.ID_CKT = b.ID_CKT
@@ -125,7 +128,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                             d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z">
                                         </path>
                                     </svg>
-                                    <a class="nav-link"href="index.php">Home</a>
+                                    <a class="nav-link" href="index.php">Home</a>
 
                                 </li>
                                 <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -297,8 +300,8 @@ $khutrosql = mysqli_query($conn, $khutro);
                 <div class="withSpan snf9jyk"
                     style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
                     <div class="f1wri8l5">
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <div></div>
+                        <form action="suaphong.php?STT=<?php echo $_GET['STT'] ?>" method="post"
+                            enctype="multipart/form-data">
                             <div>
                                 <div class="wbtmmtj"></div>
                                 <div class="l1kr9d9v">
@@ -372,99 +375,168 @@ $khutrosql = mysqli_query($conn, $khutro);
                                     </div>
                                 </div>
                             </div>
+
                             <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1"
                                 class="wizard-tab-container" style="">
                                 <div>
-                                    <?php
-                                    if(isset($_POST['submit'])){
-                                        $tenloaiphong = $_POST['TENLOAIPHONG'];
-                                        $songuoiotoida = $_POST['SONGUOIOTOIDA'];
-                                        $dientich = $_POST['DIENTICH'];
 
-                                        $sql_themlp = "INSERT INTO LOAIPHONG (TENLOAIPHONG, SONGUOIOTOIDA, DIENTICH) VALUES('".$tenloaiphong."', '".$songuoiotoida."', '".$dientich."')";
-                                        $query_themlp = mysqli_query($conn, $sql_themlp);
-
-                                        $sql_lp = "SELECT MAX(ID_LP) FROM LOAIPHONG";
-                                        $query_lp = mysqli_query($conn, $sql_lp);
-                                        $query = mysqli_fetch_assoc($query_lp);
-                                        if($query_themlp){
-                                            if($query){
-                                                $lp_id = $query['MAX(ID_LP)'];
-                                                $sql_clp = "INSERT INTO COLOAIPHONG VALUES('".$value['ID_KHUTRO']."', '".$lp_id."')";
-                                                $query_clp = mysqli_query($conn, $sql_clp);
-                                            }
-                                        }
-                                        // header('location: setting_loaiphong.php');
-                                        
-                                    }
-
-                                    ?>
                                     <h2>
-                                        <div class="ten">Thêm loại phòng</div>
+                                        <div class="ten">Sửa phòng</div>
                                     </h2>
-                                    <form action="themloaiphong.php" method="post" enctype="multipart/form-data" >
-                                        <div class="grid-column">
-                                            <div data-v-5d159d94="" class="form-group">
+                                    <form action="suaphong.php?STT=<?php echo $_GET['STT'] ?>" method="post"
+                                        enctype="multipart/form-data">
+                                        <?php
+                                        $sql_phong = "SELECT * FROM loaiphong as lp, coloaiphong as clp, khutro as kt where lp.ID_LP = clp.ID_LP and kt.ID_KHUTRO = clp.ID_KHUTRO and clp.ID_KHUTRO = $value[ID_KHUTRO]";
+                                        $query_phong = mysqli_query($conn, $sql_phong);
+                                        $sql_trangthai = "SELECT * FROM trangthai tt, phong p where tt.ID_TT = p.ID_TT AND p.STT = '$_GET[STT]' ";
+                                        $query_trangthai = mysqli_query($conn, $sql_trangthai);
+                                        $sql_tt = "SELECT * FROM TRANGTHAI";
+                                        $query_tt = mysqli_query($conn, $sql_tt);
+                                        ?>
+
+                                        <div class="row-main">
+                                            <div class="grid-column">
+                                                <div data-v-5d159d94="" class="form-group">
+                                                    <label data-v-5d159d94="" class="label-form">Tên khu trọ
+                                                        <small data-v-5d159d94="" style="color: red;">*</small></label>
+                                                    <input data-v-5d159d94="" type="text" placeholder="Tên khu trọ"
+                                                        class="form-control" value="<?php echo $value['TENKHUTRO'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="item-filter has-icon border-r flex-none">
+                                                <i class="icon mcon-city"></i>
                                                 <label data-v-5d159d94="" class="label-form">Tên loại phòng <small
                                                         data-v-5d159d94="" style="color: red;">*</small></label>
-                                                <input data-v-5d159d94="" type="text" placeholder="Tên loại phòng"
-                                                    name="TENLOAIPHONG" class="form-control"
-                                                    value="<?php //echo $thongtinsql['HOTEN'] ?>">
+                                                <select name="LOAIPHONG" class="f-form-input room">
+                                                    <?php
+                                                    foreach ($query_sql as $key => $LP) {
+                                                        ?>
+                                                        <option value="<?php echo $LP['ID_LP'] ?>"><?php echo $LP['TENLOAIPHONG'] ?></option>
+                                                    <?php } ?>
+                                                    <?php
+                                                    foreach ($query_phong as $key => $LP) { ?>
+                                                        <option value='<?php echo $LP['ID_LP'] ?>'><?php echo $LP['TENLOAIPHONG'] ?></option>
+
+                                                    <?php } ?>
+
+
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="grid-column">
-                                            <div data-v-5d159d94="" class="form-group">
-                                                <label data-v-5d159d94="" class="label-form">Số người ở tối đa <small
+                                            <?php
+                                            echo "<br>";
+                                            ?>
+
+                                            <div class="grid-column">
+                                                <div data-v-5d159d94="" class="form-group">
+                                                    <label data-v-5d159d94="" class="label-form">Tên phòng
+                                                        <small data-v-5d159d94="" style="color: red;">*</small></label>
+                                                    <?php
+                                                    foreach($query_sql as $key => $value) {
+                                                        ?>
+                                                        <input data-v-5d159d94="" type="text" placeholder="Tên phòng"
+                                                            name="TENPHONG" class="form-control"
+                                                            value="<?php echo $value['TENPHONG'] ?>">
+                                                    <?php } ?>
+
+                                                </div>
+                                                <div class="grid-column">
+                                                <div data-v-5d159d94="" class="form-group">
+                                                    <label data-v-5d159d94="" class="label-form">Tên phòng
+                                                        <small data-v-5d159d94="" style="color: red;">*</small></label>
+                                                    <?php
+                                                    foreach($query_sql as $key => $value) {
+                                                        ?>
+                                                        <input data-v-5d159d94="" type="file" placeholder="Hình"
+                                                            name="HINH" class="form-control"
+                                                            value="<?php echo $value['HINH']?>">
+                                                            <img src="./ha_phong/<?php echo $value['HINH'] ?>" alt="">
+                                                            
+                                                    <?php } ?>
+
+                                                </div>
+                                            </div>
+                                            <div class="item-filter has-icon border-r flex-none">
+                                                <i class="icon mcon-city"></i>
+                                                <label data-v-5d159d94="" class="label-form">Trạng thái <small
                                                         data-v-5d159d94="" style="color: red;">*</small></label>
-                                                <input data-v-5d159d94="" type="text" placeholder="Số người ở tối đa"
-                                                    name="SONGUOIOTOIDA" class="form-control"
-                                                    value="<?php //echo $thongtinsql['HOTEN'] ?>">
+                                                <select name="TRANGTHAI" class="f-form-input room">
+                                                    <?php
+                                                    foreach ($query_trangthai as $key => $TrangThai) {
+                                                    ?>
+                                                    <option value="<?php echo $TrangThai['ID_TT'] ?>"><?php echo $TrangThai['TENTT'] ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <?php
+                                                    foreach ($query_tt as $key => $TT) { ?>
+                                                        <option value='<?php echo $TT['ID_TT'] ?>'><?php echo $TT['TENTT'] ?></option>
+
+                                                    <?php } ?>
+
+
+                                                </select>
                                             </div>
-                                        </div>
+                                            <?php
+                                            echo "<br>";
+                                            ?>
 
-                                        <div class="grid-column grid-column-4 grid-xm-column-1"
-                                            messages_error="[object Object]" value="[object Object]">
-                                            <div class="form-group">
-                                                <label class="label-form">
-                                                    Diện tích
-                                                </label>
-                                                <small data-v-5d159d94="" style="color: red;">*</small></label>
-                                                <input data-v-5d159d94="" type="text" placeholder="Diện tích"
-                                                    name="DIENTICH" class="form-control"
-                                                    value="<?php //echo $thongtinsql['SDT'] ?>">
+                                            <div class="grid-column grid-column-4 grid-xm-column-1"
+                                                messages_error="[object Object]" value="[object Object]">
 
-                                            </div>
-                                            <div>
+                                                <div>
 
 
 
-                                                <div class="l6ks4td">
-                                                    <div class="withGutter c29gcq6"
-                                                        style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
-                                                        <div class="swjo00u"
-                                                            style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-                                                            <div class="snf9jyk"
-                                                                style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
-                                                                <button
-                                                                    class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
-                                                                    type="reset">Reset</button>
-                                                            </div>
-                                                            <div class="snf9jyk"
-                                                                style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
-                                                                <button type="submit"
-                                                                    class="b1ek51v5 accent r-normal large w-normal i-left stretch"
-                                                                    name="submit" id="submit">CẬP NHẬT</button>
+                                                    <div class="l6ks4td">
+                                                        <div class="withGutter c29gcq6"
+                                                            style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
+                                                            <div class="swjo00u"
+                                                                style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
+                                                                <div class="snf9jyk"
+                                                                    style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
+                                                                    <button
+                                                                        class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
+                                                                        type="reset">Reset</button>
+                                                                </div>
+                                                                <div class="snf9jyk"
+                                                                    style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
+                                                                    <button type="submit"
+                                                                        class="b1ek51v5 accent r-normal large w-normal i-left stretch"
+                                                                        name="submit" id="submit">CẬP NHẬT</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+                if (isset($_POST['submit'])) {
+                    $TENPHONG = $_POST['TENPHONG'];
+                    $LOAIPHONG = $_POST['LOAIPHONG'];
+                    $TRANGTHAI = $_POST['TRANGTHAI'];
+                    //hinh anh
+                    $hinhanh = $_FILES['HINH']['name'];
+                    $hinhanh_tmp = $_FILES['HINH']['tmp_name'];    
+                    $hinhanh = time(). '_'.$hinhanh;
+
+                    $sql_suaphong = "UPDATE PHONG SET TENPHONG = '" . $TENPHONG . "', ID_TT = '" .$TRANGTHAI. "', ID_KHUTRO = '" . $value['ID_KHUTRO'] . "', ID_LP = '" . $LOAIPHONG . "' WHERE STT = '$_GET[STT]'";
+                    $query_suaphong = mysqli_query($conn, $sql_suaphong);
+
+                    if($hinhanh == ''){
+                        
+
+                        $sql_suahinh = "UPDATE HINH SET HINH = '".$hinhanh."' WHERE STT = '$_GET[STT]'";
+                        $query_suahinh = mysqli_query($conn, $sql_suahinh);
+                        move_uploaded_file($hinhanh_tmp,'ha_phong/'.$hinhanh); 
+                    }
+                    // header('location: setting_phong.php');
+                }
+                ?>
 </body>
 
 

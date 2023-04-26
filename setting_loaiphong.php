@@ -17,32 +17,32 @@ $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TE
   and e.ID_TINH = c.ID_TINH
   and b.TENDANGNHAP = '$ten'";
 $thongtinsql = mysqli_fetch_assoc($conn->query($thongtin));
-if (isset($_POST['submit'])) {
-   $HOTEN = $_POST['HOTEN'];
-   $SDT = $_POST['SDT'];
-   //echo $HOTEN;
-   //echo $TENKHUTRO;
-   //echo $SDT;
-   //echo $SONHA;
-   //echo $TENTINH;
-   //echo $TENHUYEN;
-   //echo $TENXA;
-   //exit();
+// if (isset($_POST['submit'])) {
+//    $HOTEN = $_POST['HOTEN'];
+//    $SDT = $_POST['SDT'];
+//    //echo $HOTEN;
+//    //echo $TENKHUTRO;
+//    //echo $SDT;
+//    //echo $SONHA;
+//    //echo $TENTINH;
+//    //echo $TENHUYEN;
+//    //echo $TENXA;
+//    //exit();
 
-   //$tendangnhap = $_POST['TENDANGNHAP'];
+//    //$tendangnhap = $_POST['TENDANGNHAP'];
 
-   $sql1 = "UPDATE `chukhutro` SET `HOTEN` = '$HOTEN', `SDT`='$SDT' WHERE `TENDANGNHAP` = '" . $_SESSION['TENDANGNHAP'] . "'";
-   $query1 = mysqli_query($conn, $sql1);
-   if ($query1) {
-      echo '<script>alert("Cập nhật thành công");</script>';
-      header("location:setting.php");
-      //header("refresh: 5; url = setting.php");
+//    $sql1 = "UPDATE `chukhutro` SET `HOTEN` = '$HOTEN', `SDT`='$SDT' WHERE `TENDANGNHAP` = '" . $_SESSION['TENDANGNHAP'] . "'";
+//    $query1 = mysqli_query($conn, $sql1);
+//    if ($query1) {
+//       echo '<script>alert("Cập nhật thành công");</script>';
+//       header("location:setting.php");
+//       //header("refresh: 5; url = setting.php");
 
 
-   } else {
-      echo "Lỗi";
-   }
-}
+//    } else {
+//       echo "Lỗi";
+//    }
+// }
 $khutro = "SELECT a.ID_KHUTRO, a.TENKHUTRO
   FROM khutro as a, chukhutro as b
   WHERE a.ID_CKT = b.ID_CKT
@@ -129,8 +129,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z">
                               </path>
                            </svg>
-                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                              aria-haspopup="true" aria-expanded="false">Home</a>
+                           <a class="nav-link"href="index.php">Home</a>
 
                         </li>
                         <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -200,7 +199,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                               <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
                               <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
                               <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
-                              <a class="dropdown-item" href="#">Cài đặt</a>
+                              <a class="dropdown-item" href="setting.php">Cài đặt</a>
                               <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                               <a class="dropdown-item" href="logout.php">Đăng xuất</a>
                            </div>
@@ -267,7 +266,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                      <a href="javascript:void(0)" class="dropbtn"></a>
                      <div class="dropdown-content">
                         <li>
-                           <a href="">Phòng </a>
+                           <a href="setting_phong.php">Phòng </a>
                            <ul class="dropdown-content">
                               <li class="dropdown-content">
                                  <a href="setting_loaiphong.php">Loại phòng</a>
@@ -419,7 +418,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                              <td>
                                                 <?php echo $row['DIENTICH'] ?>m2
                                              </td>
-                                             <td><a href="">Sửa</a> | <a href="">Xóa</a></td>
+                                             <td><a href="sualoaiphong.php?ID_LP=<?php echo $row['ID_LP'] ?>">Sửa</a> | <a href="xoaloaiphong.php?ID_LP=<?php echo $row['ID_LP'] ?>">Xóa</a></td>
                                           </tr>
                                        </tbody>
                                        <?php
@@ -432,31 +431,6 @@ $khutrosql = mysqli_query($conn, $khutro);
 
                            <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]"
                               value="[object Object]">
-                              <!-- <div class="form-group">
-                                 <label class="label-form">
-                                    Số điện thoại
-                                 </label>
-                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
-                                 <input data-v-5d159d94="" type="text" placeholder="Nhập số điện thoại" name="SDT"
-                                    class="form-control" value="<?php //echo $thongtinsql['SDT'] ?>">
-                              </div> -->
-
-                              <!-- <div class="form-group">
-                                 <label class="label-form">
-                                    Số người ở tối đa
-                                 </label>
-                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
-                                 <input data-v-5d159d94="" type="text" placeholder="Số người ở tối đa" name="SONGUOIOTOIDA"
-                                    class="form-control" value="<?php //echo $thongtinsql['SDT'] ?>">
-                              </div> -->
-                              <!-- <div class="form-group">
-                                 <label class="label-form">
-                                    Diện tích
-                                 </label>
-                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
-                                 <input data-v-5d159d94="" type="text" placeholder="Diện tích" name="DIENTICH"
-                                    class="form-control" value="<?php //echo $thongtinsql['SDT'] ?>">
-                              </div> -->
                               <div>
 
 

@@ -6,8 +6,8 @@ $huyen = "select * from huyen";
 $huyensql = mysqli_query($conn, $huyen);
 session_start();
 $ten = $_SESSION['TENDANGNHAP'];
-$loaiphong = "SELECT DISTINCT * 
-  FROM loaiphong ";
+$loaiphong = "SELECT * 
+  FROM loaiphong WHERE ID_LP = $_GET[ID_LP] ";
 $loaiphongsql = mysqli_query($conn, $loaiphong);
 $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TENHUYEN, c.TENTINH, d.ID_XA, e.ID_HUYEN
   FROM khutro as a, chukhutro as b, tinh as c,xa as d, huyen as e
@@ -381,44 +381,35 @@ $khutrosql = mysqli_query($conn, $khutro);
                                         $songuoiotoida = $_POST['SONGUOIOTOIDA'];
                                         $dientich = $_POST['DIENTICH'];
 
-                                        $sql_themlp = "INSERT INTO LOAIPHONG (TENLOAIPHONG, SONGUOIOTOIDA, DIENTICH) VALUES('".$tenloaiphong."', '".$songuoiotoida."', '".$dientich."')";
-                                        $query_themlp = mysqli_query($conn, $sql_themlp);
-
-                                        $sql_lp = "SELECT MAX(ID_LP) FROM LOAIPHONG";
-                                        $query_lp = mysqli_query($conn, $sql_lp);
-                                        $query = mysqli_fetch_assoc($query_lp);
-                                        if($query_themlp){
-                                            if($query){
-                                                $lp_id = $query['MAX(ID_LP)'];
-                                                $sql_clp = "INSERT INTO COLOAIPHONG VALUES('".$value['ID_KHUTRO']."', '".$lp_id."')";
-                                                $query_clp = mysqli_query($conn, $sql_clp);
-                                            }
-                                        }
+                                        $sql_sualp = "UPDATE LOAIPHONG SET TENLOAIPHONG ='".$tenloaiphong."', SONGUOIOTOIDA = '".$songuoiotoida."', DIENTICH = '".$dientich."' WHERE ID_LP = '$_GET[ID_LP]' ";
+                                        $query_sualp = mysqli_query($conn, $sql_sualp);
                                         // header('location: setting_loaiphong.php');
                                         
                                     }
-
                                     ?>
                                     <h2>
-                                        <div class="ten">Thêm loại phòng</div>
+                                        <div class="ten">Sửa loại phòng</div>
                                     </h2>
-                                    <form action="themloaiphong.php" method="post" enctype="multipart/form-data" >
+                                    <form action="sualoaiphong.php?ID_LP=<?php echo $_GET['ID_LP']?>" method="post" enctype="multipart/form-data" >
                                         <div class="grid-column">
+                                        <?php while($value = mysqli_fetch_array($loaiphongsql)){ ?>
                                             <div data-v-5d159d94="" class="form-group">
                                                 <label data-v-5d159d94="" class="label-form">Tên loại phòng <small
                                                         data-v-5d159d94="" style="color: red;">*</small></label>
                                                 <input data-v-5d159d94="" type="text" placeholder="Tên loại phòng"
                                                     name="TENLOAIPHONG" class="form-control"
-                                                    value="<?php //echo $thongtinsql['HOTEN'] ?>">
-                                            </div>
+                                                    value="<?php echo $value['TENLOAIPHONG'] ?>">
+                                            </div>                                    
+                                        
+
                                         </div>
                                         <div class="grid-column">
                                             <div data-v-5d159d94="" class="form-group">
                                                 <label data-v-5d159d94="" class="label-form">Số người ở tối đa <small
                                                         data-v-5d159d94="" style="color: red;">*</small></label>
-                                                <input data-v-5d159d94="" type="text" placeholder="Số người ở tối đa"
+                                                <input data-v-5d159d94="" type="number" placeholder="Số người ở tối đa"
                                                     name="SONGUOIOTOIDA" class="form-control"
-                                                    value="<?php //echo $thongtinsql['HOTEN'] ?>">
+                                                    value="<?php echo $value['SONGUOIOTOIDA'] ?>">
                                             </div>
                                         </div>
 
@@ -431,9 +422,10 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
                                                 <input data-v-5d159d94="" type="text" placeholder="Diện tích"
                                                     name="DIENTICH" class="form-control"
-                                                    value="<?php //echo $thongtinsql['SDT'] ?>">
+                                                    value="<?php echo $value['DIENTICH']?>m2">
 
                                             </div>
+                                            
                                             <div>
 
 
@@ -459,6 +451,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                     </div>
                                                 </div>
                                             </div>
+                                            <?php } ?>
                                     </form>
                                 </div>
                             </div>
