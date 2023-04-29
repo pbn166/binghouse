@@ -1300,15 +1300,15 @@ select {
 .b1ek51v5.primary:hover,
 .b1ek51v5:hover {
     color: #fff;
-    background-color: #ffb057;
-    border-color: #ffb057
+    background-color: #005b9c;
+    border-color: #005b9c
 }
 
 .b1ek51v5.primary:active,
 .b1ek51v5:active {
     color: #fff;
-    background-color: #e56700;
-    border-color: #e56700
+    background-color: #005b9c;
+    border-color: #005b9c
 }
 
 .b1ek51v5.info {
@@ -1360,7 +1360,7 @@ select {
 }
 
 .b1ek51v5.caution:active {
-    color: #fff;
+    t color: #fff;
     background-color: #e09900;
     border-color: #e09900
 }
@@ -1385,20 +1385,20 @@ select {
 
 .b1ek51v5.accent {
     color: #fff;
-    background-color: #f80;
-    border-color: #f80
+    background-color: #005b9c;
+    border-color: #005b9c
 }
 
 .b1ek51v5.accent:hover {
     color: #fff;
-    background-color: #ffb057;
-    border-color: #ffb057
+    background-color: #005b9c;
+    border-color: #005b9c
 }
 
 .b1ek51v5.accent:active {
     color: #fff;
-    background-color: #e56700;
-    border-color: #e56700
+    background-color: #005b9c;
+    border-color: #005b9c
 }
 
 .b1ek51v5.secondary {
@@ -1428,14 +1428,14 @@ select {
 
 .b1ek51v5.outline.o-primary:hover,
 .b1ek51v5.outline:hover {
-    color: #ffb057;
+    color: #005b9c;
     background: #ffe9c2;
     border-color: currentColor
 }
 
 .b1ek51v5.outline.o-primary:active,
 .b1ek51v5.outline:active {
-    color: #e56700;
+    color: #005b9c;
     background: transparent;
     border-color: currentColor
 }
@@ -1493,16 +1493,16 @@ select {
 }
 
 .b1ek51v5.o-accent {
-    color: #f80
+    color: #005b9c
 }
 
 .b1ek51v5.o-accent:hover {
     background: #ffe9c2;
-    color: #ffb057
+    color: #005b9c
 }
 
 .b1ek51v5.o-accent:active {
-    color: #e56700
+    color: #005b9c
 }
 
 .b1ek51v5.o-secondary {

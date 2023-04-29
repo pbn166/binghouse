@@ -15,7 +15,7 @@
     <style>
    .gradient-custom-3 {
 /* fallback for old browsers */
-background: #84fab0;
+background:#005b9c;
 
 /* Chrome 10-25, Safari 5.1-6 */
 background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
@@ -30,8 +30,13 @@ background: #84fab0;
 /* Chrome 10-25, Safari 5.1-6 */
 background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+//* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgb(94 143 198), rgb(87, 197, 182));
+}
+.form-check-input {
+    position: inherit;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
 }
     </style>
 </head>
@@ -117,8 +122,9 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 <div class="form-check d-flex justify-content-center mb-5">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                   <label class="form-check-label" for="form2Example3g">
-                    Tôi đồng ý với tất cả <a href="#!" class="text-body">
-                        <u>Điều khoản dịch vụ</u></a>
+                    Tôi đồng ý với tất cả điều khoản dịch vụ
+                    <a href="#!" class="text-body">
+                      </a>
                   </label>
                 </div>
 
@@ -128,7 +134,8 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                     <!-- <input class="btn" type="submit" value="Đăng ký"> -->
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Bạn đã có tài khoản? <a href="login.php"
+                <p class="text-center text-muted mt-5 mb-0">Bạn đã có tài khoản? 
+                  <a href="login.php"
                     class="fw-bold text-body"><u>Đăng nhập tại đây</u></a></p>
 
               </form>
