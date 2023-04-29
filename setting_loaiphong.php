@@ -389,7 +389,7 @@ $khutrosql = mysqli_query($conn, $khutro);
 
                                  <table class="table table-bordered">
                                     <?php
-                                    $sql_loaiphong = "SELECT * FROM loaiphong as lp, coloaiphong as clp, khutro as kt where lp.ID_LP = clp.ID_LP and kt.ID_KHUTRO = clp.ID_KHUTRO and clp.ID_KHUTRO = $value[ID_KHUTRO]";
+                                    $sql_loaiphong = "SELECT * FROM loaiphong as lp, coloaiphong as clp, khutro as kt, giathuephong as gia where lp.ID_LP = clp.ID_LP and kt.ID_KHUTRO = clp.ID_KHUTRO and gia.ID_LP = lp.ID_LP and clp.ID_KHUTRO = $value[ID_KHUTRO] ORDER BY lp.ID_LP DESC ";
                                     $query_loaiphong = mysqli_query($conn, $sql_loaiphong);
                                     ?>
                                     <thead>
@@ -398,6 +398,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                           <th>Tên Loại phòng</th>
                                           <th>Số người ở tối đa</th>
                                           <th>Diện tích</th>
+                                          <th>Giá thuê</th>
                                           <th>Quản lý</th>
                                        </tr>
                                     </thead>
@@ -417,6 +418,9 @@ $khutrosql = mysqli_query($conn, $khutro);
                                              </td>
                                              <td>
                                                 <?php echo $row['DIENTICH'] ?>m2
+                                             </td>
+                                             <td>
+                                                <?php echo number_format($row['GIA']). ' '. 'VNĐ'  ?>
                                              </td>
                                              <td><a href="sualoaiphong.php?ID_LP=<?php echo $row['ID_LP'] ?>">Sửa</a> | <a href="xoaloaiphong.php?ID_LP=<?php echo $row['ID_LP'] ?>">Xóa</a></td>
                                           </tr>

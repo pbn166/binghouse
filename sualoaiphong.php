@@ -7,7 +7,7 @@ $huyensql = mysqli_query($conn, $huyen);
 session_start();
 $ten = $_SESSION['TENDANGNHAP'];
 $loaiphong = "SELECT * 
-  FROM loaiphong WHERE ID_LP = $_GET[ID_LP] ";
+  FROM loaiphong LP, GIATHUEPHONG G WHERE LP.ID_LP = G.ID_LP AND LP.ID_LP = $_GET[ID_LP] ";
 $loaiphongsql = mysqli_query($conn, $loaiphong);
 $thongtin = "SELECT b.ID_CKT,b.HOTEN, a.TENKHUTRO, b.SDT, a.SONHA, d.TENXA, e.TENHUYEN, c.TENTINH, d.ID_XA, e.ID_HUYEN
   FROM khutro as a, chukhutro as b, tinh as c,xa as d, huyen as e
@@ -380,9 +380,13 @@ $khutrosql = mysqli_query($conn, $khutro);
                                         $tenloaiphong = $_POST['TENLOAIPHONG'];
                                         $songuoiotoida = $_POST['SONGUOIOTOIDA'];
                                         $dientich = $_POST['DIENTICH'];
+                                        $gia = $_POST['GIATHUE'];
 
                                         $sql_sualp = "UPDATE LOAIPHONG SET TENLOAIPHONG ='".$tenloaiphong."', SONGUOIOTOIDA = '".$songuoiotoida."', DIENTICH = '".$dientich."' WHERE ID_LP = '$_GET[ID_LP]' ";
                                         $query_sualp = mysqli_query($conn, $sql_sualp);
+                                        $sql_suagia = "UPDATE GIATHUEPHONG SET GIA = '".$gia."' WHERE ID_LP = '$_GET[ID_LP]'";
+                                        $query_suagia = mysqli_query($conn, $sql_suagia);
+
                                         // header('location: setting_loaiphong.php');
                                         
                                     }
@@ -423,6 +427,16 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                 <input data-v-5d159d94="" type="text" placeholder="Diện tích"
                                                     name="DIENTICH" class="form-control"
                                                     value="<?php echo $value['DIENTICH']?>m2">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-form">
+                                                    Giá thuê
+                                                </label>
+                                                <small data-v-5d159d94="" style="color: red;">*</small></label>
+                                                <input data-v-5d159d94="" type="text" placeholder="Giá thuê"
+                                                    name="GIATHUE" class="form-control"
+                                                    value="<?php echo $value['GIA']?>">
 
                                             </div>
                                             

@@ -380,6 +380,7 @@ $khutrosql = mysqli_query($conn, $khutro);
                                         $tenloaiphong = $_POST['TENLOAIPHONG'];
                                         $songuoiotoida = $_POST['SONGUOIOTOIDA'];
                                         $dientich = $_POST['DIENTICH'];
+                                        $gia = $_POST['GIATHUE'];
 
                                         $sql_themlp = "INSERT INTO LOAIPHONG (TENLOAIPHONG, SONGUOIOTOIDA, DIENTICH) VALUES('".$tenloaiphong."', '".$songuoiotoida."', '".$dientich."')";
                                         $query_themlp = mysqli_query($conn, $sql_themlp);
@@ -392,6 +393,8 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                 $lp_id = $query['MAX(ID_LP)'];
                                                 $sql_clp = "INSERT INTO COLOAIPHONG VALUES('".$value['ID_KHUTRO']."', '".$lp_id."')";
                                                 $query_clp = mysqli_query($conn, $sql_clp);
+                                                $sql_gia = "INSERT INTO GIATHUEPHONG VALUES('".$value['ID_KHUTRO']."', '".$lp_id."', '".$gia."')";
+                                                $query_gia = mysqli_query($conn, $sql_gia);
                                             }
                                         }
                                         // header('location: setting_loaiphong.php');
@@ -431,6 +434,16 @@ $khutrosql = mysqli_query($conn, $khutro);
                                                 <small data-v-5d159d94="" style="color: red;">*</small></label>
                                                 <input data-v-5d159d94="" type="text" placeholder="Diện tích"
                                                     name="DIENTICH" class="form-control"
+                                                    value="<?php //echo $thongtinsql['SDT'] ?>">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="label-form">
+                                                    Giá thuê
+                                                </label>
+                                                <small data-v-5d159d94="" style="color: red;">*</small></label>
+                                                <input data-v-5d159d94="" type="text" placeholder="Giá thuê"
+                                                    name="GIATHUE" class="form-control"
                                                     value="<?php //echo $thongtinsql['SDT'] ?>">
 
                                             </div>
