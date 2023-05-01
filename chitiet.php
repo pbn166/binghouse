@@ -269,10 +269,10 @@
                                        
                                     <div data-index="2" class="slick-slide slick-active" tabindex="-1" aria-hidden="false" style="outline: none;">
                                        <div>
-                                          <div class="AdImage_sliderItem__rl6i_" data-index="2" data-type="image" tabindex="-1" style="width: 100%; display: inline-block;">
-                                             <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
-                                                <img alt="<?php echo $result['TIEUDE'] ?>" role="presentation" src="./ha_phong/<?php echo $result['HINH'] ?>" decoding="async" data-nimg="fill" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-                                                <noscript></noscript>
+                                          <div class="AdImage_sliderItem__rl6i_" >
+                                             <span >
+                                                <img alt="<?php echo $result['TIEUDE'] ?>" role="presentation" src="./ha_phong/<?php echo $result['HINH'] ?>" decoding="async" data-nimg="fill">
+                                                
                                              </span>
                                           </div>
                                        </div>
@@ -281,15 +281,11 @@
                                    
                                  </div>
                               </div>
-                              <button class="AdImage_button__ho9Jx AdImage_Next__TX7EW AdImage_buttonGallery__if1rz" aria-label="Next" tabindex="0" type="button"><i></i></button>
+                              
                            </div>
                         </div>
                      </div>
-                     <div class="AdImage_imageCaption__aUFNp">
-                        <span class="AdImage_imageCaptionText__ScM56">
-                           Tin<!-- --> cá nhân <!-- -->đăng <!-- -->9 giờ trước
-                        </span>
-                     </div>
+                    
                   </div>
                </div>
                <div class="DetailView_adviewPtyItem__V_sof">
@@ -300,38 +296,7 @@
                      <div class="AdDecriptionVeh_priceWrapper__y7Aj6">
                         <meta itemprop="position" content="1">
                         <div class="AdDecriptionVeh_adPrice__UTqQV" itemprop="price">
-                           <span>
-                              <div>
-                                 <span class="AdDecriptionVeh_priceWrapper__y7Aj6 AdDecriptionVeh_priceWrapperVeh__mBdrn">
-                                    <span class="AdDecriptionVeh_price__u_N83">
-                                       
-                                    </span>
-                                    <div class="AdDecriptionVeh_actionWrapper__ijwfS AdDecriptionVeh_actionWrapperVeh__qvMzX">
-                                       <div class="sc-i36vn2-1 gEmCbl">
-                                          
-                                          <div class="sc-i36vn2-0 ieIOfc" aria-labelledby="share_social_btn" style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;">
-                                             
-                                          </div>
-                                          </button>
-                                       </div>
-                                       
-                                    </div>
-                                 </span>
-                                 <div class="AdDecriptionVeh_date__SpYR1">
-                                    <div class="col-xs-12 no-padding">
-                                       <div class="media margin-top-05" style="display: flex; align-items: start;">
-                                          <div class="media-left media-middle"><img class="AdParam_adParamIcon__m87Vj" alt="location" src="https://static.chotot.com/storage/icons/logos/ad-param/location.svg"></div>
-                                          <div class="media-body media-middle AdParam_address__5wp1F AdParam_addressClickable__coDWA" role="button" tabindex="0"><span class="fz13">Hẻm 482 Đường Nơ Trang Long, Phường 13, Quận Bình Thạnh, Tp Hồ Chí Minh<span class="AdParam_addressClickableLoadMap__FLeKT" role="button" tabindex="0">Xem bản đồ<img alt="see project" src="https://static.chotot.com/storage/default_images/project/rightIcon.svg"></span></span></div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- <div class="AdDecriptionVeh_date__SpYR1">
-                                
-                                 </div>
-                                 <div class="AdDecriptionVeh_date__SpYR1"></div>
-                                 <div class="AdDecriptionVeh_date__SpYR1"></div> -->
-                              </div>
-                           </span>
+                           
                         </div>
                      </div>
                   </div>
@@ -365,24 +330,12 @@
                      </div>
                   </div>
                </div>
-               <div class="DetailView_adviewPtyItem__V_sof">
-                  <div class="d-lg-block styles_adBodyCollapse__1Xvk7">
-                     <div class="styles_adBodyTitle__JrqDu">Mô tả chi tiết</div>
-                     <p class="styles_adBody__vGW74" itemprop="description">
-                        📌Giá phòng từ 4.000.000 tới 5.200.000 ( chưa tính chi phí điện nước )
-                        + đầy đủ nội thất, tủ quần áo, giường ngủ, máy lạnh, bếp, tủ lạnh ( CAM KẾT PHÒNG NHƯ HÌNH). Phòng có ban công mát mẻ
-                        + nhà trang bị máy giặt , máy sấy, camera , khóa vân tay, khóa cửa 2 lớp, ko thu phí gửi xe
-                        📍 cách 1km tới các trường đại học như ĐH hutech, Đh gtvt, Đh Ngoại Thương, DH văn Lang. Cách sân bay, bến xe miền đông 5f đi xe và nhiều tiện ích xuung quanh.
-                        
-                     </p>
-                  </div>
-                 
-               </div>
+              
                <div class="DetailView_adviewPtyItem__V_sof">
                   <div>
                      <div class="col-xs-12 no-padding">
                         <div class="AdParam_adMapImage__Ysu7w">
-                           <h2>Địa điểm bất động sản</h2>
+                           
                            
 
                            <div class="place-card place-card-large">
@@ -437,17 +390,7 @@ const data = {
                      </div>
                   </div>
                </div>
-               <div class="d-none">
-                  <div class="Styles_reportWrapper__74GS_">
-                     <div class="Styles_reportBtn__izL5E"><button type="button" id="report-bad-ad-btn" class="btn btn-default btn-xs Styles_reportBad__4g9zg">Báo tin không hợp lệ</button><button type="button" class="btn btn-default btn-xs Styles_reportBad__4g9zg">Báo tin đã bán</button><a href="https://www.chotot.com/dang-tin?category=1050" class="Styles_insertSimilarAd__DHfAJ" rel="nofollow noreferrer" target="_blank">Đăng nhanh - Bán gọn</a></div>
-                     <div class="Styles_buyerProtect__5zjc4">
-                        <div class="sc-dnqmqq fllTxs">
-                           <img src="https://static.chotot.com/storage/marketplace/shield-iconx4.png" alt="mua bán an toàn" class="sc-iwsKbI cIGKHu">
-                           <div class="sc-gZMcBi mZNJv"><em>Tin đăng này đã được kiểm duyệt. Nếu gặp vấn đề, vui lòng báo cáo tin đăng hoặc liên hệ CSKH để được trợ giúp.&nbsp;<a target="_blank" rel="noopener" href="http://trogiup.chotot.com/ban-hang-tai-chotot-vn/kiem-duyet-tin/tai-sao-chotot-vn-duyet-tin-truoc-khi-dang/?utm_source=chotot&amp;utm_medium=user_protection&amp;utm_campaign=user_protection_ad_view">Xem thêm ››</a></em></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+
             </div>
          </div>
          <div class="col-md-4 no-padding dtView">
@@ -457,12 +400,10 @@ const data = {
                   <div class="d-lg-block d-none" style="background-color: white; padding-bottom: 10px;">
                      <div class="SellerProfile_profileWrapper__ubLwW  SellerProfile_profileWrapperVeh__BVDOo" itemprop="seller" itemscope="" itemtype="http://schema.org/Person">
                         <a class="SellerProfile_sellerWrapperVeh__UFHlO" target="_blank" rel="nofollow" href="">
-                           <div role="presentation">
-                              <div class="img-thumbnail img-circle Avatar_imageWrapper__6tGNZ Avatar_defaultSize__a_WTh"><span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"><span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2746%27%20height=%2746%27/%3e" style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"></span><img src="https://cdn.chotot.com/uac2/24856151" decoding="async" data-nimg="intrinsic" class="img-circle Avatar_image__HiPeb Avatar_defaultSize__a_WTh" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span></div>
-                           </div>
+                          
                            <div class="SellerProfile_nameBounder__btDeS" role="button" tabindex="0">
                               <div class="SellerProfile_flexDiv__IEgQl">
-                                 <div class="SellerProfile_nameDivVeh__vE94K"><b role="presentation" style="margin-right: 5px; font-size: 14px;">Nguyễn Hồ Phước </b></div>
+                                 <div class="SellerProfile_nameDivVeh__vE94K"><b role="presentation" style="margin-right: 5px; font-size: 14px;"><?php echo $result["HOTEN"]; ?></b></div>
                                  <button type="button" class="SellerProfile_secondaryButtonPty__DN1Sa">Xem trang<img src="https://static.chotot.com/storage/icons/svg/next-orange.svg" alt=">"></button>
                               </div>
                               <div class="SellerProfile_statusOnlineDivVeh__kgmx4">
@@ -477,17 +418,12 @@ const data = {
                   </div>
                   <div style="background-color: white;">
                      <div class="IntersectBox " style="min-height: 100px;">
-                        <div class="ChatTemplate_chatTempWrapper__uAELZ">
-                           
-                           <div class="ChatTemplate_templateItemWrapper__AP8xV">
-                              <
-                           </div>
-                        </div>
+                      
                         <div class="LeadButton_wrapperLeadButtonDesktop__SVKE8" style="padding: 8px 12px 4px;">
                            <div class="LeadButton_chatDesktopButton__HSQyg"><a href="https://chat.zalo.me/?phone=<?php echo $SDT?>" id="linkzalo" target="_blank" rel="noopener noreferrer" class="btn LeadButton_buttonOnlyChatDesktop__PzaRw" rel="nofollow"><span class="text-success"><span>CHAT VỚI NGƯỜI BÁN</span></span></a></div>
-                           <div class="LeadButton_onlyChatDesciption__JsKi4">Tin đăng được người bán ẩn số điện thoại</div>
+                          
                         </div>
-                        <div class="LeadButton_wrapperLeadButtonMobileHidePhone__Ei0ME"><a id="chat_btn" href=" class="btn LeadButton_chatButton__E_aMM" rel="nofollow">CHAT VỚI NGƯỜI BÁN</a></div>
+                        
                      </div>
                   </div>
                   <div class="d-lg-block d-none">

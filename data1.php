@@ -27,7 +27,7 @@
 
 
 ?>
-    <option value=''><?php echo $row1['GIA'] ?></option>
+    <option value='<?php echo $row1['GIA'] ?>'><?php echo $row1['GIA'] ?></option>
 <?php 
         }
      }
