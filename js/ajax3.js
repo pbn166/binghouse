@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $(".khutro").change(function(){
         var id = $(this).val();
-
         $.post("data3.php",{id: id}, function(data){
             var addressData = JSON.parse(data); // Chuyển chuỗi JSON nhận được thành đối tượng JSON
             

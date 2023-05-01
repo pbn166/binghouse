@@ -1,0 +1,33 @@
+<?php
+     include './config/config.php';
+     $khutro = $_POST['id1'];
+     $typeroom = $_POST['id2'];
+    
+     
+     $sql1="select g.GIA from phong as a, loaiphong as b, khutro as c, giathuephong as g where a.ID_LP = b.ID_LP and a.ID_KHUTRO = c.ID_KHUTRO and g.ID_KHUTRO = c.ID_KHUTRO and g.ID_LP=b.ID_LP and b.ID_LP='$typeroom' and c.ID_KHUTRO='$khutro';
+
+     ";
+     $query1 = mysqli_query($conn,$sql1);
+     
+     $num1 = mysqli_num_rows($query1);
+     
+     
+     if($num1>0){
+        while($row1 = mysqli_fetch_array($query1)){
+
+        
+     
+
+
+?>
+    <option value='<?php echo $row1['GIA'] ?>'><?php echo number_format ($row1['GIA']) ?></option>
+<?php 
+        }
+     }
+     
+
+     
+
+    
+?>
+

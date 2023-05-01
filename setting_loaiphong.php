@@ -389,7 +389,7 @@ $khutrosql = mysqli_query($conn, $khutro);
 
                                  <table class="table table-bordered">
                                     <?php
-                                    $sql_loaiphong = "SELECT * FROM loaiphong as lp, coloaiphong as clp, khutro as kt, giathuephong as gia where lp.ID_LP = clp.ID_LP and kt.ID_KHUTRO = clp.ID_KHUTRO and gia.ID_LP = lp.ID_LP and clp.ID_KHUTRO = $value[ID_KHUTRO] ORDER BY lp.ID_LP DESC ";
+                                    $sql_loaiphong = "SELECT * FROM loaiphong as lp, coloaiphong as clp, khutro as kt, giathuephong as gia where lp.ID_LP = clp.ID_LP and kt.ID_KHUTRO = clp.ID_KHUTRO and gia.ID_KHUTRO = kt.ID_KHUTRO and gia.ID_LP = lp.ID_LP and clp.ID_KHUTRO = $value[ID_KHUTRO] ORDER BY lp.ID_LP DESC ";
                                     $query_loaiphong = mysqli_query($conn, $sql_loaiphong);
                                     ?>
                                     <thead>
