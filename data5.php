@@ -2,6 +2,7 @@
      include './config/config.php';
      $khutro = $_POST['id1'];
      $typeroom = $_POST['id2'];
+     $phongtro = $_POST['id3'];
     
      
      $sql1="select* from phong as a, loaiphong as b, khutro as c where a.ID_LP = b.ID_LP and a.ID_KHUTRO = c.ID_KHUTRO and b.ID_LP='$typeroom' and c.ID_KHUTRO='$khutro';
@@ -20,7 +21,7 @@
 
 
 ?>
-    <option value='<?php echo $row1['STT'] ?>'><?php echo $row1['TENPHONG'] ?></option>
+    <option name="phongtro" value='<?php echo $row1['STT'] ?>'><?php echo $row1['TENPHONG'] ?></option>
 <?php 
         }
      }

@@ -21,35 +21,35 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
   where a.ID_CKT = b.ID_CKT
   and b.TENDANGNHAP='" .$_SESSION['TENDANGNHAP']."' ";
   $trosql = mysqli_query($conn,$tro);
-  if(isset($_POST['submit'])){
+//   if(isset($_POST['submit'])){
 
-   $khutro = $_POST["khutro"];
-   $iCitId = $_POST["citid"];
-   $iDisId = $_POST["iDisId"];
-   $iWardId = $_POST["iWardId"];
-   echo $khutro;
-   echo $iCitId;
-   echo $iDisId;
-   echo $iWardId;
-   exit();
+//    $khutro = $_POST["khutro"];
+//    $iCitId = $_POST["citid"];
+//    $iDisId = $_POST["iDisId"];
+//    $iWardId = $_POST["iWardId"];
+//    echo $khutro;
+//    echo $iCitId;
+//    echo $iDisId;
+//    echo $iWardId;
+//    exit();
 
-   //echo $tenxa;
-   //exit();
-   // echo $username;
-   // echo '<br>';
-   // echo $address;
-   // echo '<br>';
-   // echo $iCitId;
-   // echo '<br>';
-   // echo $iDisId;
-   // echo '<br>';
-   // echo $iWardId;
-   // echo '<br>';
-   // echo $lat;
-   // echo '<br>';
-   // echo $long;
+//    //echo $tenxa;
+//    //exit();
+//    // echo $username;
+//    // echo '<br>';
+//    // echo $address;
+//    // echo '<br>';
+//    // echo $iCitId;
+//    // echo '<br>';
+//    // echo $iDisId;
+//    // echo '<br>';
+//    // echo $iWardId;
+//    // echo '<br>';
+//    // echo $lat;
+//    // echo '<br>';
+//    // echo $long;
    
-  }
+//   }
   
 
 ?>
@@ -277,7 +277,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
          </div>
          <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
             <div class="f1wri8l5">
-               <form action="" method="post" enctype="multipart/form-data">
+               <form action="post.php" method="post" enctype="multipart/form-data">
    <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container" style="">
    <div>
          <div class="grid-column">
@@ -349,11 +349,12 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                </select>
                <!---->
             </div>
+
             <div class="form-group">
                   <label class="label-form">
                      Phòng 
                   </label>
-                  <select name="" class="form-control room" style="border-radius: 5px;">
+                  <select  name="phongtro" class="form-control room" style="border-radius: 5px;">
                      <option  value="0">Chọn phòng</option>
                    
                   
@@ -400,7 +401,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
          <label class="label-form">
             Tiêu đề:  
          </label>
-         <textarea rows="3" placeholder="Nhập tiêu đề" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
+         <textarea name="TIEUDE" rows="3" placeholder="Nhập tiêu đề" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
       </div>
   
    </div>
@@ -409,7 +410,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
          <label class="label-form">
             Mô tả:  
          </label>
-         <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
+         <textarea name="MOTA" rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
       </div>
    </div>
    </div>
@@ -457,10 +458,15 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                      </div>
                   </form>
                   <?php
-                  // if (isset($_POST['submit'])) {
-                  //    $dientich = $_POST['DIENTICH'];
-                  //    echo "'".$dientich."'";
-                  // }
+                     if (isset($_POST['submit'])) {
+                        $tieude = $_POST['TIEUDE'];
+                        $mota = $_POST['MOTA'];
+                        $khutro = $_POST['khutro'];
+                        $phongtro = $_POST['phongtro'];
+                        $sql = "INSERT INTO BAIVIET(ID_KHUTRO, TIEUDE, GIOITHIEUBAIVIET, STT) VALUES('".$khutro."', '".$tieude."', '".$mota."', '".$phongtro."')";
+                        $dangtin_sql = mysqli_query($conn, $sql);
+                        // header('location: index.php');
+                     }
                   ?>
                </div>
             </div>
@@ -477,25 +483,4 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                 ?>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
