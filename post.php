@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <?php
-  include './config/config.php';
-  $tinh="select * from tinh";
-  $tinhsql = mysqli_query($conn,$tinh);
-  $huyen="select * from huyen";
-  $huyensql = mysqli_query($conn,$huyen);
-  session_start();
-  $loaiphong = "SELECT DISTINCT TENLOAIPHONG 
+include './config/config.php';
+$tinh = "select * from tinh";
+$tinhsql = mysqli_query($conn, $tinh);
+$huyen = "select * from huyen";
+$huyensql = mysqli_query($conn, $huyen);
+$xa = "select * from xa";
+$xasql = mysqli_query($conn, $xa);
+session_start();
+$loaiphong = "SELECT DISTINCT TENLOAIPHONG 
   FROM loaiphong ";
+$loaiphongsql = mysqli_query($conn, $loaiphong);
+
+
+
+
   $loaiphongsql = mysqli_query($conn,$loaiphong);
   $tro="select * 
   from khutro as a, chukhutro as b 
@@ -79,35 +86,35 @@
     </head>
    
     <body class="hero-anime">
-      <?php if(isset($_SESSION['TENDANGNHAP'])) {?>
-         <?php
-      $query="SELECT * FROM chukhutro WHERE TENDANGNHAP = '".$_SESSION['TENDANGNHAP']."' ";
-      $chukhutro = mysqli_fetch_assoc($conn->query($query));
-      ?>
-          <div class="navigation-wrap bg-light start-header start-style">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <nav class="navbar navbar-expand-md navbar-light">
+      <?php if (isset($_SESSION['TENDANGNHAP'])) { ?>
+            <?php
+            $query = "SELECT * FROM chukhutro WHERE TENDANGNHAP = '" . $_SESSION['TENDANGNHAP'] . "' ";
+            $chukhutro = mysqli_fetch_assoc($conn->query($query));
+            ?>
+             <div class="navigation-wrap bg-light start-header start-style">
+               <div class="container">
+                 <div class="row">
+                   <div class="col-12">
+                     <nav class="navbar navbar-expand-md navbar-light">
                 
-                  <div class="ssn_header" alt="">
-                  <a class="ssn_logo" title="binghouse" href="index.php">
-                      <img src="image/logo.png" alt="BingHouse">
-                      <!-- <img src="image/desiglogo.png" alt="BingHouse"> -->
-                      <a class="logo_text"> BingHouse </a>
-                  </a>
-              </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+                     <div class="ssn_header" alt="">
+                     <a class="ssn_logo" title="binghouse" href="index.php">
+                         <img src="image/logo.png" alt="BingHouse">
+                         <!-- <img src="image/desiglogo.png" alt="BingHouse"> -->
+                         <a class="logo_text"> BingHouse </a>
+                     </a>
+                 </div>
+                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                       </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ml-auto py-4 py-md-0">
-                        <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4 active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                      </svg>
-                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                         <ul class="navbar-nav ml-auto py-4 py-md-0">
+                           <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4 active">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                           <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                         </svg>
+                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                           
                         </li>
                         <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -131,7 +138,7 @@
                         <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="aw__d1xmuhl0" id="arrowDownB"><path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path></svg>
                         <?php
                           // session_destroy();
-                          if (!isset($_SESSION['TENDANGNHAP'])) {
+                          if (!isset($_SESSION['HOTEN'])) {
                             ?>
                               <div class="dropdown-menu"> 
                 <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>
@@ -147,7 +154,7 @@
                           } else {?>
                             
                             <div class="dropdown-menu"> 
-                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['TENDANGNHAP'];?></span>
+                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
@@ -161,21 +168,22 @@
                         }
                       ?>   
                                       
-                      </ul>
-                    </div>
+                         </ul>
+                       </div>
 
                   </nav>
                 </div>
               </div>
             </div>
           </div>
-        
           <div class="l1tlqmyy">
    <div class="g1gd5utk withWidth withGutter c29gcq6" style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
       <div class="g1gd5utk swjo00u" style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
          <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
             <h5>Ảnh / video sản phẩm</h5>
-           
+            <p class="trc72lf">
+               Xem thêm về<!-- -->&nbsp;<a href="https://trogiup.chotot.com/nguoi-ban/dang-tin/" target="_blank" rel="noreferrer">Quy định đăng tin của Chợ Tốt</a>
+            </p>
             <div class="ilncnob">
                <div class="cs1az2d" role="presentation">
                   <div class="info no-button s1m6eucv">
@@ -214,7 +222,9 @@
                         </svg>
                      </span>
                   </div>
-               
+                  <div class="s1sn01m8">
+                     <p class="t1jq83vt">ĐĂNG TỪ 03 ĐẾN 12 HÌNH</p>
+                  </div>
                </div>
             </div>
             <div class="t179re7t" style="--t179re7t-0:0">
@@ -265,7 +275,7 @@
          </div>
          <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
             <div class="f1wri8l5">
-               
+               <form>
                   <div></div>
                   <div>
                      <div class="wbtmmtj"></div>
@@ -277,7 +287,18 @@
                                     <div>
                                        <div>
                                           <div class="cl31q19 c17xe3w4" style="--c17xe3w4-0:100%">
-                                             
+                                             <div class="wrapper i64zdy1">
+                                                <select class="select ihj19gg isDropdown hasValue required">
+                                                   <option selected="" hidden="" value=""></option>
+                                                   <option selected="" disabled="" value="">Danh mục tin đăng </option>
+                                                   <option value="1010">Bất động sản - Căn hộ/Chung cư</option>
+                                                    
+                                                </select>
+                                                <label class="label" for="">Danh mục tin đăng </label>
+                                                <svg data-type="monochrome" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="arrow">
+                                                   <path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path>
+                                                </svg>
+                                             </div>
                                              <p class="helptext p131urh5"></p>
                                           </div>
                                        </div>
@@ -301,47 +322,114 @@
                            </div>
                         </div>
                      </div>
-                    
+                     <div class="l1kr9d9v">
+                     <div class="wizard-tab-content">
+   <div role="tabpanel" id="Nộidung0" aria-labelledby="step-Nộidung0" class="wizard-tab-container" style="display: none;" aria-hidden="true">
+      <div>
+         <div class="grid-column">
+            <div data-v-5d159d94="" class="form-group">
+               <label data-v-5d159d94="" class="label-form">Tiêu đề : <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập tiêu đề" name="title" class="form-control"><!---->
+            </div>
+         </div>
+         <div class="grid-column grid-xm-column-1">
+            <div class="form-group">
+               <label class="label-form">
+                  Mô tả:  <!---->
+               </label>
+               <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
+               <!---->
+            </div>
+         </div>
+         <div class="grid-column grid-column-2 grid-xm-column-1">
+            <div class="form-group">
+               <label class="label-form">Chuyên mục : <small style="color: red;">*</small></label>
+               <select name="cat_id" class="form-control" style="border-radius: 5px;">
+                  <option disabled="disabled" value="">Chọn chuyên mục :</option>
+                  <optgroup label="Nhà đất bán">
+                     <option value="324"> Bán căn hộ chung cư </option>
+                     <option value="41"> Bán nhà riêng </option>
+                     <option value="325"> Bán nhà biệt thự, liền kề </option>
+                     <option value="163"> Bán nhà mặt phố </option>
+                     <option value="40"> Bán đất nền dự án </option>
+                     <option value="283"> Bán đất </option>
+                     <option value="44"> Bán trang trại, khu nghỉ dưỡng </option>
+                     <option value="45"> Bán kho, nhà xưởng </option>
+                     <option value="48"> Bán loại bất động sản khác </option>
+                  </optgroup>
+                  <optgroup label="Nhà đất cho thuê">
+                     <option value="326"> Cho thuê căn hộ chung cư </option>
+                     <option value="52"> Cho thuê nhà riêng </option>
+                     <option value="51"> Cho thuê nhà mặt phố </option>
+                     <option value="57"> Cho thuê nhà trọ, phòng trọ </option>
+                     <option value="50"> Cho thuê văn phòng </option>
+                     <option value="55"> Cho thuê cửa hàng, ki ốt </option>
+                     <option value="53"> Cho thuê kho, nhà xưởng, đất </option>
+                     <option value="59"> Cho thuê loại bất động sản khác </option>
+                  </optgroup>
+               </select>
+               <!---->
+            </div>
+            <div data-v-5528d396="" class="form-group form-v4-select-suggest">
+               <label data-v-5528d396="" class="label-form">
+                  Dự án <!---->
+               </label>
+               <label data-v-5528d396="" for="MXu1QXf7yp" data-limit="2" class="form-control limit-text" style="min-height: 34px; max-height: 50px; height: inherit;">Tòa nhà 3A</label><i data-v-5528d396="" class="icon-row-slg fa fa-angle-down "></i><!---->
+            </div>
+         </div>
+         <div class="grid-column grid-column-4 grid-xm-column-1">
+            <div data-v-2a5ddd9d="" class="form-group">
+               <label data-v-2a5ddd9d="" class="label-form">
+                  Giá : <!---->
+               </label>
+               <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
+               <!---->
+            </div>
+            <div data-v-2a5ddd9d="" class="form-group">
+               <label data-v-2a5ddd9d="" class="label-form">
+                  Diện tích : <!---->
+               </label>
+               <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
+               <!---->
+            </div>
+            <div data-v-2a5ddd9d="" class="form-group">
+               <label data-v-2a5ddd9d="" class="label-form">
+                  Phòng ngủ : <!---->
+               </label>
+               <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng ngủ" name="list_badroom" class="form-control"><!---->
+            </div>
+            <div data-v-2a5ddd9d="" class="form-group">
+               <label data-v-2a5ddd9d="" class="label-form">
+                  Phòng tắm : <!---->
+               </label>
+               <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng tắm" name="list_toilet" class="form-control"><!---->
+            </div>
+         </div>
+      </div>
+   </div>
    <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container" style="">
    <div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <!--<input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control"><!---->
-               <select name="khutro" class="f-form-input khutro" onchange="getDistrictClaFilter(this.value)">
- <option value="0">Tất cả khu trọ</option>
- <?php
-  foreach ($trosql as $key => $value){?>
-    <option value='<?php echo $value['ID_KHUTRO'] ?>'><?php echo $value['TENKHUTRO'] ?></option>
-    
-<?php } ?>
-  </select>
+               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control"><!---->
             </div>
          </div>
       <div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Địa chỉ <small data-v-5d159d94="" style="color: red;">*</small></label>
-               <!--<input  data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control address"><!---->
-               <select name="address" class="f-form-input address" onchange="getDistrictClaFilter(this.value)">
- <option value="0">Địa chỉ</option>
- 
-  </select>
-
+               <label data-v-5d159d94="" class="label-form">Địa chỉ <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control"><!---->
             </div>
-         </div>
-         <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
-         <div class="form-group">
-               <label class="label-form">
-                  Loại phòng <!---->
-               </label>
-               <select name="idroom" class="form-control" style="border-radius: 5px;">
-                  <option disabled="disabled" value="0">Chọn loại phòng</option>
-                  <?php
-                     foreach ($loaiphongsql as $key => $value){?>
-                        <option value=''><?php echo $value['TENLOAIPHONG'] ?></option>
+            <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
+            <div class="form-group">
+                  <label class="label-form">
+                     Loại phòng 
+                  </label>
+                  <select name="idroom" class="form-control" style="border-radius: 5px;">
+                     <option  value="0">Chọn loại phòng</option>
+                     <?php
+                     foreach ($loaiphongsql as $key => $value) { ?>
+                              <option value=''><?php echo $value['TENLOAIPHONG'] ?></option>
                      
-                  <?php } ?>
+                     <?php } ?>
                   
                </select>
                <!---->
@@ -350,9 +438,13 @@
                <label class="label-form">
                   Tỉnh/thành phố <!---->
                </label>
-               <select name="citid" class="form-control tinh" style="border-radius: 5px;">
+               <select name="citid" class="form-control" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn tỉnh/thành phố</option>
-                 
+                  <?php
+                     foreach ($tinhsql as $key => $value){?>
+                        <option value=''><?php echo $value['TENTINH'] ?></option>
+                     
+                  <?php } ?>
                   
                </select>
                <!---->
@@ -361,9 +453,13 @@
                <label class="label-form">
                   Quận/huyện <!---->
                </label>
-               <select name="iDisId" class="form-control huyen" style="border-radius: 5px;">
+               <select name="iDisId" class="form-control city" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn quận/huyện</option>
-               
+                  <?php
+                     foreach ($huyensql as $key => $value){?>
+                        <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
+                        
+                     <?php } ?>
                </select>
                <!---->
             </div>
@@ -371,199 +467,107 @@
                <label class="label-form">
                   Phường/xã <!---->
                </label>
-               <select name="iWardId" class="form-control xa" style="border-radius: 5px;">
+               <select name="iWardId" class="form-control tinh" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn phường/xã</option>
                </select>
                <!---->
             </div>
             
+            </div>
+            <div class="grid-column grid-column-3 grid-xs-column-1">
+               <div data-v-5d159d94="" class="form-group">
+                  <label data-v-5d159d94="" class="label-form">
+                     Tên liên hệ
+                     <small data-v-5d159d94="" style="color: red;">*</small>
+                  </label><input data-v-5d159d94="" type="text" disabled value="<?= $chukhutro['HOTEN'] ?>" placeholder="Nhập họ/tên" name="contact_name" class="form-control">
+               </div>
+               <div data-v-5d159d94="" class="form-group">
+                  <label data-v-5d159d94="" class="label-form">
+                     Số điện thoại 
+                     <small data-v-5d159d94="" style="color: red;">*</small>
+                  </label><input data-v-5d159d94="" type="text" disabled value="<?= $chukhutro['SDT'] ?>" placeholder="Nhập số điện thoại" name="phone" pattern="^\+?\d+(-\d+)*$" class="form-control">
+               </div>
+            
+            </div>
+            <div class="grid-column" style="margin-bottom: 20px; margin-top: 20px;">
+                        </div>
+         </div>
+      </div>
+      <div role="tabpanel" id="Media2" aria-hidden="true" aria-labelledby="step-Media2" class="wizard-tab-container" style="display: none;">
+         <div class="medias" value="">
+            <div class="list_media"></div>
+            <div class="button_group">
+               <!----><label for="files_upload" class="  btn btn-block btn-social  btn-primary"><i class="fa fa-instagram"></i> Hình ảnh </label><label class="btn btn-block btn-social  btn-danger"><i class="fa fa-youtube-square"></i> Youtube Video </label>
+            </div>
+            <input type="file" id="files_upload" name="photo[]" accept=".jpg, .png, .jpeg" multiple="multiple" style="display: none;"><!---->
+            <div class="des-payment_money">  </div>
             <!---->
          </div>
-         <div class="grid-column grid-column-3 grid-xs-column-1">
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tên liên hệ <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" disabled value="<?=$chukhutro['HOTEN'] ?>" placeholder="Nhập họ/tên" name="contact_name" class="form-control"><!---->
-            </div>
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Số điện thoại <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" disabled value="<?=$chukhutro['SDT'] ?>" placeholder="Nhập số điện thoại" name="phone" pattern="^\+?\d+(-\d+)*$" class="form-control"><!---->
-            </div>
-            
-         </div>
-         <div class="grid-column" style="margin-bottom: 20px; margin-top: 20px;">
-                     </div>
-      </div>
-   </div>
-   <div role="tabpanel" id="Media2" aria-hidden="true" aria-labelledby="step-Media2" class="wizard-tab-container" style="display: none;">
-      <div class="medias" value="">
-         <div class="list_media"></div>
-         <div class="button_group">
-            <!----><label for="files_upload" class="  btn btn-block btn-social  btn-primary"><i class="fa fa-instagram"></i> Hình ảnh </label><label class="btn btn-block btn-social  btn-danger"><i class="fa fa-youtube-square"></i> Youtube Video </label>
-         </div>
-         <input type="file" id="files_upload" name="photo[]" accept=".jpg, .png, .jpeg" multiple="multiple" style="display: none;"><!---->
-         <div class="des-payment_money">  </div>
          <!---->
       </div>
-      <!---->
-   </div>
    
-</div>
-                     </div>
-                     <!-- <div class="l1kr9d9v">
-                        <div class="c34gpa3">Thông tin khác</div>
-                        <div class="l1kr9d9v withWidth withGutter c29gcq6" style="--c29gcq6-0:100%; --c29gcq6-1:8px; --c29gcq6-4:0px; --c29gcq6-5:-16px; --c29gcq6-9:0px; --c29gcq6-13:100%; --c29gcq6-14:8px; --c29gcq6-17:0px; --c29gcq6-18:-16px; --c29gcq6-22:0px; --c29gcq6-26:100%; --c29gcq6-27:8px; --c29gcq6-30:0px; --c29gcq6-31:-16px; --c29gcq6-35:0px; --c29gcq6-39:100%; --c29gcq6-40:8px; --c29gcq6-43:0px; --c29gcq6-44:-16px; --c29gcq6-48:0px; --c29gcq6-52:100%; --c29gcq6-53:8px; --c29gcq6-56:0px; --c29gcq6-57:-16px; --c29gcq6-61:0px;">
-                           <div class="l1kr9d9v swjo00u" style="--swjo00u-0: initial; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:50%; --snf9jyk-4: initial; --snf9jyk-6:50%; --snf9jyk-8: initial; --snf9jyk-10:50%; --snf9jyk-12: initial; --snf9jyk-14:50%; --snf9jyk-16: initial; --snf9jyk-18:50%; --snf9jyk-20: initial;">
-                                 <div>
-                                    <div>
-                                       <div>
-                                          <div id="furnishing_rent" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-controls="search-input-listbox">
-                                             <div class="crswihc" style="--crswihc-0:100%;">
-                                                <div class="i1x0q5ym"><input class="i1pbvj0j ipt13la" type="text" inputmode="text" name="furnishing_rent" value=""><label for="">Tình trạng nội thất (Không bắt buộc)</label></div>
-                                                <p class="p1lb3co8"></p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+   </div>
                         </div>
-                     </div> -->
-                     <!-- <div class="l1kr9d9v">
-                        <div class="c34gpa3">Diện tích &amp; giá</div>
-                        <div class="l1kr9d9v withWidth withGutter c29gcq6" style="--c29gcq6-0:100%; --c29gcq6-1:8px; --c29gcq6-4:0px; --c29gcq6-5:-16px; --c29gcq6-9:0px; --c29gcq6-13:100%; --c29gcq6-14:8px; --c29gcq6-17:0px; --c29gcq6-18:-16px; --c29gcq6-22:0px; --c29gcq6-26:100%; --c29gcq6-27:8px; --c29gcq6-30:0px; --c29gcq6-31:-16px; --c29gcq6-35:0px; --c29gcq6-39:100%; --c29gcq6-40:8px; --c29gcq6-43:0px; --c29gcq6-44:-16px; --c29gcq6-48:0px; --c29gcq6-52:100%; --c29gcq6-53:8px; --c29gcq6-56:0px; --c29gcq6-57:-16px; --c29gcq6-61:0px;">
-                           <div class="l1kr9d9v swjo00u" style="--swjo00u-0: initial; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:100%; --snf9jyk-4: initial; --snf9jyk-6:100%; --snf9jyk-8: initial; --snf9jyk-10:100%; --snf9jyk-12: initial; --snf9jyk-14:100%; --snf9jyk-16: initial; --snf9jyk-18:100%; --snf9jyk-20: initial;">
-                                 <div>
-                                    <div>
-                                       <div>
-                                          <div class="c17xe3w4" style="--c17xe3w4-0:100%;">
-                                             <div class="i64zdy1"><input class="ihj19gg ij46tfg required" type="text" inputmode="decimal" id="size" name="size" value=""><label for="size">Diện tích</label></div>
-                                             <p class="p131urh5"></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:100%; --snf9jyk-4: initial; --snf9jyk-6:100%; --snf9jyk-8: initial; --snf9jyk-10:100%; --snf9jyk-12: initial; --snf9jyk-14:100%; --snf9jyk-16: initial; --snf9jyk-18:100%; --snf9jyk-20: initial;">
-                                 <div>
-                                    <div>
-                                       <div>
-                                          <div class="c1aub3fk" style="--c1aub3fk-0:100%;">
-                                             <div class="isiae2w"><input type="text" inputmode="decimal" class="i1obogxn i1atenow required" id="price" name="price" value=""><label for="price">Giá</label></div>
-                                             <p class="paj7k61"></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:100%; --snf9jyk-4: initial; --snf9jyk-6:100%; --snf9jyk-8: initial; --snf9jyk-10:100%; --snf9jyk-12: initial; --snf9jyk-14:100%; --snf9jyk-16: initial; --snf9jyk-18:100%; --snf9jyk-20: initial;">
-                                 <div>
-                                    <div>
-                                       <div>
-                                          <div class="c1aub3fk" style="--c1aub3fk-0:100%;">
-                                             <div class="isiae2w"><input type="text" inputmode="decimal" class="i1obogxn i1atenow" id="deposit" name="deposit" value=""><label for="deposit">Số tiền cọc</label></div>
-                                             <p class="paj7k61"></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="l1kr9d9v"> -->
-   <div class="c34gpa3">Tiêu đề tin đăng và Mô tả chi tiết</div>
-   <!-- <div class="l1kr9d9v withWidth withGutter c29gcq6" style="--c29gcq6-0:100%; --c29gcq6-1:8px; --c29gcq6-4:0px; --c29gcq6-5:-16px; --c29gcq6-9:0px; --c29gcq6-13:100%; --c29gcq6-14:8px; --c29gcq6-17:0px; --c29gcq6-18:-16px; --c29gcq6-22:0px; --c29gcq6-26:100%; --c29gcq6-27:8px; --c29gcq6-30:0px; --c29gcq6-31:-16px; --c29gcq6-35:0px; --c29gcq6-39:100%; --c29gcq6-40:8px; --c29gcq6-43:0px; --c29gcq6-44:-16px; --c29gcq6-48:0px; --c29gcq6-52:100%; --c29gcq6-53:8px; --c29gcq6-56:0px; --c29gcq6-57:-16px; --c29gcq6-61:0px;">
-      <div class="l1kr9d9v swjo00u" style="--swjo00u-0: initial; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
-         <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:100%; --snf9jyk-4: initial; --snf9jyk-6:100%; --snf9jyk-8: initial; --snf9jyk-10:100%; --snf9jyk-12: initial; --snf9jyk-14:100%; --snf9jyk-16: initial; --snf9jyk-18:100%; --snf9jyk-20: initial;">
-            <div>
-               <div>
-                  <div>
-                     <div class="c17xe3w4" style="--c17xe3w4-0:100%;">
-                        <div class="i64zdy1"><input class="ihj19gg ij46tfg required" type="text" inputmode="text" id="subject" name="subject" value=""><label for="subject">Tiêu đề tin đăng</label></div>
-                        <p class="p131urh5"></p>
-                     </div>
-                     <div class="wfq6gk9" style="--wfq6gk9-0:-22px;"><span data-testid="test-length">0</span><span>/</span><span data-testid="test-max">50</span><span> kí tự</span></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="withSpan snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2:100%; --snf9jyk-4: initial; --snf9jyk-6:100%; --snf9jyk-8: initial; --snf9jyk-10:100%; --snf9jyk-12: initial; --snf9jyk-14:100%; --snf9jyk-16: initial; --snf9jyk-18:100%; --snf9jyk-20: initial;">
-            <div>
-               <div>
-                  <div>
-                     <div class="c1uys7u0" style="--c1uys7u0-0:100%;">
-                        <div class="error t1gt6axt" style="--t1gt6axt-5:136px;">
-                           <div class="focus-capture"></div>
-                           <textarea class="required sodjbf4" inputmode="text" id="body" name="body" placeholder="Nên có: loại Phòng trọ, vị trí, tiện ích, diện tích, tình trạng nội thất, v.v.
-                              Ví dụ: Phòng trọ 30m2 đường Nguyễn Xí, Bình Thạnh, nội thất đầy đủ."></textarea>
-                           <label for="body">Mô tả chi tiết</label>
-                        </div>
-                        <p class="poe54zc">Vui lòng nhập ít nhất 10 từ</p>
-                     </div>
-                     <div class="wfq6gk9" style="--wfq6gk9-0:-12px;"><span data-testid="test-length">0</span><span>/</span><span data-testid="test-max">1500</span><span> kí tự</span></div>
-                  </div>
-               </div>
-            </div>
-         </div>
+      <div class="c34gpa3">Tiêu đề tin đăng và Mô tả chi tiết</div>
+      <div class="grid-column grid-xm-column-1">
+      <div class="form-group">
+         <label class="label-form">
+            Mô tả:  
+         </label>
+         <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
       </div>
-   </div> -->
-   <div class="grid-column grid-xm-column-1">
-   <div class="form-group">
-      <label class="label-form">
-         Mô tả:  <!---->
-      </label>
-      <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
-      <!---->
    </div>
-</div>
-</div>
-<div class="grid-column grid-column-4 grid-xm-column-1">
-   <div data-v-2a5ddd9d="" class="form-group">
-      <label data-v-2a5ddd9d="" class="label-form">
-         Giá : <!---->
-      </label>
-      <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
-      <!---->
    </div>
-   <div data-v-2a5ddd9d="" class="form-group">
-      <label data-v-2a5ddd9d="" class="label-form">
-         Số người ở : <!---->
-      </label>
-      <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon"></span></div>
-      <!---->
-   </div>
-   <div data-v-2a5ddd9d="" class="form-group">
-      <label data-v-2a5ddd9d="" class="label-form">
-         Diện tích : <!---->
-      </label>
-      <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
-      <!---->
-   </div>
+   <div class="grid-column grid-column-4 grid-xm-column-1">
+      <div data-v-2a5ddd9d="" class="form-group">
+         <label data-v-2a5ddd9d="" class="label-form">
+            Giá :
+         </label>
+         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
+
+      </div>
+      <div data-v-2a5ddd9d="" class="form-group">
+         <label data-v-2a5ddd9d="" class="label-form">
+            Số người ở : 
+         </label>
+         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon"></span></div>
+      </div>
+      <div data-v-2a5ddd9d="" class="form-group">
+         <label data-v-2a5ddd9d="" class="label-form">
+            Diện tích : 
+         </label>
+         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="DIENTICH" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
+ 
+      </div>
    
 </div>    
                   <div class="l6ks4td">
                      <div class="withGutter c29gcq6" style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
                         <div class="swjo00u" style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
                            <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch" type="button">XEM TRƯỚC</button></div>
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="submit" name="submit">ĐĂNG TIN</button></div>
+                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="button">ĐĂNG TIN</button></div>
                         </div>
                      </div>
-                  </div>
-               </form>
+                  </form>
+                  <?php
+                  // if (isset($_POST['submit'])) {
+                  //    $dientich = $_POST['DIENTICH'];
+                  //    echo "'".$dientich."'";
+                  // }
+                  ?>
+               </div>
             </div>
          </div>
       </div>
    </div>
-</div>
-<?php } else {?>
-                    <div class="alert alert-secondary" role="alert">
-                        Vui lòng <a href="login.php"><i>Đăng nhập</i></a> để đăng tin 
-                    </div>
+<?php } else { ?>
+                       <div class="alert alert-secondary" role="alert">
+                           Vui lòng <a href="login.php"><i>Đăng nhập</i></a> để đăng tin 
+                       </div>
                 <?php } ?>
-                <?php 
-       
-        ?>
+                <?php
+
+                ?>
 </body>
 </html>
 
