@@ -8,7 +8,7 @@ $huyensql = mysqli_query($conn, $huyen);
 $xa = "select * from xa";
 $xasql = mysqli_query($conn, $xa);
 session_start();
-$loaiphong = "SELECT DISTINCT TENLOAIPHONG 
+$loaiphong = "SELECT DISTINCT TENLOAIPHONG, ID_LP
   FROM loaiphong ";
 $loaiphongsql = mysqli_query($conn, $loaiphong);
 
@@ -81,6 +81,10 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/ajax3.js" type="text/javascript"></script>
+        <script src="js/ajax4.js" type="text/javascript"></script>
+        <script src="js/ajax5.js" type="text/javascript"></script>
+        <script src="js/ajax6.js" type="text/javascript"></script>
+        <script src="js/ajax7.js" type="text/javascript"></script>
         
       
     </head>
@@ -181,9 +185,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
       <div class="g1gd5utk swjo00u" style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
          <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
             <h5>Ảnh / video sản phẩm</h5>
-            <p class="trc72lf">
-               Xem thêm về<!-- -->&nbsp;<a href="https://trogiup.chotot.com/nguoi-ban/dang-tin/" target="_blank" rel="noreferrer">Quy định đăng tin của Chợ Tốt</a>
-            </p>
+            
             <div class="ilncnob">
                <div class="cs1az2d" role="presentation">
                   <div class="info no-button s1m6eucv">
@@ -275,176 +277,43 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
          </div>
          <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
             <div class="f1wri8l5">
-               <form>
-                  <div></div>
-                  <div>
-                     <div class="wbtmmtj"></div>
-                     <div class="l1kr9d9v">
-                        <div class="l1kr9d9v withWidth withGutter c29gcq6" style="--c29gcq6-0:100%;--c29gcq6-1:8px;--c29gcq6-4:0px;--c29gcq6-5:-16px;--c29gcq6-9:0px;--c29gcq6-13:100%;--c29gcq6-14:8px;--c29gcq6-17:0px;--c29gcq6-18:-16px;--c29gcq6-22:0px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:0px;--c29gcq6-31:-16px;--c29gcq6-35:0px;--c29gcq6-39:100%;--c29gcq6-40:8px;--c29gcq6-43:0px;--c29gcq6-44:-16px;--c29gcq6-48:0px;--c29gcq6-52:100%;--c29gcq6-53:8px;--c29gcq6-56:0px;--c29gcq6-57:-16px;--c29gcq6-61:0px">
-                           <div class="l1kr9d9v swjo00u" style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:100%;--snf9jyk-16:initial;--snf9jyk-18:100%;--snf9jyk-20:initial">
-                                 <div>
-                                    <div>
-                                       <div>
-                                          <div class="cl31q19 c17xe3w4" style="--c17xe3w4-0:100%">
-                                             <div class="wrapper i64zdy1">
-                                                <select class="select ihj19gg isDropdown hasValue required">
-                                                   <option selected="" hidden="" value=""></option>
-                                                   <option selected="" disabled="" value="">Danh mục tin đăng </option>
-                                                   <option value="1010">Bất động sản - Căn hộ/Chung cư</option>
-                                                    
-                                                </select>
-                                                <label class="label" for="">Danh mục tin đăng </label>
-                                                <svg data-type="monochrome" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="arrow">
-                                                   <path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path>
-                                                </svg>
-                                             </div>
-                                             <p class="helptext p131urh5"></p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:100%;--snf9jyk-16:initial;--snf9jyk-18:100%;--snf9jyk-20:initial">
-                                 <div>
-                                    <div>
-                                       <div></div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:100%;--snf9jyk-16:initial;--snf9jyk-18:100%;--snf9jyk-20:initial">
-                                 <div>
-                                    <div>
-                                       <div></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="l1kr9d9v">
-                     <div class="wizard-tab-content">
-   <div role="tabpanel" id="Nộidung0" aria-labelledby="step-Nộidung0" class="wizard-tab-container" style="display: none;" aria-hidden="true">
-      <div>
-         <div class="grid-column">
-            <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tiêu đề : <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập tiêu đề" name="title" class="form-control"><!---->
-            </div>
-         </div>
-         <div class="grid-column grid-xm-column-1">
-            <div class="form-group">
-               <label class="label-form">
-                  Mô tả:  <!---->
-               </label>
-               <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
-               <!---->
-            </div>
-         </div>
-         <div class="grid-column grid-column-2 grid-xm-column-1">
-            <div class="form-group">
-               <label class="label-form">Chuyên mục : <small style="color: red;">*</small></label>
-               <select name="cat_id" class="form-control" style="border-radius: 5px;">
-                  <option disabled="disabled" value="">Chọn chuyên mục :</option>
-                  <optgroup label="Nhà đất bán">
-                     <option value="324"> Bán căn hộ chung cư </option>
-                     <option value="41"> Bán nhà riêng </option>
-                     <option value="325"> Bán nhà biệt thự, liền kề </option>
-                     <option value="163"> Bán nhà mặt phố </option>
-                     <option value="40"> Bán đất nền dự án </option>
-                     <option value="283"> Bán đất </option>
-                     <option value="44"> Bán trang trại, khu nghỉ dưỡng </option>
-                     <option value="45"> Bán kho, nhà xưởng </option>
-                     <option value="48"> Bán loại bất động sản khác </option>
-                  </optgroup>
-                  <optgroup label="Nhà đất cho thuê">
-                     <option value="326"> Cho thuê căn hộ chung cư </option>
-                     <option value="52"> Cho thuê nhà riêng </option>
-                     <option value="51"> Cho thuê nhà mặt phố </option>
-                     <option value="57"> Cho thuê nhà trọ, phòng trọ </option>
-                     <option value="50"> Cho thuê văn phòng </option>
-                     <option value="55"> Cho thuê cửa hàng, ki ốt </option>
-                     <option value="53"> Cho thuê kho, nhà xưởng, đất </option>
-                     <option value="59"> Cho thuê loại bất động sản khác </option>
-                  </optgroup>
-               </select>
-               <!---->
-            </div>
-            <div data-v-5528d396="" class="form-group form-v4-select-suggest">
-               <label data-v-5528d396="" class="label-form">
-                  Dự án <!---->
-               </label>
-               <label data-v-5528d396="" for="MXu1QXf7yp" data-limit="2" class="form-control limit-text" style="min-height: 34px; max-height: 50px; height: inherit;">Tòa nhà 3A</label><i data-v-5528d396="" class="icon-row-slg fa fa-angle-down "></i><!---->
-            </div>
-         </div>
-         <div class="grid-column grid-column-4 grid-xm-column-1">
-            <div data-v-2a5ddd9d="" class="form-group">
-               <label data-v-2a5ddd9d="" class="label-form">
-                  Giá : <!---->
-               </label>
-               <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
-               <!---->
-            </div>
-            <div data-v-2a5ddd9d="" class="form-group">
-               <label data-v-2a5ddd9d="" class="label-form">
-                  Diện tích : <!---->
-               </label>
-               <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
-               <!---->
-            </div>
-            <div data-v-2a5ddd9d="" class="form-group">
-               <label data-v-2a5ddd9d="" class="label-form">
-                  Phòng ngủ : <!---->
-               </label>
-               <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng ngủ" name="list_badroom" class="form-control"><!---->
-            </div>
-            <div data-v-2a5ddd9d="" class="form-group">
-               <label data-v-2a5ddd9d="" class="label-form">
-                  Phòng tắm : <!---->
-               </label>
-               <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng tắm" name="list_toilet" class="form-control"><!---->
-            </div>
-         </div>
-      </div>
-   </div>
+               <form action="" method="post" enctype="multipart/form-data">
    <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container" style="">
    <div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control"><!---->
+               <label data-v-5d159d94="" class="label-form">Tên khu trọ <small data-v-5d159d94="" style="color: red;">*</small></label>
+               <select name="khutro" class="f-form-input khutro" onchange="getDistrictClaFilter(this.value)">
+ <option value="0">Tất cả khu trọ</option>
+ <?php
+  foreach ($trosql as $key => $value){?>
+    <option value='<?php echo $value['ID_KHUTRO'] ?>'><?php echo $value['TENKHUTRO'] ?></option>
+    
+<?php } ?>
+  </select>
+
             </div>
          </div>
       <div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <label data-v-5d159d94="" class="label-form">Địa chỉ <small data-v-5d159d94="" style="color: red;">*</small></label><input data-v-5d159d94="" type="text" placeholder="Nhập địa chỉ" name="address" class="form-control"><!---->
+               <label data-v-5d159d94="" class="label-form">Địa chỉ <small data-v-5d159d94="" style="color: red;">*</small></label>
+               <select name="address" class="f-form-input address" onchange="getDistrictClaFilter(this.value)">
+ <option value="0">Địa chỉ</option>
+ 
+  </select>
+
+
             </div>
             <div class="grid-column grid-column-4 grid-xm-column-1" messages_error="[object Object]" value="[object Object]">
-            <div class="form-group">
-                  <label class="label-form">
-                     Loại phòng 
-                  </label>
-                  <select name="idroom" class="form-control" style="border-radius: 5px;">
-                     <option  value="0">Chọn loại phòng</option>
-                     <?php
-                     foreach ($loaiphongsql as $key => $value) { ?>
-                              <option value=''><?php echo $value['TENLOAIPHONG'] ?></option>
-                     
-                     <?php } ?>
-                  
-               </select>
-               <!---->
-            </div>
+           
             <div class="form-group">
                <label class="label-form">
                   Tỉnh/thành phố <!---->
                </label>
-               <select name="citid" class="form-control" style="border-radius: 5px;">
+               <select name="citid" class="form-control tinh" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn tỉnh/thành phố</option>
-                  <?php
-                     foreach ($tinhsql as $key => $value){?>
-                        <option value=''><?php echo $value['TENTINH'] ?></option>
-                     
-                  <?php } ?>
+                  
                   
                </select>
                <!---->
@@ -453,13 +322,9 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                <label class="label-form">
                   Quận/huyện <!---->
                </label>
-               <select name="iDisId" class="form-control city" style="border-radius: 5px;">
+               <select name="iDisId" class="form-control huyen" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn quận/huyện</option>
-                  <?php
-                     foreach ($huyensql as $key => $value){?>
-                        <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
-                        
-                     <?php } ?>
+                  
                </select>
                <!---->
             </div>
@@ -467,12 +332,33 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                <label class="label-form">
                   Phường/xã <!---->
                </label>
-               <select name="iWardId" class="form-control tinh" style="border-radius: 5px;">
+               <select name="iWardId" class="form-control xa" style="border-radius: 5px;">
                   <option disabled="disabled" value="0">Chọn phường/xã</option>
                </select>
                <!---->
             </div>
             
+            </div>
+            <div class="form-group">
+                  <label class="label-form">
+                     Loại phòng 
+                  </label>
+                  <select name="idroom" class="form-control typeroom" style="border-radius: 5px;">
+                     <option  value="0">Chọn loại phòng</option>
+                  
+               </select>
+               <!---->
+            </div>
+            <div class="form-group">
+                  <label class="label-form">
+                     Phòng 
+                  </label>
+                  <select name="" class="form-control room" style="border-radius: 5px;">
+                     <option  value="0">Chọn phòng</option>
+                   
+                  
+               </select>
+               <!---->
             </div>
             <div class="grid-column grid-column-3 grid-xs-column-1">
                <div data-v-5d159d94="" class="form-group">
@@ -512,6 +398,15 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
       <div class="grid-column grid-xm-column-1">
       <div class="form-group">
          <label class="label-form">
+            Tiêu đề:  
+         </label>
+         <textarea rows="3" placeholder="Nhập tiêu đề" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
+      </div>
+  
+   </div>
+      <div class="grid-column grid-xm-column-1">
+      <div class="form-group">
+         <label class="label-form">
             Mô tả:  
          </label>
          <textarea rows="3" placeholder="Nhập mô tả" minlength="20" maxlength="5000" required="required" class="form-control" style="resize: vertical; min-height: 100px; border-radius: 5px; font-size: 15px; line-height: 1.3; height: 113px;"></textarea>
@@ -519,24 +414,36 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
    </div>
    </div>
    <div class="grid-column grid-column-4 grid-xm-column-1">
+   <div class="form-group">
+               <label class="label-form">
+                 Giá <!---->
+               </label>
+               <select name="citid" class="form-control price" style="border-radius: 5px;">
+                  <option value="0">Chọn giá</option>
+                  
+                  
+               </select>
+               <!---->
+            </div>
       <div data-v-2a5ddd9d="" class="form-group">
-         <label data-v-2a5ddd9d="" class="label-form">
-            Giá :
-         </label>
-         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
-
+      <label class="label-form">
+                 Số người ở <!---->
+               </label>
+               <select name="citid" class="form-control num" style="border-radius: 5px;">
+                  <option value="0">Chọn số người ở</option>
+                  
+                  
+               </select>
       </div>
       <div data-v-2a5ddd9d="" class="form-group">
-         <label data-v-2a5ddd9d="" class="label-form">
-            Số người ở : 
-         </label>
-         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon"></span></div>
-      </div>
-      <div data-v-2a5ddd9d="" class="form-group">
-         <label data-v-2a5ddd9d="" class="label-form">
-            Diện tích : 
-         </label>
-         <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="DIENTICH" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
+      <label class="label-form">
+                 Diện tích <!---->
+               </label>
+               <select name="citid" class="form-control dt" style="border-radius: 5px;">
+                  <option value="0">Chọn diện tích</option>
+                  
+                  
+               </select>
  
       </div>
    
@@ -545,7 +452,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                      <div class="withGutter c29gcq6" style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
                         <div class="swjo00u" style="--swjo00u-0:center; --swjo00u-1: initial; --swjo00u-3: initial; --swjo00u-6: initial; --swjo00u-9: initial; --swjo00u-12: initial; --swjo00u-15: initial;">
                            <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch" type="button">XEM TRƯỚC</button></div>
-                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" type="button">ĐĂNG TIN</button></div>
+                           <div class="snf9jyk" style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;"><button class="b1ek51v5 accent r-normal large w-normal i-left stretch" name="submit" type="submit">ĐĂNG TIN</button></div>
                         </div>
                      </div>
                   </form>
