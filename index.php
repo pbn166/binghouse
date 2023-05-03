@@ -10,8 +10,9 @@
   FROM loaiphong ";
   $loaiphongsql = mysqli_query($conn,$loaiphong);
   $baiviet = "SELECT a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
-  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l
+  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l, trangthaitin as o
   where a.ID_KHUTRO = b.ID_KHUTRO 
+  and a.ID_TIN = o.ID_TIN
   and a.STT = p.STT 
   and b.ID_CKT = f.ID_CKT 
   and b.ID_XA = e.ID_XA 
@@ -22,6 +23,7 @@
   and k.STT= p.STT 
   and p.ID_LP = g.ID_LP 
   and l.ID_TT= p.ID_TT
+  and o.ID_TIN = 1
   GROUP BY a.ID_BAIVIET DESC;";
   $baivietsql = mysqli_query($conn,$baiviet);
 ?>

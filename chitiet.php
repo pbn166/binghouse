@@ -24,6 +24,9 @@
     $SDT = $result['SDT'];
     //echo $SDT;
     //exit();
+    $map1= "select * from truong";
+  $mapsql1=mysqli_query($conn,$map1);
+  
     
     
 }
@@ -352,8 +355,8 @@
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            //center: [105.7664918,10.0279603], // starting position [lng, lat]
-            center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
+            center: [105.76691,10.02056], // starting position [lng, lat]
+            //center: [<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>],
             //pitch: 60,
 //bearing: -60,
 zoom: 15, hash:true
@@ -366,7 +369,7 @@ const data = {
         geometry: {
           coordinates: [
             //105.773318,10.029433,
-             //105.77061370522297,10.029943222691958,
+             105.77061370522297,10.029943222691958,
              <?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>,
             
           ],
@@ -381,6 +384,49 @@ const data = {
   var marker = new mapboxgl.Marker()
   .setLngLat([<?php echo $result["LONG_TRO"]; ?>,<?php echo $result["LAT_TRO"]; ?>])
   .addTo(map);
+
+  function createIcon(icon) {
+    var el = document.createElement('div');
+    el.style.backgroundImage = 'url(' + icon.url + ')';
+    el.style.width = icon.size[0] + 'px';
+    el.style.height = icon.size[1] + 'px';
+    el.style.backgroundSize = '100%';
+    el.style.backgroundRepeat = 'no-repeat';
+    el.style.backgroundPosition = 'center';
+    el.style.borderRadius = '50%';
+    return el;
+}
+
+  <?php
+  foreach ($mapsql1 as $key => $value){?>
+  
+ 
+    
+    var name = <?php echo json_encode($value['T_TENTRUONG']); ?>;
+    var popupHtml = '<p>'+'<strong>' + name +'</strong>'+ '</p>';
+    var popup = new mapboxgl.Popup({
+      offset: 25
+    }).setHTML(popupHtml);
+    var icon = {
+      url: './icon/<?php echo $value['T_ICON'] ;?>', // đường dẫn đến file hình ảnh icon
+      size: [40,40], // kích thước của icon
+      anchor: [20,20], // vị trí neo của icon, tính từ góc trái trên cùng
+  };
+      
+  var marker = new mapboxgl.Marker({
+      element: createIcon(icon), // tạo element mới chứa hình ảnh icon
+  })
+      .setLngLat([<?php echo $value['LONG_TRUONG'] ?>,<?php echo $value['LAT_TRUONG'] ?>])
+      .setPopup(popup) // đặt vị trí địa lý cho đối tượng Marker
+      .addTo(map);
+      
+   
+    
+  
+
+<?php } ?>
+
+
 
 
     

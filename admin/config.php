@@ -1,11 +1,11 @@
 <?php
-$host="localhost";
-$username="root";
-$password="";
-$database="quanlynhatro";
-$conn=mysqli_connect($host,$username,$password,$database);
-mysqli_query($conn,"SET NAMES 'utf8'");
-
-
-
+    $host="localhost";
+    $name="root";
+    $pass="";
+    $database="quanlynhatro";
+    $conn=mysqli_connect($host,$name,$pass,$database);
+    if($conn->connect_error){
+        die("Connection failed:".$conn->connect_error);
+    }
+    
 ?>
