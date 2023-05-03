@@ -353,7 +353,7 @@
                       </div>
                       <div class="info_user_home" >
                           <div class="user_name">
-                              <div class="user_avatar">
+                              <div class="user_avatar" style ="background-color:white">
                               <i class="fa fa-user" style="font-size:48px;"></i>
                                                                       </div>
                               <div class="avatar_name">
@@ -404,9 +404,9 @@
                             </div>
                             <div class="info_user_home" >
                                 <div class="user_name">
-                                    <div class="user_avatar">
-                                                                                    <img src="https://connect.sosanhnha.com/avata.php?id=629978" alt="user avatar">
-                                                                            </div>
+                                <div class="user_avatar" style ="background-color:white">
+                              <i  class="fa fa-user" style="font-size:48px;"></i>
+                                                                      </div>
                                     <div class="avatar_name">
                                         <span class="phone_name" title="Thị Kim"><?php echo $row['HOTEN'] ?></span>
                                                                                     <span class="phone_number"> <?php echo $row['SDT'] ?> </span>

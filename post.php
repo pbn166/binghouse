@@ -15,12 +15,8 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
 
 
 
-  $loaiphongsql = mysqli_query($conn,$loaiphong);
-  $tro="select * 
-  from khutro as a, chukhutro as b 
-  where a.ID_CKT = b.ID_CKT
-  and b.TENDANGNHAP='" .$_SESSION['TENDANGNHAP']."' ";
-  $trosql = mysqli_query($conn,$tro);
+
+ 
 //   if(isset($_POST['submit'])){
 
 //    $khutro = $_POST["khutro"];
@@ -118,7 +114,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
                          </svg>
-                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                             <a class="nav-link dropdown-toggle"  href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                           
                         </li>
                         <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
@@ -142,7 +138,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                         <svg data-toggle="dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="none" class="aw__d1xmuhl0" id="arrowDownB"><path d="M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z" fill="currentColor"></path></svg>
                         <?php
                           // session_destroy();
-                          if (!isset($_SESSION['HOTEN'])) {
+                          if (!isset($_SESSION['TENDANGNHAP'])) {
                             ?>
                               <div class="dropdown-menu"> 
                 <div class="aw__m12exo7"><a href="login.php" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j">Đăng nhập / Đăng ký</span>
@@ -158,7 +154,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                           } else {?>
                             
                             <div class="dropdown-menu"> 
-                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['HOTEN'];?></span>
+                <div class="aw__m12exo7" onclick="hamDropdown()"><a href="" rel="nofollow"><span class="aw__mdmk8my"></span><span class="aw__meaxp5j"><?php echo $_SESSION['TENDANGNHAP'];?></span>
               </a><div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
               <div class="aw__c1n389kw"></div></div>
                   <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
@@ -286,6 +282,11 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                <select name="khutro" class="f-form-input khutro" onchange="getDistrictClaFilter(this.value)">
  <option value="0">Tất cả khu trọ</option>
  <?php
+  $tro="select * 
+  from khutro as a, chukhutro as b 
+  where a.ID_CKT = b.ID_CKT
+  and b.TENDANGNHAP='" .$_SESSION['TENDANGNHAP']."' ";
+  $trosql = mysqli_query($conn,$tro);
   foreach ($trosql as $key => $value){?>
     <option value='<?php echo $value['ID_KHUTRO'] ?>'><?php echo $value['TENKHUTRO'] ?></option>
     

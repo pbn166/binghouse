@@ -47,80 +47,52 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-        
+    
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+<!-- Mapbox GL JS -->
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+
+<!-- Mapbox Directions -->
+
+
+
+
+
+
+
+
         
         <style>
-     
-     
-.container {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
+   
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
 }
-
-form {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	margin-bottom: 20px;
-}
-
-label {
-	flex-basis: 100%;
-	margin-bottom: 10px;
-	font-weight: bold;
-}
-
-input[type=text] {
-	flex-basis: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-}
-
-input[type=submit] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}
-
 table {
-	border-collapse: collapse;
-	width: 100%;
-	margin-bottom: 20px;
-}
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-th, td {
-	padding: 8px;
-	text-align: left;
-	border-bottom: 1px solid #ddd;
-}
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
 
-th {
-	background-color: #4CAF50;
-	color: white;
-}
+        tr:hover {
+            background-color: #f5f5f5;
+        }
 
-tr:hover {
-	background-color: #f5f5f5;
-}
-
-@media screen and (max-width: 768px) {
-	input[type=text], input[type=submit] {
-		flex-basis: 100%;
-	}
-}
-
-
+        /* CSS cho bản đồ */
+        #map {
+            height: 600px;
+            width: 100%;
+        }
 
 
     </style>
@@ -217,52 +189,137 @@ tr:hover {
 <div class="my-4 py-4">
 </div>
 <div class="wrapper">
-  <h1>Tìm kiếm khu trọ</h1>
-	<form method="GET" action="search.php">
-		<input type="text" name="query" placeholder="Tìm kiếm theo tên chủ trọ hoặc tên khu trọ">
-    <button type="submit">Tìm kiếm</button>
-  </form>
-  <!-- Hiển thị kết quả tìm kiếm dưới dạng bảng -->
-<table>
-	<thead>
-		<tr>
-			<th>Tên khu trọ</th>
-			<th>Địa chỉ</th>
-			<th>Số điện thoại</th>
-			<th>Tên chủ trọ</th>
-			
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<!-- Các hàng trong bảng sẽ được tạo bằng mã php -->
-		<?php
-			// Các kết nối tới cơ sở dữ liệu đã được thiết lập ở file search.php
-			// $query là câu truy vấn tìm kiếm đã được xử lý
-      $query="select a.ID_KHUTRO,a.TENKHUTRO, a.SONHA, b.HOTEN, b.SDT, e.TENXA, d.TENHUYEN, c.TENTINH from khutro as a, chukhutro as b, tinh as c, huyen as d, xa as e where a.ID_CKT = b.ID_CKT and a.ID_XA = e.ID_XA and e.ID_HUYEN = d.ID_HUYEN and d.ID_TINH = c.ID_TINH;";
-			$result = mysqli_query($conn, $query);
-			
-			// Lặp qua từng kết quả và hiển thị trong bảng
-			while ($row = mysqli_fetch_assoc($result)) {
-				echo "<tr>";
-				echo "<td>{$row['TENKHUTRO']}</td>";
-				echo "<td>{$row['SONHA']} {$row['TENXA']} {$row['TENHUYEN']} {$row['TENTINH']}</td>";
-				echo "<td>{$row['SDT']}</td>";
-				echo "<td>{$row['HOTEN']}</td>";
-				echo "<td><a href='map.php?id={$row['ID_KHUTRO']}'>Xem trên bản đồ</a></td>";
-				echo "</tr>";
-			}
-		?>
-	</tbody>
-</table>
-
-    </div>
-<!-- Bản đồ sẽ được hiển thị ở đây -->
+<h1>Tìm kiếm khu trọ</h1>
+    <form method="post">
+        <label>Tìm kiếm theo tên khu trọ hoặc tên chủ khu trọ:</label>
+        <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm">
+        <input type="submit" name="search" value="Tìm kiếm">
+    </form>
+    <?php
+// Kết nối cơ sở dữ liệu
 
 
+// Xử lý tìm kiếm
+if (isset($_POST['search'])) {
+    $keyword = $_POST['keyword'];
+    
 
-        
+    
+        $query = "SELECT a.TENKHUTRO, a.SONHA, e.TENXA, d.TENHUYEN, c.TENTINH, b.HOTEN, a.LAT_TRO, a.LONG_TRO
+        FROM khutro as a, chukhutro as b, tinh as c, huyen as d, xa as e
+        WHERE a.ID_CKT = b.ID_CKT
+        and a.ID_XA = e.ID_XA
+        and e.ID_HUYEN = d.ID_HUYEN
+        and d.ID_TINH = c.ID_TINH
+        and (a.TENKHUTRO LIKE '%{$keyword}%' OR b.HOTEN LIKE '%{$keyword}%')";
+    
+
+    $result = mysqli_query($conn, $query);
+    $count = mysqli_num_rows($result);
+
+    // Hiển thị kết quả dưới dạng bảng HTML
+    echo "<p>Tìm thấy $count kết quả:</p>";
+    echo "<table>";
+    echo "<tr><th>Tên khu trọ</th><th>Địa chỉ</th><th>Tên chủ khu trọ</th><th></th></tr>";
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['TENKHUTRO'] . "</td>";
+        echo "<td>" . $row['SONHA'] .", ".  $row['TENXA'] .", ".  $row['TENHUYEN'].", ".  $row['TENTINH']."</td>";
+        echo "<td>" . $row['HOTEN'] . "</td>";
        
-</body>
+        echo "<td><a href='#' onclick='showMap(\"" . $row['LONG_TRO'] . "," . $row['LAT_TRO'] . "\")'>Xem bản đồ</a></td>";
+        echo "</tr>";
+    }
 
+    echo "</table>";
+}
+?>
+</br>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" type="text/css">
+<div id="map"></div>
+
+
+
+
+</div>
+<script>
+    function showMap(coordinates) {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: coordinates.split(','),
+        zoom: 12,
+     
+    });
+
+    var marker = new mapboxgl.Marker({
+        color: 'blue'
+    }).setLngLat(coordinates.split(',')).addTo(map);
+
+    // Thêm đối tượng GeolocateControl để cho phép người dùng định vị vị trí hiện tại
+    var geolocate = new mapboxgl.GeolocateControl({
+  positionOptions: {
+    enableHighAccuracy: true
+  },
+  trackUserLocation: true,
+  showAccuracyCircle: false
+});
+
+map.addControl(geolocate);
+
+var directions = new MapboxDirections({
+  accessToken: 'pk.eyJ1IjoiaHV5bmh0aHV5IiwiYSI6ImNsZnRjcjYyczAwZXIzY215N3gwbzFzam4ifQ.Ieo0w9hgSLSF_Pt4s89EgQ',
+  unit: 'metric',
+  profile: 'mapbox/driving',
+  interactive: true,
+  controls: { instructions: false },
+  styles: [{
+    "id": "route",
+    "type": "line",
+    "source": "route",
+    "layout": {
+      "line-join": "round",
+      "line-cap": "round"
+    },
+    "paint": {
+      "line-color": "#FF0000",
+      "line-width": 8,
+      "line-opacity": 0.8
+    }
+  }]
+});
+
+map.addControl(directions, 'top-left');
+
+geolocate.on('geolocate', function(e) {
+  var lon = e.coords.longitude;
+  var lat = e.coords.latitude;
+  var position = [lon, lat];
+  directions.setOrigin(position);
+});
+directions.setDestination(coordinates.split(','));
+
+    // Thêm nút "Bắt đầu chỉ đường" vào bản đồ
+    /*var startButton = document.createElement('button');
+    startButton.textContent = 'Bắt đầu chỉ đường';
+    startButton.style.marginTop = '10px';
+    startButton.addEventListener('click', function() {
+        directions.setOrigin();
+    });
+    map.on('load', function() {
+        document.getElementById('map').appendChild(startButton);
+    });
+
+    // Hiển thị đường line màu đỏ
+    directions.on('route', function(e) {
+        map.getSource('route').setData(e.route.geometry);
+        //map.getSource('route').setData({type: 'Feature', geometry: e.route.geometry});
+    });*/
+}
+
+</script>
+</body>
 </html>
