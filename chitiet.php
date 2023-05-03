@@ -302,7 +302,7 @@
                   </div>
                </div>
                <div class="DetailView_adviewPtyItem__V_sof">
-                  <div class="AdParam_adParamTitle__bU__w">Đặc điểm bất động sản</div>
+                  <div class="AdParam_adParamTitle__bU__w">Đặc điểm phòng</div>
                   <div class="AdParam_adParamContainerVeh__Vz4Zt">
                      <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
                         <div class="AdParam_adMediaParam__3epxo">
@@ -404,28 +404,19 @@ const data = {
                            <div class="SellerProfile_nameBounder__btDeS" role="button" tabindex="0">
                               <div class="SellerProfile_flexDiv__IEgQl">
                                  <div class="SellerProfile_nameDivVeh__vE94K"><b role="presentation" style="margin-right: 5px; font-size: 14px;"><?php echo $result["HOTEN"]; ?></b></div>
-                                 <button type="button" class="SellerProfile_secondaryButtonPty__DN1Sa">Xem trang<img src="https://static.chotot.com/storage/icons/svg/next-orange.svg" alt=">"></button>
+                                 
                               </div>
-                              <div class="SellerProfile_statusOnlineDivVeh__kgmx4">
-                                 <div class="SellerProfile_shopIconWrapper__mXmWK" role="presentation"><img src="https://static.chotot.com/storage/default_images/pty/private-pty-icon.svg" alt="https://static.chotot.com/storage/default_images/pty/private-pty-icon.svg" height="16px" width="16px"></div>
-                                 &nbsp;&nbsp;Cá nhân
-                              </div>
-                              
+                            
+                        <div class="LeadButton_wrapperLeadButtonDesktop__SVKE8" style="padding: 12px 4px;">
+                           <div class="LeadButton_chatDesktopButton__HSQyg"><a href="https://chat.zalo.me/?phone=<?php echo $SDT?>" id="linkzalo" target="_blank" rel="noopener noreferrer" class="btn LeadButton_buttonOnlyChatDesktop__PzaRw" rel="nofollow"><span class="text-success"><span>CHAT VỚI NGƯỜI BÁN</span></span></a></div>
+                          
+                        </div>
                            </div>
                         </a>
                         <div class="SellerProfile_inforWrapper__KXg71"></div>
                      </div>
                   </div>
-                  <div style="background-color: white;">
-                     <div class="IntersectBox " style="min-height: 100px;">
-                      
-                        <div class="LeadButton_wrapperLeadButtonDesktop__SVKE8" style="padding: 8px 12px 4px;">
-                           <div class="LeadButton_chatDesktopButton__HSQyg"><a href="https://chat.zalo.me/?phone=<?php echo $SDT?>" id="linkzalo" target="_blank" rel="noopener noreferrer" class="btn LeadButton_buttonOnlyChatDesktop__PzaRw" rel="nofollow"><span class="text-success"><span>CHAT VỚI NGƯỜI BÁN</span></span></a></div>
-                          
-                        </div>
-                        
-                     </div>
-                  </div>
+                 
                   <div class="d-lg-block d-none">
                     
                      <div class="Styles_rightHandSiteAdView__O90bj">

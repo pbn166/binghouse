@@ -1370,20 +1370,20 @@ select {
 
 .b1ek51v5.caution {
     color: #fff;
-    background-color: #ffba00;
-    border-color: #ffba00
+    background-color: #005B9C;
+    border-color: #005B9C
 }
 
 .b1ek51v5.caution:hover {
     color: #fff;
-    background-color: #ffd35c;
-    border-color: #ffd35c
+    background-color: #005B9C;
+    border-color: #005B9C
 }
 
 .b1ek51v5.caution:active {
     color: #fff;
-    background-color: #e09900;
-    border-color: #e09900
+    background-color: #005B9C;
+    border-color: #005B9C
 }
 
 .b1ek51v5.positive {
@@ -1406,8 +1406,8 @@ select {
 
 .b1ek51v5.accent {
     color: #fff;
-    background-color: #f80;
-    border-color: #f80
+    background-color: #005B9C;
+    border-color: #005B9C
 }
 
 .b1ek51v5.accent:hover {
@@ -1418,8 +1418,8 @@ select {
 
 .b1ek51v5.accent:active {
     color: #fff;
-    background-color: #e56700;
-    border-color: #e56700
+    background-color: #005B9C;
+    border-color: #005B9C
 }
 
 .b1ek51v5.secondary {
