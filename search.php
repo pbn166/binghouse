@@ -74,15 +74,10 @@ $mapsql = mysqli_query($conn, $map);
 
   <!-- Mapbox Directions -->
 
+</head>
 
 
-
-
-
-
-
-
-  <style>
+<style>
     .wrapper {
       width: 100%;
       min-height: 100vh;
@@ -111,10 +106,6 @@ $mapsql = mysqli_query($conn, $map);
       width: 100%;
     }
   </style>
-
-
-</head>
-
 <body class="hero-anime">
   <div class="navigation-wrap bg-light start-header start-style">
     <div class="container">

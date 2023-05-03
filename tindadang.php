@@ -57,7 +57,15 @@
         <script src="js/ajax.js" type="text/javascript"></script>
         <script src="js/ajax1.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      
+      <style>
+        .ssn_pw home_buy_sell dadang{
+                
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 15px 80px 20px 20px;
+        }
+        </style>
     </head>
    
     <body class="hero-anime">
@@ -179,15 +187,15 @@
   </div>
 </div>
 
-<div class="my-4 py-4">
-</div>
+<!-- <div class="my-4 py-4">
+</div> -->
 
 <!-- Link to page
 ================================================== -->
 
-    <div class="ssn_pw home_buy_sell">
+    <div class="ssn_pw home_buy_sell dadang">
         <div class="listing">
-        <strong class="label">TIN ĐĂNG MỚI</strong>
+        <strong class="label">TIN ĐÃ ĐĂNG</strong>
 
         <?php 
        
@@ -239,15 +247,19 @@
                                                                             </div>
                                 </div>
                             </div>
+                            <div class="if">
+                  <button type="button" class="btn btn-primary">Sửa</button>
+                  <button type="button" class="btn btn-danger">Xóa</button>
+                  </div>
                         </div>
                     </div>
 </div>
                   <?php } }
                  
                   ?> 
+                 
 
-</div>
-                                      
+</div>                                      
     </div>
 
     <div class="ssn_pw home_ad">
