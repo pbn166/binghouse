@@ -103,19 +103,93 @@ $mapsql = mysqli_query($conn, $map);
       height: 600px;
       width: 100%;
     }
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       body{
+        background-color:#eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .height{
+        height: 50vh;
+       }
+       
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+         
+       }
+
+       .search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid blue;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 110px;
+        background: blue;
+
+       }
+       
   </style>
 
-  <div class="wrapper">
+  <!-- <div class="wrapper">
     <h1>Tìm kiếm khu trọ</h1>
     <form method="post">
       <label>Tìm kiếm theo tên khu trọ hoặc tên chủ khu trọ:</label>
       <input type="text" name="keyword" placeholder="Nhập từ khóa tìm kiếm">
       <input type="submit" name="search" value="Tìm kiếm">
-    </form>
+    </form> -->
+    
+    <div class="container">
+    
+                    <div class="row height d-flex justify-content-center align-items-center">
+                   
+                      <div class="col-md-8">
+                      <form method="post">
+                        <div class="search">
+                          <i class="fa fa-search"></i>
+                          <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm theo tên khu trọ hoặc tên chủ khu trọ">
+                          <button type="submit" name="search"  class="btn btn-primary">Tìm kiếm</button>
+                        </div>
+                        </form>
+                      </div>
+                      
+                    </div>
+                </div>
+
     <?php
     // Kết nối cơ sở dữ liệu
     
-
     // Xử lý tìm kiếm
     if (isset($_POST['search'])) {
       $keyword = $_POST['keyword'];

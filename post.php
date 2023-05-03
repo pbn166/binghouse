@@ -179,15 +179,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
 
 
                            </li>
-                           <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
-                              <svg xmlns="http://www.w3.org/2000/svg" data-type="monochrome" viewBox="0 0 15.706 19.271"
-                                 width="1em" height="1em" fill="none" class="aw__ixo30vg">
-                                 <path
-                                    d="M13.033 7.739l-.03 8.149H2.705l-.03-8.148c0-2.953 2.226-5.181 5.179-5.183 2.952.002 5.18 2.23 5.18 5.182zm-3.775 9.296c-.194.635-.75 1.066-1.404 1.067-.654-.001-1.21-.432-1.404-1.067zm5.88-1.147h-.947l-.01-8.17c0-3.381-2.409-6-5.746-6.277V.568c0-.37-.292-.566-.582-.568-.288.002-.58.198-.58.568v.873c-3.337.276-5.746 2.896-5.746 6.277l-.01 8.17H.568c-.373 0-.568.293-.568.584 0 .29.195.584.568.584H5.26a2.642 2.642 0 002.593 2.215 2.641 2.641 0 002.593-2.215h4.692c.373 0 .568-.294.568-.584s-.195-.584-.568-.584z"
-                                    fill="currentColor"></path>
-                              </svg>
-                              <a class="nav-link" href="#">Thông báo</a>
-                           </li>
+                           
                            <li class="nav-item pl-4 pl-md-2 ml-0 ml-md-4">
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg" class="aw__i1t7n4kh aw__i1t7n4kh--active">
@@ -219,10 +211,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                                        <div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
                                        <div class="aw__c1n389kw"></div>
                                     </div>
-                                    <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
-                                    <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
-                                    <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
-                                    <a class="dropdown-item" href="#">Cài đặt</a>
+                                   
                                     <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                                  </div>
                                  <?php
@@ -237,10 +226,8 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                                        <div class="aw__m1pkalbk"><span class="aw__m9yyskr"></span></div>
                                        <div class="aw__c1n389kw"></div>
                                     </div>
-                                    <a class="dropdown-item" href="#">Tin đăng đã lưu</a>
-                                    <a class="dropdown-item" href="#">Tìm kiếm đã lưu</a>
-                                    <a class="dropdown-item" href="#">Đánh giá từ tôi</a>
-                                    <a class="dropdown-item" href="#">Cài đặt</a>
+                                    <a class="dropdown-item" href="tindadang.php">Tin đăng đăng</a>
+                                    <a class="dropdown-item" href="setting.php">Cài đặt</a>
                                     <a class="dropdown-item" href="trogiup.php">Trợ giúp</a>
                                     <a class="dropdown-item" href="logout.php">Đăng xuất</a>
                                  </div>
@@ -261,7 +248,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
             style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
             <div class="g1gd5utk swjo00u"
                style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
-               <div class="withSpan snf9jyk"
+               <!--<div class="withSpan snf9jyk"
                   style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
                   <h5>Ảnh / video sản phẩm</h5>
 
@@ -377,11 +364,11 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                         </div>
                      </div>
                   </div>
-               </div>
+               </div>-->
                <div class="withSpan snf9jyk"
                   style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
                   <div class="f1wri8l5">
-                     <form action="post.php" method="post" enctype="multipart/form-data">
+                     <form action="post.php" method="post" enctype="multipart/form-data"  >
                         <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container"
                            style="">
                            <div>
@@ -394,9 +381,9 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                                        <option value="0">Tất cả khu trọ</option>
                                        <?php
                                        $tro = "select * 
-  from khutro as a, chukhutro as b 
-  where a.ID_CKT = b.ID_CKT
-  and b.TENDANGNHAP='" . $_SESSION['TENDANGNHAP'] . "' ";
+                                                from khutro as a, chukhutro as b 
+                                                where a.ID_CKT = b.ID_CKT
+                                                and b.TENDANGNHAP='" . $_SESSION['TENDANGNHAP'] . "' ";
                                        $trosql = mysqli_query($conn, $tro);
                                        foreach ($trosql as $key => $value) { ?>
                                           <option value='<?php echo $value['ID_KHUTRO'] ?>'><?php echo $value['TENKHUTRO'] ?>
@@ -586,11 +573,13 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                            <div class="snf9jyk"
                               style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                               <button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
-                                 type="button">XEM TRƯỚC</button></div>
+                                 type="button">XEM TRƯỚC</button>
+                           </div>
                            <div class="snf9jyk"
                               style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                               <button class="b1ek51v5 accent r-normal large w-normal i-left stretch" name="submit"
-                                 type="submit">ĐĂNG TIN</button></div>
+                                 type="submit">ĐĂNG TIN</button>
+                           </div>
                         </div>
                      </div>
                      </form>
