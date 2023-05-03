@@ -28,7 +28,11 @@
 ?>
 
 <html lang="vi">
-    <head>
+<?php
+  include './incl/header.php'
+  ?>
+
+    <!-- <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -68,7 +72,6 @@
         <div class="ssn_header" alt="">
         <a class="ssn_logo" title="binghouse" href="index.php">
             <img src="image/logo.png" alt="BingHouse">
-            <!-- <img src="image/desiglogo.png" alt="BingHouse"> -->
             <a class="logo_text"> BingHouse </a>
         </a>
     </div>
@@ -144,7 +147,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="my-4 py-4">
 </div>
@@ -326,6 +329,9 @@
 </section>
 
 </body>
+<?php
+  include './incl/footer.php'
+  ?>
 
 </html>
 

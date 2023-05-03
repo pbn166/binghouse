@@ -174,7 +174,9 @@
 </section>
 
 </body>
-
+<?php
+   include 'incl/footer.php';
+?>
 </html>
 
 

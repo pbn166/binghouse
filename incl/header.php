@@ -35,6 +35,8 @@
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
 
   <!-- Mapbox Directions -->
+
+  <link href="css/footer.css" rel="stylesheet" type="text/css" media="all" />
       
     </head>
    

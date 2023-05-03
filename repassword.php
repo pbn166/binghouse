@@ -77,7 +77,6 @@
                   <div class="ssn_header" alt="">
                   <a class="ssn_logo" title="binghouse" href="index.php">
                       <img src="image/logo.png" alt="BingHouse">
-                      <!-- <img src="image/desiglogo.png" alt="BingHouse"> -->
                       </a><a class="logo_text"> BingHouse </a>
                   
               </div>
@@ -144,13 +143,11 @@
           <p class="trc72lf">
           <a href="setting.php"  rel="noreferrer"><br><img src="image/canhan.png" width="16" height="16">Thông tin cá nhân</a><br>
               <a href="repassword.php"  rel="noreferrer"><img src="image/logo.png" width="16" height="16"></i>Thông tin khu trọ</a><br>
-              <!--<a href="mangxahoi.php"  rel="noreferrer"><img src="image/mang-xa-hoi.png" width="16" height="16">Liên kết mạng xã hội</a><br>-->
+              
               <a href="repassword.php"  rel="noreferrer"><img src="image/khoak.png" width="16" height="16">Cài đặt tài khoản</a><br>
             </p>
                      <span class="f6ete4">
-                        <!-- -->
             <div class="wsk6u1i" style="--wsk6u1i-0:24px;">
-               <!--  -->
                <div class="t8i307c" style="--t8i307c-0:0;">
                   <div class="withGutter c29gcq6" style="--c29gcq6-0: initial; --c29gcq6-1:8px; --c29gcq6-4:-16px; --c29gcq6-5:-16px; --c29gcq6-9:16px; --c29gcq6-13: initial; --c29gcq6-14:8px; --c29gcq6-17:-16px; --c29gcq6-18:-16px; --c29gcq6-22:16px; --c29gcq6-26: initial; --c29gcq6-27:8px; --c29gcq6-30:-16px; --c29gcq6-31:-16px; --c29gcq6-35:16px; --c29gcq6-39: initial; --c29gcq6-40:8px; --c29gcq6-43:-16px; --c29gcq6-44:-16px; --c29gcq6-48:16px; --c29gcq6-52: initial; --c29gcq6-53:8px; --c29gcq6-56:-16px; --c29gcq6-57:-16px; --c29gcq6-61:16px;">
                      <div class="withRowCols swjo00u" style="--swjo00u-0:center; --swjo00u-1:flex-start; --swjo00u-3:100%; --swjo00u-6:100%; --swjo00u-9:50%; --swjo00u-12:33.3333%; --swjo00u-15:33.3333%;"></div>
@@ -165,7 +162,6 @@
                   <div>
                      <div class="wbtmmtj"></div>
                      <div class="l1kr9d9v">
-                        <!-- -->
                               <div class="withSpan snf9jyk" style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:100%;--snf9jyk-16:initial;--snf9jyk-18:100%;--snf9jyk-20:initial">
                                  <div>
                                     <div>
@@ -189,33 +185,30 @@
       <div>
          <div class="grid-column">
             <div data-v-5d159d94="" class="form-group">
-               <!--  -->
               
             </div>
             <div data-v-5528d396="" class="form-group form-v4-select-suggest">
-               <!--  -->
                <label data-v-5528d396="" for="MXu1QXf7yp" data-limit="2" class="form-control limit-text" style="min-height: 34px; max-height: 50px; height: inherit;">Tòa nhà 3A</label><i data-v-5528d396="" class="icon-row-slg fa fa-angle-down "></i>
             </div>
          </div>
          <div class="grid-column grid-column-4 grid-xm-column-1">
             <div data-v-2a5ddd9d="" class="form-group">
-               <!--  -->
                <div data-v-2a5ddd9d="" class="input-group"><input data-v-2a5ddd9d="" type="text" placeholder="Nhập giá" name="price" class="form-control"><span data-v-2a5ddd9d="" class="input-group-addon">VNĐ</span></div>
               
             </div>
             <div data-v-2a5ddd9d="" class="form-group">
-               <!-- -->
+
                <div data-v-2a5ddd9d="" class="input-group">
                   <input data-v-2a5ddd9d="" type="text" placeholder="Nhập diện tích" name="list_acreage" class="form-control">
                   <span data-v-2a5ddd9d="" class="input-group-addon">m<sup>2</sup></span></div>
               
             </div>
             <div data-v-2a5ddd9d="" class="form-group">
-               <!-- -->
+
                <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng ngủ" name="list_badroom" class="form-control">
             </div>
             <div data-v-2a5ddd9d="" class="form-group">
-               <!--  -->
+
                <input data-v-2a5ddd9d="" type="text" placeholder="Nhập phòng tắm" name="list_toilet" class="form-control">
             </div>
          </div>

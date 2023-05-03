@@ -72,7 +72,7 @@ $mapsql = mysqli_query($conn, $map);
 
   <!-- Mapbox Directions -->
 <!-- 
-</head> --> 
+</head>  -->
 
 
 <style>
@@ -316,5 +316,7 @@ $mapsql = mysqli_query($conn, $map);
 
   </script>
 </body>
-
+<?php
+  include './incl/footer.php'
+  ?>
 </html>
