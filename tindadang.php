@@ -248,8 +248,8 @@
                                 </div>
                             </div>
                             <div class="if">
-                  <button type="button" class="btn btn-primary">Sửa</button>
-                  <button type="button" class="btn btn-danger">Xóa</button>
+                  <!-- <button type="button" class="btn btn-primary">Sửa</button> -->
+                  <button type="button" class="btn btn-danger"> <a href="xoatindadang.php?ID_BAIVIET=<?php echo $row['ID_BAIVIET'] ?>" style="color: white;" > Xóa </a></button>
                   </div>
                         </div>
                     </div>
