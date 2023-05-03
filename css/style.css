@@ -759,7 +759,26 @@ option {
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0;
-    padding: 10px 20px;
+    padding: 5px 20px;
+    text-align: center;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: 5px 20px;
     text-align: center;
     touch-action: manipulation;
     -webkit-user-select: none;
@@ -879,7 +898,8 @@ select {
 
 .home_buy_sell {
     display: flex;
-    justify-content: stretch
+    justify-content: stretch;
+    padding: 15px 80px 20px 120px;
 }
 
 .home_buy_sell .listing {

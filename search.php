@@ -69,15 +69,10 @@ $mapsql = mysqli_query($conn, $map);
 
   <!-- Mapbox Directions -->
 
+</head>
 
 
-
-
-
-
-
-
-  <style>
+<style>
     .wrapper {
       width: 100%;
       min-height: 100vh;
