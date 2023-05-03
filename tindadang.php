@@ -10,8 +10,9 @@
   FROM loaiphong ";
   $loaiphongsql = mysqli_query($conn,$loaiphong);
   $baiviet = "SELECT a.NGAYDANG, a.ID_BAIVIET,a.TIEUDE, a.GIOITHIEUBAIVIET, b.TENKHUTRO, e.TENXA, d.TENHUYEN, c.TENTINH, g.TENLOAIPHONG, g.SONGUOIOTOIDA, g.DIENTICH, p.TENPHONG, t.GIA, k.HINH, f.HOTEN, f.SDT, b.SONHA, l.TENTT
-  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l
+  from baiviet as a, khutro as b, tinh as c, huyen as d, xa as e, loaiphong as g, phong as p, giathuephong as t, hinh as k, chukhutro as f, trangthai as l, chukhutro as tr
   where a.ID_KHUTRO = b.ID_KHUTRO 
+  and b.ID_CKT = tr.ID_CKT
   and a.STT = p.STT 
   and b.ID_CKT = f.ID_CKT 
   and b.ID_XA = e.ID_XA 
@@ -22,7 +23,8 @@
   and k.STT= p.STT 
   and p.ID_LP = g.ID_LP 
   and l.ID_TT= p.ID_TT
-  GROUP BY a.ID_BAIVIET DESC;";
+  and tr.TENDANGNHAP=  '".$_SESSION['TENDANGNHAP']."'
+  GROUP BY a.ID_BAIVIET DESC";
   $baivietsql = mysqli_query($conn,$baiviet);
 ?>
 
@@ -182,235 +184,13 @@
 
 <!-- Link to page
 ================================================== -->
-<div class="ssn_pw_filter" >
-  
-    <div class="box-cla-filter-pc-v2">
- <form class="f-body cla-filter" action="" method="get">
- <div class="row-main">
- <div class="item-filter has-icon border-r flex-none">
- <i class="icon mcon-city"></i>
- <select name="iCat" class="f-form-input room">
- <option  value="0">Chọn loại phòng</option>
- <?php
-  foreach ($loaiphongsql as $key => $value){?>
-    <option  value ='<?php echo $value['ID_LP'] ?>'><?php echo $value['TENLOAIPHONG']?></option>
-    
-<?php } ?>
-  
-  
-  </select>
- </div>
- <div class="item-filter">
- <input type="text" value="" id="input-form-search" placeholder="Từ khóa tìm kiếm. VD: Thuê nhà trọ Ninh Kiều" name="keyword" class="f-form-input" autocomplete="off">
- </div>
- <button type="submit" class="btn btn-primary" name = "submit">
- Tìm kiếm
- </button>
 
- </div>
- <div class="row-main-2">
- <div class="item-filter">
- <select name="iCitId" class="f-form-input tentinh" onchange="getDistrictClaFilter(this.value)">
- <option value="0">Tất cả Tỉnh/Thành phố</option>
- <?php
-  foreach ($tinhsql as $key => $value){?>
-    <option value='<?php echo $value['ID_TINH'] ?>'><?php echo $value['TENTINH'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iDisId" class="f-form-input city" onchange="getWardClaFilter(this.value)">
-  <option value="">Quận/Huyện</option>
-  <?php
-  foreach ($huyensql as $key => $value){?>
-    <option value='<?php echo $value['ID_HUYEN'] ?>'><?php echo $value['TENHUYEN'] ?></option>
-    
-<?php } ?>
-  </select>
- </div>
- <div class="item-filter">
- <select name="iWardId" class="f-form-input tinh">
-  <option value="0">Phường/Xã</option>    
- </select>
- </div>
- <div class="item-filter">
-    <select class="f-form-input price" name="iPrice">
-  <option selected="" value="0">
- Tất cả mức giá
- </option>
-  
-  
-  </select>
- </div>
- <div class="option-reset" onclick="resetFilterCla()">
- 
-            <svg width="25px" height="25px" viewBox="0 0 24 24" class="mcon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="/385/assets/images/icons.svg#refresh"></use>
-            </svg>
-        
- </div>
- </div>
- </form>
- </div>
-    
-<script language="javascript">
- $(document).ready(function () {
- $('#input-form-search').autocomplete({
- serviceUrl: '/ajax/suggest?secret=45c09f3828245d941d0da984d0222cb2',
- noCache: true,
- autoSelectFirst: false,
- deferRequestBy: 300,
- minChars: 0,
- onSelect: function (suggestion) {
- url = suggestion.url || '';
- if (url !== '') {
- window.location.href = url;
- }
- }
- });
- });
-</script>
-
-<style>
- .autocomplete-suggestions{
- z-index: 10050000!important;
- }
-</style>
-<section class="ssn_container ssn_buy_sell fix_pos">
-
-    <div class="home_fixed">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-    <div class="ssn_pw home_ad">
-        
-     <!-- Sosanhnha pc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5866303118479016" data-ad-slot="4297353379" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </div>
-        
     <div class="ssn_pw home_buy_sell">
         <div class="listing">
         <strong class="label">TIN ĐĂNG MỚI</strong>
 
         <?php 
-        if(isset($_GET['submit'])){
-          $keyword = $_GET['keyword'] ?? '';
-        $iCat = $_GET['iCat'] ?? '';
-        $iCitId = $_GET['iCitId'] ?? '';
-        $iDisId = $_GET['iDisId'] ?? '';
-        $iWardId = $_GET['iWardId'] ?? '';
-        $iPrice = $_GET['iPrice'] ?? '';
-        
-        // Tạo câu truy vấn SELECT
-        $sql = "SELECT *
-                FROM baiviet as a, khutro as b, loaiphong as c, phong as d, tinh as e, huyen as h, xa as x, giathuephong as g, chukhutro as k, hinh as f, trangthai as t
-                WHERE a.ID_KHUTRO = b.ID_KHUTRO
-                and d.ID_TT = t.ID_TT
-                AND b.ID_CKT = k.ID_CKT
-                AND a.STT = d.STT
-                AND b.ID_XA = x.ID_XA
-                AND x.ID_HUYEN = h.ID_HUYEN
-                AND h.ID_TINH = e.ID_TINH
-                AND b.ID_KHUTRO = g.ID_KHUTRO
-                AND c.ID_LP = g.ID_LP
-                AND d.ID_KHUTRO = b.ID_KHUTRO
-                AND f.STT = d.STT
-                AND d.ID_LP = c.ID_LP";
-        
-        // Thêm các điều kiện tìm kiếm vào câu truy vấn SELECT
-        if (!empty($keyword)) {
-            $sql .= " AND (a.TIEUDE LIKE '%$keyword%')";
-        }
-        if (!empty($iCat)) {
-            $sql .= " AND c.ID_LP = '$iCat'";
-        }
-        if (!empty($iCitId)) {
-            $sql .= " AND h.ID_TINH = '$iCitId'";
-        }
-        if (!empty($iDisId)) {
-            $sql .= " AND x.ID_HUYEN = '$iDisId'";
-        }
-        if (!empty($iWardId)) {
-            $sql .= " AND b.ID_XA = '$iWardId'";
-        }
-        if (!empty($iPrice)) {
-            $sql .= " AND g.GIA = '$iPrice'";
-        }
-        
-        // Thực hiện truy vấn và lấy kết quả
-        $result = mysqli_query($conn, $sql);
-        
-        // Xử lý kết quả
-        while ($row1 = mysqli_fetch_assoc($result)) {
-            // Xử lý kết quả tìm kiếm ở đây
-            
-            ?>
-              <div class="home_listing">
-          
-                              <div class=" item" style="height:auto">
-                  <a class="img_r " href="chitiet.php?ID_BAIVIET=<?php echo $row1['ID_BAIVIET'] ?>" title="<?php echo $row1['TIEUDE'] ?> ">
-                                                    
-                                                                       <img src="./ha_phong/<?php echo $row1['HINH'] ?>" style="width:150px; height:150px" alt="Cần bán 25x45= 1125m2 đất gần khu công nghiệp, ngay chợ dân đông. giá 290tr/5x45m">
-                                              </a>
-                  <div class="info">
-                      <h3>
-                          <a class="name-vip title" href="chitiet.php?ID_BAIVIET=<?php echo $row1['ID_BAIVIET'] ?>" title="<?php echo $row1['TIEUDE'] ?>">
-                          <?php echo $row1['TIEUDE'] ?>                          </a>
-                      </h3>
-                      <div class="if">
-                          <span class="label"> Giá </span>
-                                                              <strong class="f3b1abed9c57992b822e259ef8c7ac1f price"><?php echo number_format ($row1['GIA']) .' VNĐ'?></strong>                                                            </div>
-                                                      <div class="if">
-                              <span class="label"> Diện tích </span>
-                                                                      <div class="acreage"><strong><?php echo $row1['DIENTICH'] ?>m<sup>2</sup></strong></div>
-                                                              </div>
-                                                      <div class="if">
-                          <span class="label"> Địa chỉ </span>
-                          <div class="address"><strong><?php echo $row1['SONHA'] ?>,<?php echo $row1['TENXA'] ?>,<?php echo $row1['TENHUYEN'] ?>,<?php echo $row1['TENTINH'] ?></strong></div>
-                  
-                      </div>
-                      <div class="if">
-                          <span class="label">Giới thiệu </span>
-                          <div class="address"><strong><?php echo $row1['GIOITHIEUBAIVIET'] ?></strong></div>
-                  
-                      </div>
-                      <div class="if">
-                          <span class="label">Trạng thái </span>
-                          <div class="address"><strong><?php echo $row1['TENTT'] ?></strong></div>
-                  
-                      </div>
-                      <div class="if">
-                          <span class="label"> Ngày đăng </span>
-                          <div class="address"><strong><?php echo $row1['NGAYDANG'] ?></strong></div>
-                  
-                      </div>
-                      <div class="info_user_home" >
-                          <div class="user_name">
-                              <div class="user_avatar" style ="background-color:white">
-                              <i class="fa fa-user" style="font-size:48px;"></i>
-                                                                      </div>
-                              <div class="avatar_name">
-                                  <span class="phone_name" title="Thị Kim"><?php echo $row1['HOTEN'] ?></span>
-                                                                              <span class="phone_number"> <?php echo $row1['SDT'] ?> </span>
-                                                                      </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-        </div>
-            <?php }
-        }
-        
-      else{
-      
+       
                 
                 if (($baivietsql)) {?>
                   <?php foreach ($baivietsql as $key => $row){?>
@@ -443,11 +223,6 @@
                           <div class="address"><strong><?php echo $row['GIOITHIEUBAIVIET'] ?></strong></div>
                   
                       </div>
-                      <div class="if">
-                          <span class="label">Trạng thái   </span>
-                          <div class="address"><strong><?php echo $row['TENTT'] ?></strong></div>
-                  
-                      </div>
                             <div class="if">
                                 <span class="label"> Ngày đăng </span>
                                 <div class="address"><?php echo $row['NGAYDANG'] ?></div>
@@ -467,7 +242,7 @@
                         </div>
                     </div>
 </div>
-                  <?php } }}
+                  <?php } }
                  
                   ?> 
 
