@@ -261,7 +261,7 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
             style="--c29gcq6-0:100%;--c29gcq6-1:4px;--c29gcq6-4:-8px;--c29gcq6-5:-8px;--c29gcq6-9:8px;--c29gcq6-13:100%;--c29gcq6-14:6px;--c29gcq6-17:-12px;--c29gcq6-18:-12px;--c29gcq6-22:12px;--c29gcq6-26:100%;--c29gcq6-27:8px;--c29gcq6-30:-16px;--c29gcq6-31:-16px;--c29gcq6-35:16px;--c29gcq6-39:100%;--c29gcq6-40:12px;--c29gcq6-43:-24px;--c29gcq6-44:-24px;--c29gcq6-48:24px;--c29gcq6-52:100%;--c29gcq6-53:16px;--c29gcq6-56:-32px;--c29gcq6-57:-32px;--c29gcq6-61:32px">
             <div class="g1gd5utk swjo00u"
                style="--swjo00u-0:initial;--swjo00u-1:initial;--swjo00u-3:initial;--swjo00u-6:initial;--swjo00u-9:initial;--swjo00u-12:initial;--swjo00u-15:initial">
-               <div class="withSpan snf9jyk"
+               <!--<div class="withSpan snf9jyk"
                   style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:33.33333333333333%;--snf9jyk-16:initial;--snf9jyk-18:33.33333333333333%;--snf9jyk-20:initial">
                   <h5>Ảnh / video sản phẩm</h5>
 
@@ -377,11 +377,11 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                         </div>
                      </div>
                   </div>
-               </div>
+               </div>-->
                <div class="withSpan snf9jyk"
                   style="--snf9jyk-0:initial;--snf9jyk-1:initial;--snf9jyk-2:100%;--snf9jyk-4:initial;--snf9jyk-6:100%;--snf9jyk-8:initial;--snf9jyk-10:100%;--snf9jyk-12:initial;--snf9jyk-14:66.66666666666666%;--snf9jyk-16:initial;--snf9jyk-18:66.66666666666666%;--snf9jyk-20:initial">
                   <div class="f1wri8l5">
-                     <form action="post.php" method="post" enctype="multipart/form-data">
+                     <form action="post.php" method="post" enctype="multipart/form-data"  >
                         <div role="tabpanel" id="Liênhệ1" aria-labelledby="step-Liênhệ1" class="wizard-tab-container"
                            style="">
                            <div>
@@ -394,9 +394,9 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                                        <option value="0">Tất cả khu trọ</option>
                                        <?php
                                        $tro = "select * 
-  from khutro as a, chukhutro as b 
-  where a.ID_CKT = b.ID_CKT
-  and b.TENDANGNHAP='" . $_SESSION['TENDANGNHAP'] . "' ";
+                                                from khutro as a, chukhutro as b 
+                                                where a.ID_CKT = b.ID_CKT
+                                                and b.TENDANGNHAP='" . $_SESSION['TENDANGNHAP'] . "' ";
                                        $trosql = mysqli_query($conn, $tro);
                                        foreach ($trosql as $key => $value) { ?>
                                           <option value='<?php echo $value['ID_KHUTRO'] ?>'><?php echo $value['TENKHUTRO'] ?>
@@ -586,11 +586,13 @@ $loaiphongsql = mysqli_query($conn, $loaiphong);
                            <div class="snf9jyk"
                               style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                               <button class="b1ek51v5 outline o-accent r-normal large w-normal i-left stretch"
-                                 type="button">XEM TRƯỚC</button></div>
+                                 type="button">XEM TRƯỚC</button>
+                           </div>
                            <div class="snf9jyk"
                               style="--snf9jyk-0: initial; --snf9jyk-1: initial; --snf9jyk-2: initial; --snf9jyk-4: initial; --snf9jyk-6: initial; --snf9jyk-8: initial; --snf9jyk-10: initial; --snf9jyk-12: initial; --snf9jyk-14: initial; --snf9jyk-16: initial; --snf9jyk-18: initial; --snf9jyk-20: initial;">
                               <button class="b1ek51v5 accent r-normal large w-normal i-left stretch" name="submit"
-                                 type="submit">ĐĂNG TIN</button></div>
+                                 type="submit">ĐĂNG TIN</button>
+                           </div>
                         </div>
                      </div>
                      </form>
